@@ -27,7 +27,7 @@ singularity run --cleanenv \
 -B $maindir:/base \
 -B /data/tools/licenses:/opts \
 -B $scratchdir:/scratch \
-/data/tools/fmriprep-21.0.1.simg \
+/data/tools/fmriprep-22.0.2.simg \
 /base/bids /base/derivatives/fmriprep \
 participant --participant_label $sub \
 --stop-on-first-crash \
