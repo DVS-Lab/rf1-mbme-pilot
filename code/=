@@ -1,0 +1,349 @@
+Script started on 2022-09-16 10:27:05-04:00 [TERM="xterm-256color" TTY="/dev/pts/14" COLUMNS="80" LINES="24"]
+-------- freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0-2beb96c --------
+Setting up environment for FreeSurfer/FS-FAST (and FSL)
+FREESURFER_HOME   /usr/local/freesurfer
+FSFAST_HOME       /usr/local/freesurfer/fsfast
+FSF_OUTPUT_FORMAT nii.gz
+SUBJECTS_DIR      /usr/local/freesurfer/subjects
+MNI_DIR           /usr/local/freesurfer/mni
+FSL_DIR           /usr/share/fsl/6.0.4
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m $(ps -ef | grep -v grep | grep $script | wc -l)
+Usage: grep [OPTION]... PATTERNS [FILE]...
+Try 'grep --help' for more information.
+0: command not found
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m echo $script
+
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m script = [K[K[K[Kt=/data/c [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cp rojects/rf1-sequence-pilot/code/rf1-[K[K[K[Kprepdata.sh [K [K
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m $(ps -ef | grep -v grep | grep $script | wc -l)^C
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m echo s[K$script
+/data/projects/rf1-sequence-pilot/code/prepdata.sh
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m $(ps -ef | grep -v grep | grep $script | wc -l)
+5: command not found
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [K(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m $(ps -ef | grep -v grep | grep $script | wc -l) -ge $NCORES[K[K[K[K[K[K[K4][1@[[1@ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C ][C
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m [ $(ps -ef | grep -v grep | grep $script | wc -l) -ge 4 ][10P$(ps -ef | grep -v grep | grep $script | wc -l)echo $script[Kscript=/data/projects/rf1-sequence-pilot/code/prepdata.shecho $script[K$(ps -ef | grep -v grep | grep $script | wc -l)[22Pbluefish run_fmriprep.sh $(ps -ef | grep -v grep | grep $script | wc -l)
+5: command not found
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m $(ps -ef | grep -v grep | grep $script | wc -l)[C[1P)[1P)[1P)[1P)[1P)[1P)[1P)[1P)
+tup54227: command not found
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m $(ps -ef | grep -v grep | grep $script)[K[C[1P[1P
+tup54227 1833451 1831099  0 10:27 pts/14   00:00:00 script = [01;31m[K/data/projects/rf1-sequence-pilot/code/prepdata.sh[m[K
+tup54227 4015748       1  0 Sep14 ?        00:00:00 bash [01;31m[K/data/projects/rf1-sequence-pilot/code/prepdata.sh[m[K 10203 1
+tup54227 4015839       1  0 Sep14 ?        00:00:00 bash [01;31m[K/data/projects/rf1-sequence-pilot/code/prepdata.sh[m[K 10234 5
+tup54227 4015952       1  0 Sep14 ?        00:00:00 bash [01;31m[K/data/projects/rf1-sequence-pilot/code/prepdata.sh[m[K 10166 4
+tup54227 4016038       1  0 Sep14 ?        00:00:00 bash [01;31m[K/data/projects/rf1-sequence-pilot/code/prepdata.sh[m[K 10223 1
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m kill 1833451
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m bash prepdata.sh "10318 6"
+prepdata.sh: line 22: [: 10318 6: integer expression expected
+prepdata.sh: line 22: [: 10318 6: integer expression expected
+prepdata.sh: line 22: [: 10318 6: integer expression expected
+prepdata.sh: line 22: [: 10318 6: integer expression expected
+prepdata.sh: line 22: [: 10318 6: integer expression expected
+prepdata.sh: line 22: [: 10318 6: integer expression expected
+prepdata.sh: line 22: [: 10318 6: integer expression expected
+prepdata.sh: line 22: [: 10318 6: integer expression expected
+prepdata.sh: line 22: [: 10318 6: integer expression expected
+prepdata.sh: line 22: [: 10318 6: integer expression expected
+prepdata.sh: line 22: [: 10318 6: integer expression expected
+prepdata.sh: line 22: [: 10318 6: integer expression expected
+/data/projects/rf1-sequence-pilot
+prepdata.sh: line 47: [: /data/projects/rf1-sequence-pilot/bids/sub-10318: binary operator expected
+chmod: cannot access '/data/projects/rf1-sequence-pilot/bids/sub-10318': No such file or directory
+chmod: cannot access '6': No such file or directory
+defacing subject 10318 6
+--------------
+pydeface 2.0.0
+--------------
+usage: pydeface [-h] [--outfile path] [--force] [--applyto  [...]] [--cost mutualinfo] [--template path] [--facemask path]
+                [--nocleanup] [--verbose] [--debug]
+                path
+pydeface: error: unrecognized arguments: 6/anat/sub-10318 6_T1w.nii.gz
+mv: target '6_T1w.nii.gz' is not a directory
+scrubbing /data/projects/rf1-sequence-pilot/bids/sub-10318
+Traceback (most recent call last):
+  File "/data/projects/rf1-sequence-pilot/code/shiftdates.py", line 42, in <module>
+    df = pd.read_csv(scan, sep = '\t')
+  File "/opt/anaconda3/lib/python3.8/site-packages/pandas/io/parsers.py", line 686, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/opt/anaconda3/lib/python3.8/site-packages/pandas/io/parsers.py", line 452, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/opt/anaconda3/lib/python3.8/site-packages/pandas/io/parsers.py", line 946, in __init__
+    self._make_engine(self.engine)
+  File "/opt/anaconda3/lib/python3.8/site-packages/pandas/io/parsers.py", line 1178, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/opt/anaconda3/lib/python3.8/site-packages/pandas/io/parsers.py", line 2008, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 382, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] No such file or directory: '/data/projects/rf1-sequence-pilot/bids/sub-10318'
+running MRIQC for subject 10318 6 remember to clear your scratch
+prepdata.sh: line 110: [: /data/projects/rf1-sequence-pilot/derivatives/mriqc/sub-10318: binary operator expected
+MATLAB is selecting SOFTWARE OPENGL rendering.
+[?1h=
+                                                     < M A T L A B (R) >
+                                           Copyright 1984-2022 The MathWorks, Inc.
+                                      R2022a Update 5 (9.12.0.2039608) 64-bit (glnxa64)
+                                                       August 12, 2022
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+ try; cd('/data/projects/rf1-sequence-pilot/code'); convertSharedReward2BIDSevents(10318 6,);catch; end; quit()
+                                                                                         |
+{Invalid expression. Check for missing multiplication operator, missing or unbalanced delimiters, or other syntax error. To
+construct matrices, use brackets instead of parentheses.
+} 
+>> quit()      quit()
+[?1l>prepdata.sh: line 133: syntax error: unexpected end of file
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m 
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m matlab
+MATLAB is selecting SOFTWARE OPENGL rendering.
+^[[A^C
+^C^C^[[B
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m 
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m ^C
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m matlabbash prepdata.sh "10318 6"[14Pkill 1833451ps -ef | grep -v grep | grep $script$(ps -ef | grep -v grep | grep $script) | wc -l)[ $(ps -ef | grep -v grep | grep $script | wc -l) -ge 4 ][10P$(ps -ef | grep -v grep | grep $script | wc -l)echo $script[Kscript=/data/projects/rf1-sequence-pilot/code/prepdata.sh
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m script=/data/projects/rf1-sequence-pilot/code/prepdata.shmatlab[Kbash prepdata.sh "10318 6"[14Pkill 1833451ps -ef | grep -v grep | grep $script$(ps -ef | grep -v grep | grep $script) | wc -l))[K[3Pps -ef | grep -v grep | grep $script
+tup54227 1833451 1831099  0 10:27 pts/14   00:00:00 script = [01;31m[K/data/projects/rf1-sequence-pilot/code/prepdata.sh[m[K
+tup54227 4015748       1  0 Sep14 ?        00:00:00 bash [01;31m[K/data/projects/rf1-sequence-pilot/code/prepdata.sh[m[K 10203 1
+tup54227 4015839       1  0 Sep14 ?        00:00:00 bash [01;31m[K/data/projects/rf1-sequence-pilot/code/prepdata.sh[m[K 10234 5
+tup54227 4015952       1  0 Sep14 ?        00:00:00 bash [01;31m[K/data/projects/rf1-sequence-pilot/code/prepdata.sh[m[K 10166 4
+tup54227 4016038       1  0 Sep14 ?        00:00:00 bash [01;31m[K/data/projects/rf1-sequence-pilot/code/prepdata.sh[m[K 10223 1
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m kill 18[K[K4015748
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m kill 4015839
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m kill 4015952
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m kill 4016038
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m kill 40160385952839748ps -ef | grep -v grep | grep $script
+tup54227 1833451 1831099  0 10:27 pts/14   00:00:00 script = [01;31m[K/data/projects/rf1-sequence-pilot/code/prepdata.sh[m[K
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m kill 1833451
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m bash run_prepdata.sh
+Enter Your XNAT Username
+
+>> ori.zaff
+Enter Your XNAT Password
+
+>> 
+Smith-SRA-10223 already retrieved from XNAT
+Smith-SRA-10318 already retrieved from XNAT
+Smith-SRA-10320 already retrieved from XNAT
+Smith-SRA-10166 already retrieved from XNAT
+Smith-SRA-10221 already retrieved from XNAT
+Smith-SRA-10234 already retrieved from XNAT
+Smith-SRA-10203 already retrieved from XNAT
+Smith-SRA-10198 already retrieved from XNAT
+Smith-SRA-12042 already retrieved from XNAT
+Smith-SRA-10035retest already retrieved from XNAT
+Smith-SRA-10046 already retrieved from XNAT
+Smith-SRA-10303 already retrieved from XNAT
+Smith-SRA-1001 already retrieved from XNAT
+Smith-SRA-10028 already retrieved from XNAT
+Running prepdata /data/projects/rf1-sequence-pilot/code/prepdata.sh 10318 6
+/data/projects/rf1-sequence-pilot
+defacing subject 10318
+--------------
+pydeface 2.0.0
+--------------
+Temporary files:
+  /tmp/tmpnclfrj93.mat
+  /tmp/tmpovwhc47p.nii.gz
+Defacing...
+  /data/projects/rf1-sequence-pilot/bids/sub-10318/anat/sub-10318_T1w.nii.gz
+220916-11:03:16,238 nipype.utils WARNING:
+	 A newer version (1.8.4) of nipy/nipype is available. You are using 1.7.0
+Traceback (most recent call last):
+  File "/opt/anaconda3/bin/pydeface", line 8, in <module>
+    sys.exit(main())
+  File "/opt/anaconda3/lib/python3.8/site-packages/pydeface/__main__.py", line 95, in main
+    pdu.deface_image(**vars(args))
+  File "/opt/anaconda3/lib/python3.8/site-packages/pydeface/utils.py", line 99, in deface_image
+    flirt.inputs.reference = infile
+  File "/opt/anaconda3/lib/python3.8/site-packages/nipype/interfaces/base/traits_extension.py", line 330, in validate
+    value = super(File, self).validate(objekt, name, value, return_pathlike=True)
+  File "/opt/anaconda3/lib/python3.8/site-packages/nipype/interfaces/base/traits_extension.py", line 135, in validate
+    self.error(objekt, name, str(value))
+  File "/opt/anaconda3/lib/python3.8/site-packages/traits/base_trait_handler.py", line 74, in error
+    raise TraitError(
+traits.trait_errors.TraitError: The 'reference' trait of a FLIRTInputSpec instance must be a pathlike object or string representing an existing file, but a value of '/data/projects/rf1-sequence-pilot/bids/sub-10318/anat/sub-10318_T1w.nii.gz' <class 'str'> was specified.
+mv: cannot stat '/data/projects/rf1-sequence-pilot/bids/sub-10318/anat/sub-10318_T1w_defaced.nii.gz': No such file or directory
+scrubbing /data/projects/rf1-sequence-pilot/bids/sub-10318/sub-10318_scans.tsv
+Traceback (most recent call last):
+  File "/data/projects/rf1-sequence-pilot/code/shiftdates.py", line 42, in <module>
+    df = pd.read_csv(scan, sep = '\t')
+  File "/opt/anaconda3/lib/python3.8/site-packages/pandas/io/parsers.py", line 686, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/opt/anaconda3/lib/python3.8/site-packages/pandas/io/parsers.py", line 452, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/opt/anaconda3/lib/python3.8/site-packages/pandas/io/parsers.py", line 946, in __init__
+    self._make_engine(self.engine)
+  File "/opt/anaconda3/lib/python3.8/site-packages/pandas/io/parsers.py", line 1178, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/opt/anaconda3/lib/python3.8/site-packages/pandas/io/parsers.py", line 2008, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 382, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] No such file or directory: '/data/projects/rf1-sequence-pilot/bids/sub-10318/sub-10318_scans.tsv'
+running MRIQC for subject 10318 remember to clear your scratch
+running mriqc for sub-10318
+You are using MRIQC v0.16.1, and a newer version is available: 22.0.6.
+Running prepdata /data/projects/rf1-sequence-pilot/code/prepdata.sh 10320 3
+/data/projects/rf1-sequence-pilot
+defacing subject 10320
+--------------
+pydeface 2.0.0
+--------------
+Temporary files:
+  /tmp/tmp9xa55ce7.mat
+  /tmp/tmpxa_gm29h.nii.gz
+Defacing...
+  /data/projects/rf1-sequence-pilot/bids/sub-10320/anat/sub-10320_T1w.nii.gz
+220916-11:03:21,114 nipype.utils WARNING:
+	 A newer version (1.8.4) of nipy/nipype is available. You are using 1.7.0
+usage: mriqc [-h] [--version] [-v]
+             [--participant-label PARTICIPANT_LABEL [PARTICIPANT_LABEL ...]]
+             [--session-id [SESSION_ID [SESSION_ID ...]]]
+             [--run-id [RUN_ID [RUN_ID ...]]]
+             [--task-id [TASK_ID [TASK_ID ...]]]
+             [-m [MODALITIES [MODALITIES ...]]] [--dsname DSNAME]
+             [--nprocs NPROCS] [--omp-nthreads OMP_NTHREADS] [--mem MEMORY_GB]
+             [--testing] [-f] [--pdb] [-w WORK_DIR] [--verbose-reports]
+             [--write-graph] [--dry-run] [--profile] [--use-plugin USE_PLUGIN]
+             [--no-sub] [--email EMAIL] [--webapi-url WEBAPI_URL]
+             [--webapi-port WEBAPI_PORT] [--upload-strict] [--ants-float]
+             [--ants-settings ANTS_SETTINGS] [--ica] [--fft-spikes-detector]
+             [--fd_thres FD_THRES] [--deoblique] [--despike]
+             [--start-idx START_IDX] [--stop-idx STOP_IDX]
+             [--correct-slice-timing]
+             bids_dir output_dir {participant,group} [{participant,group} ...]
+mriqc: error: Querying BIDS dataset at </data> got an empty result.
+Please, check out your currently set filters:
+
+ *participant_label: ['10318']
+ *session: None
+ *run: None
+ *task: None
+ *bids_type: None
+running subject: 10318 counterbalance: 6Unable to change current folder to '' (Name is nonexistent or not a folder).
+check line: 38
+^C
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m bash run_prepdata.sh[8Pkill 1833451ps -ef | grep -v grep | grep $script[24Pkill 4016038ps -ef | grep -v grep | grep $script
+tup54227 1833451 1831099  0 10:27 pts/14   00:00:00 script = [01;31m[K/data/projects/rf1-sequence-pilot/code/prepdata.sh[m[K
+tup54227 1854679 1828866  0 10:58 pts/6    00:00:00 bash [01;31m[K/data/projects/rf1-sequence-pilot/code/prepdata.sh[m[K 10320 3
+tup54227 1859776       1  0 11:03 pts/15   00:00:00 bash [01;31m[K/data/projects/rf1-sequence-pilot/code/prepdata.sh[m[K 10320 3
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m kill 1828866
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m kill 1828866[K[K[K[K[K31099
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m kill 183109928866ps -ef | grep -v grep | grep $script
+tup54227 1833451 1831099  0 10:27 pts/14   00:00:00 script = [01;31m[K/data/projects/rf1-sequence-pilot/code/prepdata.sh[m[K
+tup54227 1854679       1  0 10:58 pts/6    00:00:00 bash [01;31m[K/data/projects/rf1-sequence-pilot/code/prepdata.sh[m[K 10320 3
+tup54227 1859776       1  0 11:03 pts/15   00:00:00 bash [01;31m[K/data/projects/rf1-sequence-pilot/code/prepdata.sh[m[K 10320 3
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m kill 1833451
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m kill 1854679
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m kill 1859776
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m ls
+'='                                    [0m[01;32mcount_fmriprep.sh[0m          [01;32mL1stats.sh[0m           [01;32mprepdata.sh~[0m          [01;32mrun_motioneval.sh[0m
+ [01;32maddIntendedFor.py[0m                     [01;32mdev_ApplyTransform.ipynb[0m   [01;32mL2stats.sh[0m           [34;42m__pycache__[0m           [01;32mrun_prepdata.sh[0m
+ ApplyTransformAndTedanaConfounds.py   [01;32mDev_IDOutlier.ipynb[0m        [01;32mL2stats.sh~[0m          [01;32mREADME.md[0m             [01;32mrun_prepdata.sh~[0m
+ [01;32mbarweb_dvs2.m[0m                         [01;32mdownloadXNAT.py[0m            [01;32mL3stats.sh[0m           [01;32mrun_fmriprep.sh[0m       [01;32mrun_tedana.sh[0m
+ [01;32mBIDSto3col.sh[0m                         [01;32mextractROI.sh[0m              [01;32mL3stats.sh~[0m          [01;32mrun_fmriprep.sh~[0m      [01;32mshiftdates.py[0m
+ [01;32mcheck_buttonpress.ipynb[0m               [01;32mfmriprep.sh[0m                [01;32mmake_bidsEvents.py[0m   [01;32mrun_gen3colfiles.sh[0m   [01;32mSRNDNA_OutlierID.py[0m
+ [01;32mclean_fmriPrep.py[0m                     [01;32mfmriprep.sh~[0m               [01;32mMakeConfounds.py[0m     [01;32mrun_L1stats.sh[0m        [01;32mtransferData2.sh[0m
+ [01;32mcompileZimages.sh[0m                     [01;32mgen3colfiles.sh[0m            [01;32mMakeConfounds.py~[0m    [01;32mrun_L1stats.sh~[0m       TSNRinfo.tsv
+ Compute_TSNR_20channel.ipynb          [01;32mget_emptyEVs.m[0m             [01;32mmy_tedana.py[0m         [01;32mrun_L2stats.sh[0m        [01;32mtsnr.sh[0m
+ [01;32mCompute_TSNR.ipynb[0m                    [01;32mget_RTs.m[0m                  [01;32mnohup.out[0m            [01;32mrun_L2stats.sh~[0m       [01;32mUntitled1.ipynb[0m
+ convert2events2.m                     [01;32mheuristics.py[0m              [01;32mplotROIdata.m[0m        [01;32mrun_L3stats.sh[0m        [01;32mUntitled2.ipynb[0m
+ [01;32mconvertSharedReward2BIDSevents.m[0m      [01;32mIDoutliers.py[0m              [01;32mprepdata.sh[0m          [01;32mrun_L3stats.sh~[0m       [01;32mUntitled.ipynb[0m
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m ls[K[Kkill 1859776467933451ps -ef | grep -v grep | grep $script[24Pkill 1831099ps -ef | grep -v grep | grep $script
+tup54227 1833451 1831099  0 10:27 pts/14   00:00:00 script = [01;31m[K/data/projects/rf1-sequence-pilot/code/prepdata.sh[m[K
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m ps -ef | grep -v grep | grep $script[Kkill 1859776467933451
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m Defaced image saved as:
+  /data/projects/rf1-sequence-ror(objekt, name, str(value))
+  File "/opt/anaconda3/lib/python3.8/site-packages/traits/base_trait_handler.py", line 74, in error
+    raise TraitError(
+traits.trait_errors.TraitError: The 'reference' trait of a FLIRTInputSpec instance must be a pathlike object or string representing an existing file, but a value of '/data/projects/rf1-sequence-pilot/bids/sub-10318/anat/sub-10318_T1w.nii.gz' <class 'str'> was specified.
+mv: cannot stat '/data/projects/rf1-sequence-pilot/bids/sub-10318/anat/sub-10318_T1w_defaced.nii.gz': No such file or directory
+scrubbing /data/projects/rf1-sequence-pilot/bids/sub-10318/sub-10318_scans.tsv
+Traceback (most recent call last):
+  File "/data/projects/rf1-sequence-pilot/code/shiftdates.py", line 42, in <module>
+    df = pd.read_csv(scan, sep = '\t')
+  File "/opt/anaconda3/lib/python3.8/site-packages/pandas/io/parsers.py", line 686, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/opt/anaconda3/lib/python3.8/site-packages/pandas/io/parsers.py", line 452, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/opt/anaconda3/lib/python3.8/site-packages/pandas/io/parsers.py", line 946, in __init__
+    self._make_engine(self.engine)
+  File "/opt/anaconda3/lib/python3.8/site-packages/pandas/io/parsers.py", line 1178, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/opt/anaconda3/lib/python3.8/site-packages/pandas/io/parsers.py", line 2008, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 382, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] No such file or directory: '/data/projects/rf1-sequence-pilot/bids/sub-10318/sub-10318_scans.tsv'
+running MRIQC for subject 10318 remember to clear your scratch
+running mriqc for sub-10318
+You are using MRIQC v0.16.1, and a newer version is available: 22.0.6.
+Running prepdata /data/projects/rf1-sequence-pilot/code/prepdata.sh 10320 3
+/data/projects/rf1-sequence-pilot
+defacing subject 10320
+--------------
+pydeface 2.0.0
+--------------
+Temporary files:
+  /tmp/tmp9xa55ce7.mat
+  /tmp/tmpxa_gm29h.nii.gz
+Defacing...
+  /data/projects/rf1-sequence-pilot/bids/sub-10320/anat/sub-10320_T1w.nii.gz
+220916-11:03:21,114 nipype.utils WARNING:
+	 A newer version (1.8.4) of nipy/nipype is available. You are using 1.7.0
+usage: mriqc [-h] [--version] [-v]
+             [--participant-label PARTICIPANT_LABEL [PARTICIPANT_LABEL ...]]
+             [--session-id [SESSION_ID [SESSION_ID ...]]]
+             [--run-id [RUN_ID [RUN_ID ...]]]
+             [--task-id [TASK_ID [TASK_ID ...]]]
+             [-m [MODALITIES [MODALITIES ...]]] [--dsname DSNAME]
+             [--nprocs NPROCS] [--omp-nthreads OMP_NTHREADS] [--mem MEMORY_GB]
+             [--testing] [-f] [--pdb] [-w WORK_DIR] [--verbose-reports]
+             [--write-graph] [--dry-run] [--profile] [--use-plugin USE_PLUGIN]
+             [--no-sub] [--email EMAIL] [--webapi-url WEBAPI_URL]
+             [--webapi-port WEBAPI_PORT] [--upload-strict] [--ants-float]
+             [--ants-settings ANTS_SETTINGS] [--ica] [--fft-spikes-detector]
+             [--fd_thres FD_THRES] [--deoblique] [--despike]
+             [--start-idx START_IDX] [--stop-idx STOP_IDX]
+             [--correct-slice-timing]
+             bids_dir output_dir {participant,group} [{participant,group} ...]
+mriqc: error: Querying BIDS dataset at </data> got an empty result.
+Please, check out your currently set filters:
+
+ *participant_label: ['10318']
+ *session: None
+ *run: None
+ *task: None
+ *bids_type: None
+running subject: 10318 counterbalance: 6Unable to change current folder to '' (Name is nonexistent or not a folder).
+check line: 38
+^C
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m bash run_prepdata.sh[8Pkill 1833451ps -ef | grep -v grep | grep $script[24Pkill 4016038ps -ef | grep -v grep | grep $script
+tup54227 1833451 1831099  0 10:27 pts/14   00:00:00 script = [01;31m[K/data/projects/rf1-sequence-pilot/code/prepdata.sh[m[K
+tup54227 1854679 1828866  0 10:58 pts/6    00:00:00 bash [01;31m[K/data/projects/rf1-sequence-pilot/code/prepdata.sh[m[K 10320 3
+tup54227 1859776       1  0 11:03 pts/15   00:00:00 bash [01;31m[K/data/projects/rf1-sequence-pilot/code/prepdata.sh[m[K 10320 3
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m kill 1828866
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m kill 1828866[K[K[K[K[K31099
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m kill 183109928866ps -ef | grep -v grep | grep $script
+tup54227 1833451 1831099  0 10:27 pts/14   00:00:00 script = [01;31m[K/data/projects/rf1-sequence-pilot/code/prepdata.sh[m[K
+tup54227 1854679       1  0 10:58 pts/6    00:00:00 bash [01;31m[K/data/projects/rf1-sequence-pilot/code/prepdata.sh[m[K 10320 3
+tup54227 1859776       1  0 11:03 pts/15   00:00:00 bash [01;31m[K/data/projects/rf1-sequence-pilot/code/prepdata.sh[m[K 10320 3
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m kill 1833451
+
+Session terminated.
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m kill 1854679
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m kill 1859776
+(base) ]0;tup54227@cla18994 /data/projects/rf1-sequence-pilot/code[01;32mtup54227@cla18994[00m [01;34m/data/projects/rf1-sequence-pilot/code $[00m ls
+'='                                    [0m[01;32mcount_fmriprep.sh[0m          [01;32mL1stats.sh[0m           [01;32mprepdata.sh~[0m          [01;32mrun_motioneval.sh[0m
+ [01;32maddIntendedFor.py[0m                     [01;32mdev_ApplyTransform.ipynb[0m   [01;32mL2stats.sh[0m           [34;42m__pycache__[0m           [01;32mrun_prepdata.sh[0m
+ ApplyTransformAndTedanaConfounds.py   [01;32mDev_IDOutlier.ipynb[0m        [01;32mL2stats.sh~[0m          [01;32mREADME.md[0m             [01;32mrun_prepdata.sh~[0m
+ [01;32mbarweb_dvs2.m[0m                         [01;32mdownloadXNAT.py[0m            [01;32mL3stats.sh[0m           [01;32mrun_fmriprep.sh[0m       [01;32mrun_tedana.sh[0m
+ [01;32mBIDSto3col.sh[0m                         [01;32mextractROI.sh[0m              [01;32mL3stats.sh~[0m          [01;32mrun_fmriprep.sh~[0m      [01;32mshiftdates.py[0m
+ [01;32mcheck_buttonpress.ipynb[0m               [01;32mfmriprep.sh[0m                [01;32mmake_bidsEvents.py[0m   [01;32mrun_gen3colfiles.sh[0m   [01;32mSRNDNA_OutlierID.py[0m
+ [01;32mclean_fmriPrep.py[0m                     [01;32mfmriprep.sh~[0m               [01;32mMakeConfounds.py[0m     [01;32mrun_L1stats.sh[0m        [01;32mtransferData2.sh[0m
+ [01;32mcompileZimages.sh[0m                     [01;32mgen3colfiles.sh[0m            [01;32mMakeConfounds.py~[0m    [01;32mrun_L1stats.sh~[0m       TSNRinfo.tsv
+ Compute_TSNR_20channel.ipynb          [01;32mget_emptyEVs.m[0m             [01;32mmy_tedana.py[0m         [01;32mrun_L2stats.sh[0m        [01;32mtsnr.sh[0m
+ [01;32mCompute_TSNR.ipynb[0m                    [01;32mget_RTs.m[0m                  [01;32mnohup.out[0m            [01;32mrun_L2stats.sh~[0m       [01;32mUntitled1.ipynb[0m
+ convert2events2.m                     [01;32mheuristics.py[0m              [01;32mplotROIdata.m[0m      
