@@ -17,14 +17,14 @@ for sub in `ls -d ${basedir}/bids/sub-*/`; do
 	for me in 1 4; do
 	    if [[ $me -gt 1 ]]
 	    then
-		BIDSDATA=/data/projects/rf1-sequence-pilot/bids/sub-${sub}/func/sub-${sub}_task-${task}_acq-mb${mb}me4_echo-2_bold.nii.gz
+		BIDSDATA=${basedir}/bids/sub-${sub}/func/sub-${sub}_task-${task}_acq-mb${mb}me4_echo-2_bold.nii.gz
 	    else
-		BIDSDATA=/data/projects/rf1-sequence-pilot/bids/sub-${sub}/func/sub-${sub}_task-${task}_acq-mb${mb}me1_bold.nii.gz
+		BIDSDATA=${basedir}/bids/sub-${sub}/func/sub-${sub}_task-${task}_acq-mb${mb}me1_bold.nii.gz
 	    fi
 
 
   	# Manages the number of jobs and cores
-	OUT=/data/projects/rf1-sequence-pilot/derivatives/fsl/mcflirt/sub-${sub}/mb${mb}me${me}/
+	OUT=${basedir}/derivatives/fsl/mcflirt/sub-${sub}/mb${mb}me${me}/
 	if [ -d $OUT ]
         then
             echo "sub ${sub} mb ${mb} me ${me} already has mclfirt"

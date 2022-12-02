@@ -45,26 +45,27 @@ data=[]
 for sub in events_df['sub'].unique():
     print(sub)
     for acq in events_df['acq'].unique():
-        
-        absolute=np.loadtxt('%s/../derivatives/fsl/mcflirt/%s/%s/_abs.rms'%(cwd,sub,acq))
-        
-        if acq in ['mb1me4','mb3me4','mb6me4']:
-            f = open("%s/../derivatives/mriqc/%s/func/%s_task-sharedreward_acq-%s_echo-2_bold.json"%(cwd,sub,sub,acq))
-        else:
-            f = open("%s/../derivatives/mriqc/%s/func/%s_task-sharedreward_acq-%s_bold.json"%(cwd,sub,sub,acq))
-  
-        # returns JSON object as 
-        # a dictionary
-        FD = json.load(f)
-        f.close
-        FD=FD['fd_mean']
-        #FD=np.loadtxt('%s/../derivatives/fsl/mcflirt/%s/%s/_rel.rms'%(cwd,sub,acq))
-        
-        row=[sub,acq,
-            events_df[(events_df['sub']==sub)&(events_df['acq']==acq)]['trial_type'].str.count('miss_decision').sum(),
-            absolute.max(),FD]
-        data.append(row)
-        
+        fname='%s/../derivatives/fsl/mcflirt/%s/%s/_abs.rms'%(cwd,sub,acq)
+        if os.path.exists(fname):
+            absolute=np.loadtxt(fname)
+
+            if acq in ['mb1me4','mb3me4','mb6me4']:
+                f = open("%s/../derivatives/mriqc/%s/func/%s_task-sharedreward_acq-%s_echo-2_bold.json"%(cwd,sub,sub,acq))
+            else:
+                f = open("%s/../derivatives/mriqc/%s/func/%s_task-sharedreward_acq-%s_bold.json"%(cwd,sub,sub,acq))
+
+            # returns JSON object as 
+            # a dictionary
+            FD = json.load(f)
+            f.close
+            FD=FD['fd_mean']
+            #FD=np.loadtxt('%s/../derivatives/fsl/mcflirt/%s/%s/_rel.rms'%(cwd,sub,acq))
+
+            row=[sub,acq,
+                events_df[(events_df['sub']==sub)&(events_df['acq']==acq)]['trial_type'].str.count('miss_decision').sum(),
+                absolute.max(),FD]
+            data.append(row)
+
 exclusions_df=pd.DataFrame(data=data,columns=['sub','acq','TrialCount_misses','Max_Abs_motion','FD_mean'])
 exclusions_df['FD_exclusion']=exclusions_df['FD_mean']>0.5
 exclusions_df['ABS_exclusion']=exclusions_df['Max_Abs_motion']>1.35

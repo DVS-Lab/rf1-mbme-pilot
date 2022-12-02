@@ -96,7 +96,7 @@ def RUN_Tedana(sub,prefix,EchoFiles,EchoTimes,OutDir):
     else:
   
         os.makedirs(OutDir,exist_ok=True)
-        print("Running TEDANA for %s"%(acq)+'\n)
+        print("Running TEDANA for %s"%(acq)+'\n')
         
         workflows.tedana_workflow(
 	    EchoFiles,

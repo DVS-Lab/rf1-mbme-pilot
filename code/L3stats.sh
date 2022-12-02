@@ -19,33 +19,31 @@ maindir="$(dirname "$scriptdir")"
 
 # study-specific inputs and general output folder
 task=sharedreward
-N=45
+N=9
 copenum=$1
 copenum_thresh_randomise=7 # actual contrasts start here. no need to do randomise main effects (e.g., reward > nothing/fixation/baseline)
 copename=$2
 REPLACEME=$3 # this defines the parts of the path that differ across analyses
-logfile=$4
-
-MAINOUTPUT=${maindir}/derivatives/fsl/L3_model-2_task-${task}_n${N}_flame1_SFN_edition_cluster-thr35
+MAINOUTPUT=${maindir}/derivatives/fsl/L3_model-1_task-${task}_n${N}_mixedeffects-flame1+2
 mkdir -p $MAINOUTPUT
 
 
 #### --- Two groups ------------------------------
 # set outputs and check for existing
-cnum_pad=`zeropad ${copenum} 2`
-OUTPUT=${MAINOUTPUT}/L3_task-${task}_${REPLACEME}_cnum-${cnum_pad}_cname-${copename}_twogroup
-if [ -e ${OUTPUT}.gfeat/cope1.feat/cluster_mask_zstat1.nii.gz ]; then
+#cnum_pad=`zeropad ${copenum} 2`
+#OUTPUT=${MAINOUTPUT}/L3_task-${task}_${REPLACEME}_cnum-${cnum_pad}_cname-${copename}_twogroup
+#if [ -e ${OUTPUT}.gfeat/cope1.feat/cluster_mask_zstat1.nii.gz ]; then
 
 	# run randomise if output doesn't exist and the contrasts (copes) are valid
-	cd ${OUTPUT}.gfeat/cope1.feat
-	if [ ! -e randomise_tfce_corrp_tstat4.nii.gz ] && [ $copenum -ge $copenum_thresh_randomise ]; then
-		randomise -i filtered_func_data.nii.gz -o randomise -d design.mat -t design.con -m mask.nii.gz -T -c 2.6 -n 10000
-	fi
+#	cd ${OUTPUT}.gfeat/cope1.feat
+#	if [ ! -e randomise_tfce_corrp_tstat4.nii.gz ] && [ $copenum -ge $copenum_thresh_randomise ]; then
+#		randomise -i filtered_func_data.nii.gz -o randomise -d design.mat -t design.con -m mask.nii.gz -T -c 2.6 -n 10000
+#	fi
 
-else # try to run feat and clean up previous effort with partial output
+#else # try to run feat and clean up previous effort with partial output
 
 	# echo "re-doing: ${OUTPUT}" >> re-runL3.log
-	rm -rf ${OUTPUT}.gfeat
+#	rm -rf ${OUTPUT}.gfeat
 
 	# create template and run FEAT analyses
 	# ITEMPLATE=${maindir}/templates/L3_template_n${N}_${task}_twogroup.fsf # TO DO: change to reward sensitivity covariate
@@ -58,31 +56,31 @@ else # try to run feat and clean up previous effort with partial output
 	# feat $OTEMPLATE
 
 	# delete unused files
-	rm -rf ${OUTPUT}.gfeat/cope${cope}.feat/stats/res4d.nii.gz
-	rm -rf ${OUTPUT}.gfeat/cope${cope}.feat/stats/corrections.nii.gz
-	rm -rf ${OUTPUT}.gfeat/cope${cope}.feat/stats/threshac1.nii.gz
+#	rm -rf ${OUTPUT}.gfeat/cope${cope}.feat/stats/res4d.nii.gz
+#	rm -rf ${OUTPUT}.gfeat/cope${cope}.feat/stats/corrections.nii.gz
+#	rm -rf ${OUTPUT}.gfeat/cope${cope}.feat/stats/threshac1.nii.gz
 	#rm -rf ${OUTPUT}.gfeat/cope${cope}.feat/filtered_func_data.nii.gz
-	rm -rf ${OUTPUT}.gfeat/cope${cope}.feat/var_filtered_func_data.nii.gz
+#	rm -rf ${OUTPUT}.gfeat/cope${cope}.feat/var_filtered_func_data.nii.gz
 
-fi
+#fi
 
 
 ### --- Two groups with covariates ------------------------------
 # set outputs and check for existing
-cnum_pad=`zeropad ${copenum} 2`
-OUTPUT=${MAINOUTPUT}/L3_task-${task}_${REPLACEME}_cnum-${cnum_pad}_cname-${copename}_twogroup_wCovs
-if [ -e ${OUTPUT}.gfeat/cope1.feat/cluster_mask_zstat1.nii.gz ]; then
+#cnum_pad=`zeropad ${copenum} 2`
+#OUTPUT=${MAINOUTPUT}/L3_task-${task}_${REPLACEME}_cnum-${cnum_pad}_cname-${copename}_twogroup_wCovs
+#if [ -e ${OUTPUT}.gfeat/cope1.feat/cluster_mask_zstat1.nii.gz ]; then
 
 	# run randomise if output doesn't exist and the contrasts (copes) are valid
-	cd ${OUTPUT}.gfeat/cope1.feat
-	if [ ! -e randomise_tfce_corrp_tstat4.nii.gz ] && [ $copenum -ge $copenum_thresh_randomise ]; then
-		randomise -i filtered_func_data.nii.gz -o randomise -d design.mat -t design.con -m mask.nii.gz -T -c 2.6 -n 10000
-	fi
+#	cd ${OUTPUT}.gfeat/cope1.feat
+#	if [ ! -e randomise_tfce_corrp_tstat4.nii.gz ] && [ $copenum -ge $copenum_thresh_randomise ]; then
+#		randomise -i filtered_func_data.nii.gz -o randomise -d design.mat -t design.con -m mask.nii.gz -T -c 2.6 -n 10000
+#	fi
 
-else # try to run feat and clean up previous effort with partial output
+#else # try to run feat and clean up previous effort with partial output
 
 	# echo "re-doing: ${OUTPUT}" >> re-runL3.log
-	rm -rf ${OUTPUT}.gfeat
+#	rm -rf ${OUTPUT}.gfeat
 
 	# create template and run FEAT analyses
 	# ITEMPLATE=${maindir}/templates/L3_template_n${N}_${task}_twogroup_wCovs.fsf # TO DO: change to reward sensitivity covariate
@@ -95,13 +93,13 @@ else # try to run feat and clean up previous effort with partial output
 	# feat $OTEMPLATE
 
 	# delete unused files
-	rm -rf ${OUTPUT}.gfeat/cope${cope}.feat/stats/res4d.nii.gz
-	rm -rf ${OUTPUT}.gfeat/cope${cope}.feat/stats/corrections.nii.gz
-	rm -rf ${OUTPUT}.gfeat/cope${cope}.feat/stats/threshac1.nii.gz
+#	rm -rf ${OUTPUT}.gfeat/cope${cope}.feat/stats/res4d.nii.gz
+#	rm -rf ${OUTPUT}.gfeat/cope${cope}.feat/stats/corrections.nii.gz
+#	rm -rf ${OUTPUT}.gfeat/cope${cope}.feat/stats/threshac1.nii.gz
 	#rm -rf ${OUTPUT}.gfeat/cope${cope}.feat/filtered_func_data.nii.gz
-	rm -rf ${OUTPUT}.gfeat/cope${cope}.feat/var_filtered_func_data.nii.gz
+#	rm -rf ${OUTPUT}.gfeat/cope${cope}.feat/var_filtered_func_data.nii.gz
 
-fi
+#fi
 
 
 
@@ -119,7 +117,7 @@ if [ -e ${OUTPUT}.gfeat/cope1.feat/cluster_mask_zstat1.nii.gz ]; then
 
 else # try to run feat and clean up previous effort with partial output
 
-	echo "running: ${OUTPUT}" >> $logfile
+	echo "re-doing: ${OUTPUT}" >> re-runL3.log
 	rm -rf ${OUTPUT}.gfeat
 
 	# create template and run FEAT analyses
