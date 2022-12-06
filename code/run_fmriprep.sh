@@ -5,7 +5,7 @@ scriptdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 maindir="$(dirname "$scriptdir")"
 bidsdir=$maindir/bids
 
-for sub in 'sub-10017' 'sub-10041' 'sub-10043' 'sub-10166' 'sub-10416'; do # in $bidsdir/sub*; do 
+for sub in 'sub-10391'; do # in $bidsdir/sub*; do 
 
 	sub="${sub##*/}"
 
