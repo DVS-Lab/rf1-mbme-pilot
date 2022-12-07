@@ -182,10 +182,10 @@ else # otherwise, do activation and seed-based ppi
 	        -e 's@SHAPE_MISSED_DEC@'"$SHAPE_MISSED_DEC"'@g' \
                 -e 's@SHAPE_MISSED_OUTCOME@'"$SHAPE_MISSED_OUTCOME"'@g' \
 		-e 's@PHYS@'$PHYS'@g' \
-		-e 's@SMOOTH@'$sm'@g' \
+		-e 's@_SMOOTH_@'$sm'@g' \
 		-e 's@CONFOUNDEVS@'$CONFOUNDEVS'@g' \
 		-e 's@NVOLUMES@'$NVOLUMES'@g' \
-                -e 's@TRINFO@'${TR_INFO}'@g' \
+                -e 's@TR_INFO@'$TR_INFO'@g' \
 		<$ITEMPLATE> $OTEMPLATE
 	fi
 	feat $OTEMPLATE
