@@ -1,0 +1,15 @@
+{
+  "AnatomicalReference": "sub-10130_run-1_fmapid-auto00000_desc-magnitude_fieldmap.nii.gz",
+  "AssociatedCoefficients": [
+    "sub-10130_run-1_fmapid-auto00000_desc-coeff0_fieldmap.nii.gz",
+    "sub-10130_run-1_fmapid-auto00000_desc-coeff1_fieldmap.nii.gz"
+  ],
+  "B0FieldIdentifier": "auto_00000",
+  "IntendedFor": [],
+  "RawSources": [
+    "/base/bids/sub-10130/fmap/sub-10130_run-1_phasediff.nii.gz",
+    "/base/bids/sub-10130/fmap/sub-10130_run-1_magnitude1.nii.gz",
+    "/base/bids/sub-10130/fmap/sub-10130_run-1_magnitude2.nii.gz"
+  ],
+  "Units": "Hz"
+}

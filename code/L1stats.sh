@@ -39,7 +39,7 @@ DATA=${istartdatadir}/derivatives/fmriprep/sub-${sub}/func/sub-${sub}_task-${TAS
 #fi
 
 NVOLUMES=`fslnvols $DATA`
-TRINFO=`fslval $DATA pixdim4` #OUR DATA won't have all the same TR
+TR_INFO=`fslval $DATA pixdim4` #OUR DATA won't have all the same TR
 
 
 CONFOUNDEVS=${istartdatadir}/derivatives/fsl/confounds/sub-${sub}/sub-${sub}_task-${TASK}_acq-${acq}_desc-confounds_desc-fslConfounds.tsv
@@ -158,7 +158,7 @@ else # otherwise, do activation and seed-based ppi
        
 	# create template and run analyses
 	ITEMPLATE=${maindir}/templates/L1_task-${TASK}_model-1_type-${TYPE}.fsf
-	OTEMPLATE=${MAINOUTPUT}/L1_sub-${sub}_task-${TASK}_model-1_seed-${ppi}_acq-${acq}_type-act.fsf
+	OTEMPLATE=${MAINOUTPUT}/L1_sub-${sub}_task-${TASK}_model-1_seed-${ppi}_acq-${acq}_type-${TYPE}.fsf
 	if [ "$ppi" == "0" ]; then
                 echo $OUTPUT
                 sed -e 's@OUTPUT@'$OUTPUT'@g' \

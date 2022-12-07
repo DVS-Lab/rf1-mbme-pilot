@@ -6,7 +6,7 @@ basedir="$(dirname "$scriptdir")"
 
 task=sharedreward # edit if necessary
 
-for ppi in 0 "VS_thr5"; do # putting 0 first will indicate "activation"
+for ppi in "VS_thr5"; do # putting 0 first will indicate "activation"
 
 	for sub in `cat ${scriptdir}/newsubs.txt`; do # `ls -d ${basedir}/derivatives/fmriprep/sub-*/`; do
 
@@ -18,7 +18,7 @@ for ppi in 0 "VS_thr5"; do # putting 0 first will indicate "activation"
 
 	  	# Manages the number of jobs and cores
 	  	SCRIPTNAME=${basedir}/code/L1stats.sh
-	  	NCORES=15
+	  	NCORES=8
 	  	while [ $(ps -ef | grep -v grep | grep $SCRIPTNAME | wc -l) -ge $NCORES ]; do
 	    		sleep 5s
 	  	done
