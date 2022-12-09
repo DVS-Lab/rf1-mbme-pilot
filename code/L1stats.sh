@@ -185,7 +185,7 @@ else # otherwise, do activation and seed-based ppi
 		-e 's@_SMOOTH_@'$sm'@g' \
 		-e 's@CONFOUNDEVS@'$CONFOUNDEVS'@g' \
 		-e 's@NVOLUMES@'$NVOLUMES'@g' \
-                -e 's@TR_INFO@'$TR_INFO'@g' \
+        	-e 's@TR_INFO@'"${TR_INFO}"'@g' \
 		<$ITEMPLATE> $OTEMPLATE
 	fi
 	feat $OTEMPLATE
