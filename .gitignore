@@ -136,10 +136,12 @@ dmypy.json
 .heudiconv
 
 # imaging output
+*.nii.gz
 bids/**/*.nii.gz
 derivatives/mriqc
 derivatives/tedana
 derivatives/fsl
+derivatives/tsnr
 derivatives/fmriprep/**/*.nii.gz
 derivatives/fmriprep/*/anat
 derivatives/fmriprep/*/figures

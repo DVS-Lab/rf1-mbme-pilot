@@ -74,6 +74,30 @@ if [ -e $EV_MISSED_OUTCOME ]; then
 else
 	SHAPE_MISSED_OUTCOME=10
 fi
+LB_comp=${EVDIR}/_guess_leftButton_computer.txt
+if [ -e $LB_comp ]; then
+	SHAPE_LB_comp=3
+else
+	SHAPE_LB_comp=10
+fi
+RB_comp=${EVDIR}/_guess_rightButton_computer.txt
+if [ -e $RB_comp ]; then
+	SHAPE_RB_comp=3
+else
+	SHAPE_RB_comp=10
+fi
+LB_face=${EVDIR}/_guess_leftButton_face.txt
+if [ -e $LB_face ]; then
+	SHAPE_LB_face=3
+else
+	SHAPE_LB_face=10
+fi
+RB_face=${EVDIR}/_guess_rightButton_face.txt
+if [ -e $RB_face ]; then
+	SHAPE_RB_face=3
+else
+	SHAPE_RB_face=10
+fi
 
 
 # if network (ecn or dmn), do nppi; otherwise, do activation or seed-based ppi
@@ -181,6 +205,10 @@ else # otherwise, do activation and seed-based ppi
 		-e 's@EVDIR@'$EVDIR'@g' \
 	        -e 's@SHAPE_MISSED_DEC@'"$SHAPE_MISSED_DEC"'@g' \
                 -e 's@SHAPE_MISSED_OUTCOME@'"$SHAPE_MISSED_OUTCOME"'@g' \
+                -e 's@SHAPE_LB_comp@'"$SHAPE_LB_comp"'@g' \
+                -e 's@SHAPE_RB_comp@'"$SHAPE_RB_comp"'@g' \
+                -e 's@SHAPE_LB_face@'"$SHAPE_LB_face"'@g' \
+                -e 's@SHAPE_RB_face@'"$SHAPE_RB_face"'@g' \
 		-e 's@PHYS@'$PHYS'@g' \
 		-e 's@_SMOOTH_@'$sm'@g' \
 		-e 's@CONFOUNDEVS@'$CONFOUNDEVS'@g' \

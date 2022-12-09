@@ -19,7 +19,7 @@ maindir="$(dirname "$scriptdir")"
 
 # study-specific inputs and general output folder
 task=sharedreward
-N=9
+N=19
 copenum=$1
 copenum_thresh_randomise=7 # actual contrasts start here. no need to do randomise main effects (e.g., reward > nothing/fixation/baseline)
 copename=$2
