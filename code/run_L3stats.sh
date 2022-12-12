@@ -10,7 +10,7 @@ maindir="$(dirname "$scriptdir")"
 
 
 # this loop defines the different types of analyses that will go into the group comparisons
-for analysis in act; do # act nppi-dmn nppi-ecn ppi_seed %  ppi_seed-NAcc | type-${type}_run-01
+for analysis in act ppi_seed-VS_thr5; do # act nppi-dmn nppi-ecn ppi_seed %  ppi_seed-NAcc | type-${type}_run-01
 	analysistype=type-${analysis}
 
 	# these define the cope number (copenum) and cope name (copename)

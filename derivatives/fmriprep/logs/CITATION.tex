@@ -95,7 +95,7 @@ the BOLD reference (transformation matrices, and six corresponding
 rotation and translation parameters) are estimated before any
 spatiotemporal filtering using \texttt{mcflirt} \citep[FSL
 6.0.5.1:57b01774,][]{mcflirt}. BOLD runs were slice-time corrected to
-1.65s (0.5 of slice acquisition range 0s-3.3s) using \texttt{3dTshift}
+1.65s (0.5 of slice acquisition range 0s-3.31s) using \texttt{3dTshift}
 from AFNI \citep[RRID:SCR\_005927]{afni}. The BOLD time-series
 (including slice-timing correction when applied) were resampled onto
 their original, native space by applying the transforms to correct for
@@ -250,7 +250,7 @@ respect to the BOLD reference (transformation matrices, and six
 corresponding rotation and translation parameters) are estimated before
 any spatiotemporal filtering using \texttt{mcflirt} \citep[FSL
 6.0.5.1:57b01774,][]{mcflirt}. BOLD runs were slice-time corrected to
-0.531s (0.5 of slice acquisition range 0s-1.06s) using \texttt{3dTshift}
+0.532s (0.5 of slice acquisition range 0s-1.06s) using \texttt{3dTshift}
 from AFNI \citep[RRID:SCR\_005927]{afni}. The BOLD time-series
 (including slice-timing correction when applied) were resampled onto
 their original, native space by applying the transforms to correct for
@@ -324,7 +324,7 @@ respect to the BOLD reference (transformation matrices, and six
 corresponding rotation and translation parameters) are estimated before
 any spatiotemporal filtering using \texttt{mcflirt} \citep[FSL
 6.0.5.1:57b01774,][]{mcflirt}. BOLD runs were slice-time corrected to
-0.751s (0.5 of slice acquisition range 0s-1.5s) using \texttt{3dTshift}
+0.75s (0.5 of slice acquisition range 0s-1.5s) using \texttt{3dTshift}
 from AFNI \citep[RRID:SCR\_005927]{afni}. The BOLD time-series
 (including slice-timing correction when applied) were resampled onto
 their original, native space by applying the transforms to correct for
@@ -406,22 +406,22 @@ respect to the BOLD reference (transformation matrices, and six
 corresponding rotation and translation parameters) are estimated before
 any spatiotemporal filtering using \texttt{mcflirt} \citep[FSL
 6.0.5.1:57b01774,][]{mcflirt}. BOLD runs were slice-time corrected to
-0.269s (0.5 of slice acquisition range 0s-0.537s) using
-\texttt{3dTshift} from AFNI \citep[RRID:SCR\_005927]{afni}. The BOLD
-time-series (including slice-timing correction when applied) were
-resampled onto their original, native space by applying the transforms
-to correct for head-motion. These resampled BOLD time-series will be
-referred to as \emph{preprocessed BOLD in original space}, or just
-\emph{preprocessed BOLD}. The BOLD reference was then co-registered to
-the T1w reference using \texttt{mri\_coreg} (FreeSurfer) followed by
-\texttt{flirt} \citep[FSL 6.0.5.1:57b01774,][]{flirt} with the
-boundary-based registration \citep{bbr} cost-function. Co-registration
-was configured with six degrees of freedom. First, a reference volume
-and its skull-stripped version were generated using a custom methodology
-of \emph{fMRIPrep}. Several confounding time-series were calculated
-based on the \emph{preprocessed BOLD}: framewise displacement (FD),
-DVARS and three region-wise global signals. FD was computed using two
-formulations following Power (absolute sum of relative motions,
+0.27s (0.5 of slice acquisition range 0s-0.54s) using \texttt{3dTshift}
+from AFNI \citep[RRID:SCR\_005927]{afni}. The BOLD time-series
+(including slice-timing correction when applied) were resampled onto
+their original, native space by applying the transforms to correct for
+head-motion. These resampled BOLD time-series will be referred to as
+\emph{preprocessed BOLD in original space}, or just \emph{preprocessed
+BOLD}. The BOLD reference was then co-registered to the T1w reference
+using \texttt{mri\_coreg} (FreeSurfer) followed by \texttt{flirt}
+\citep[FSL 6.0.5.1:57b01774,][]{flirt} with the boundary-based
+registration \citep{bbr} cost-function. Co-registration was configured
+with six degrees of freedom. First, a reference volume and its
+skull-stripped version were generated using a custom methodology of
+\emph{fMRIPrep}. Several confounding time-series were calculated based
+on the \emph{preprocessed BOLD}: framewise displacement (FD), DVARS and
+three region-wise global signals. FD was computed using two formulations
+following Power (absolute sum of relative motions,
 \citet{power_fd_dvars}) and Jenkinson (relative root mean square
 displacement between affines, \citet{mcflirt}). FD and DVARS are
 calculated for each functional run, both using their implementations in

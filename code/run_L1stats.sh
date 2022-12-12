@@ -6,9 +6,9 @@ basedir="$(dirname "$scriptdir")"
 
 task=sharedreward # edit if necessary
 
-for ppi in "VS_thr5"; do # putting 0 first will indicate "activation"
+for ppi in 0 "VS_thr5"; do # putting 0 first will indicate "activation"
 
-	for sub in `cat ${scriptdir}/newsubs.txt`; do # `ls -d ${basedir}/derivatives/fmriprep/sub-*/`; do
+	for sub in 10043 10059 10136 10137 10150 10154; do #`cat ${scriptdir}/newsubs.txt`; do # `ls -d ${basedir}/derivatives/fmriprep/sub-*/`; do
 
           sub=${sub#*sub-}
           sub=${sub%/}  

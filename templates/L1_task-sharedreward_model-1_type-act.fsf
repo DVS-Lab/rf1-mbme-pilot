@@ -291,7 +291,7 @@ set fmri(evtitle1) "CMP_L"
 # 3 : Custom (3 column format)
 # 4 : Interaction
 # 10 : Empty (all zeros)
-set fmri(shape1) SHAPE_LB_comp
+set fmri(shape1) 3
 
 # Convolution (EV 1)
 # 0 : None
@@ -376,7 +376,7 @@ set fmri(shape2) 3
 # 5 : Sine basis functions
 # 6 : FIR basis functions
 # 8 : Alternate Double-Gamma
-set fmri(convolve2) SHAPE_RB_comp
+set fmri(convolve2) 3
 
 # Convolve phase (EV 2)
 set fmri(convolve_phase2) 0
@@ -439,7 +439,7 @@ set fmri(evtitle3) "STR_L"
 # 3 : Custom (3 column format)
 # 4 : Interaction
 # 10 : Empty (all zeros)
-set fmri(shape3) SHAPE_LB_face
+set fmri(shape3) 3
 
 # Convolution (EV 3)
 # 0 : None
@@ -513,7 +513,7 @@ set fmri(evtitle4) "STR_R"
 # 3 : Custom (3 column format)
 # 4 : Interaction
 # 10 : Empty (all zeros)
-set fmri(shape4) SHAPE_RB_face
+set fmri(shape4) 3
 
 # Convolution (EV 4)
 # 0 : None
