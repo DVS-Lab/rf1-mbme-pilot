@@ -8,7 +8,7 @@ maindir="$(dirname "$scriptdir")"
 for type in act ppi_seed-VS_thr5; do # ppi_seed-NAcc act nppi-ecn nppi-dmn
 	
 	#for sub in fmriprep sublist; do
-	for sub in `cat ${scriptdir}/newsubs.txt`; do #`ls -d ${maindir}/derivatives/fmriprep/sub-*/`; do
+	for sub in 10059 10137 10150; do #`cat ${scriptdir}/newsubs.txt`; do #`ls -d ${maindir}/derivatives/fmriprep/sub-*/`; do
 
           sub=${sub#*sub-}
           sub=${sub%/}

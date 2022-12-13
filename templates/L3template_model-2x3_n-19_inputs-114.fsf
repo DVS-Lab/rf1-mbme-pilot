@@ -147,7 +147,7 @@ set fmri(robust_yn) 0
 # 0 : Mixed Effects: Simple OLS
 # 2 : Mixed Effects: FLAME 1
 # 1 : Mixed Effects: FLAME 1+2
-set fmri(mixed_yn) 2
+set fmri(mixed_yn) 1
 
 # Higher-level permutations
 set fmri(randomisePermutations) 5000
@@ -179,7 +179,7 @@ set fmri(threshmask) ""
 # 1 : Uncorrected
 # 2 : Voxel
 # 3 : Cluster
-set fmri(thresh) 3
+set fmri(thresh) 2
 
 # P threshold
 set fmri(prob_thresh) 0.05
@@ -641,22 +641,22 @@ set feat_files(107) "/data/projects/rf1-sequence-pilot/derivatives/fsl/sub-10188
 set feat_files(108) "/data/projects/rf1-sequence-pilot/derivatives/fsl/sub-10188/L1_task-sharedreward_model-1_type-act_acq-mb6me4_sm-4.feat"
 
 # 4D AVW data or FEAT directory (109)
-set feat_files(109) "/data/projects/rf1-sequence-pilot/derivatives/fsl/sub-10221/L1_task-sharedreward_model-1_type-act_acq-mb1me1_sm-4.feat"
+set feat_files(109) "/data/projects/rf1-sequence-pilot/derivatives/fsl/sub-10069/L1_task-sharedreward_model-1_type-act_acq-mb1me1_sm-4.feat"
 
 # 4D AVW data or FEAT directory (110)
-set feat_files(110) "/data/projects/rf1-sequence-pilot/derivatives/fsl/sub-10221/L1_task-sharedreward_model-1_type-act_acq-mb1me4_sm-4.feat"
+set feat_files(110) "/data/projects/rf1-sequence-pilot/derivatives/fsl/sub-10069/L1_task-sharedreward_model-1_type-act_acq-mb1me4_sm-4.feat"
 
 # 4D AVW data or FEAT directory (111)
-set feat_files(111) "/data/projects/rf1-sequence-pilot/derivatives/fsl/sub-10221/L1_task-sharedreward_model-1_type-act_acq-mb3me1_sm-4.feat"
+set feat_files(111) "/data/projects/rf1-sequence-pilot/derivatives/fsl/sub-10069/L1_task-sharedreward_model-1_type-act_acq-mb3me1_sm-4.feat"
 
 # 4D AVW data or FEAT directory (112)
-set feat_files(112) "/data/projects/rf1-sequence-pilot/derivatives/fsl/sub-10221/L1_task-sharedreward_model-1_type-act_acq-mb3me4_sm-4.feat"
+set feat_files(112) "/data/projects/rf1-sequence-pilot/derivatives/fsl/sub-10069/L1_task-sharedreward_model-1_type-act_acq-mb3me4_sm-4.feat"
 
 # 4D AVW data or FEAT directory (113)
-set feat_files(113) "/data/projects/rf1-sequence-pilot/derivatives/fsl/sub-10221/L1_task-sharedreward_model-1_type-act_acq-mb6me1_sm-4.feat"
+set feat_files(113) "/data/projects/rf1-sequence-pilot/derivatives/fsl/sub-10069/L1_task-sharedreward_model-1_type-act_acq-mb6me1_sm-4.feat"
 
 # 4D AVW data or FEAT directory (114)
-set feat_files(114) "/data/projects/rf1-sequence-pilot/derivatives/fsl/sub-10221/L1_task-sharedreward_model-1_type-act_acq-mb6me4_sm-4.feat"
+set feat_files(114) "/data/projects/rf1-sequence-pilot/derivatives/fsl/sub-10069/L1_task-sharedreward_model-1_type-act_acq-mb6me4_sm-4.feat"
 
 # Add confound EVs text file
 set fmri(confoundevs) 0
