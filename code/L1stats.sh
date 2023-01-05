@@ -22,6 +22,7 @@ mb=$2
 me=$3
 ppi=$4 # 0 for activation, otherwise seed region or network
 acq=mb${mb}me${me}
+denoise=$5
 
 # set inputs and general outputs (should not need to chage across studies in Smith Lab)
 MAINOUTPUT=${maindir}/derivatives/fsl/sub-${sub}
@@ -41,9 +42,11 @@ DATA=${istartdatadir}/derivatives/fmriprep/sub-${sub}/func/sub-${sub}_task-${TAS
 NVOLUMES=`fslnvols $DATA`
 TR_INFO=`fslval $DATA pixdim4` #OUR DATA won't have all the same TR
 
-
-CONFOUNDEVS=${istartdatadir}/derivatives/fsl/confounds/sub-${sub}/sub-${sub}_task-${TASK}_acq-${acq}_desc-confounds_desc-fslConfounds.tsv
-
+if [ denoise=="tedana" ];then
+	CONFOUNDEVS=${istartdatadir}/derivatives/fsl/confounds/sub-${sub}/sub-${sub}_task-${TASK}_acq-${acq}_desc-TedanaPlusConfounds.tsv
+else
+	CONFOUNDEVS=${istartdatadir}/derivatives/fsl/confounds/sub-${sub}/sub-${sub}_task-${TASK}_acq-${acq}_desc-confounds_desc-fslConfounds.tsv
+fi
 
 if [ ! -e $CONFOUNDEVS ]; then
 	echo ${sub} ${acq} "missing confounds"
