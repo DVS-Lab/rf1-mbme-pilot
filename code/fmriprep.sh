@@ -28,9 +28,11 @@ singularity run --cleanenv \
 -B /data/tools/licenses:/opts \
 -B $scratchdir:/scratch \
 /data/tools/fmriprep-22.0.2.simg \
-/base/bids /base/derivatives/fmriprep \
+/base/bids /base/derivatives/fmriprep-melodic-100 \
 participant --participant_label $sub \
 --stop-on-first-crash \
 --me-output-echos \
+--use-aroma --error-on-aroma-warnings --stop-on-first-crash \
+--aroma-melodic-dimensionality 100 \
 --fs-no-reconall --fs-license-file /opts/fs_license.txt -w /scratch
 
