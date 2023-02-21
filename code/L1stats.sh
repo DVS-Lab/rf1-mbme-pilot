@@ -17,12 +17,13 @@ istartdatadir=/data/projects/rf1-mbme-pilot #need to fix this upon release (no h
 # study-specific inputs
 TASK=sharedreward
 sm=4
-sub=$1
-mb=$2
-me=$3
-ppi=$4 # 0 for activation, otherwise seed region or network
+model=$1
+sub=$2
+mb=$3
+me=$4
+ppi=$5 # 0 for activation, otherwise seed region or network
 acq=mb${mb}me${me}
-denoise=$5
+denoise=$6
 
 # set inputs and general outputs (should not need to chage across studies in Smith Lab)
 MAINOUTPUT=${maindir}/derivatives/fsl/sub-${sub}
@@ -42,10 +43,13 @@ DATA=${istartdatadir}/derivatives/fmriprep/sub-${sub}/func/sub-${sub}_task-${TAS
 NVOLUMES=`fslnvols $DATA`
 TR_INFO=`fslval $DATA pixdim4` #OUR DATA won't have all the same TR
 
-if [ denoise=="tedana" ];then
+if [ ${denoise}=="tedana" ];then
 	CONFOUNDEVS=${istartdatadir}/derivatives/fsl/confounds/sub-${sub}/sub-${sub}_task-${TASK}_acq-${acq}_desc-TedanaPlusConfounds.tsv
-else
+	echo ${denoise}
+fi
+if [ ${denoise}=="none" ];then
 	CONFOUNDEVS=${istartdatadir}/derivatives/fsl/confounds/sub-${sub}/sub-${sub}_task-${TASK}_acq-${acq}_desc-confounds_desc-fslConfounds.tsv
+	echo ${denoise}
 fi
 
 if [ ! -e $CONFOUNDEVS ]; then
@@ -107,7 +111,7 @@ fi
 if [ "$ppi" == "ecn" -o  "$ppi" == "dmn" ]; then
 
 	# check for output and skip existing
-	OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-1_type-nppi-${ppi}_acq-${acq}_sm-${sm}
+	OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-1_type-nppi-${ppi}_acq-${acq}_sm-${sm}_denoising-${denoise}
 	if [ -e ${OUTPUT}.feat/cluster_mask_zstat1.nii.gz ]; then
 		exit
 	else
@@ -169,10 +173,10 @@ else # otherwise, do activation and seed-based ppi
 	# set output based in whether it is activation or ppi
 	if [ "$ppi" == "0" ]; then
 		TYPE=act
-		OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-1_type-${TYPE}_acq-${acq}_sm-${sm}
+		OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-1_type-${TYPE}_acq-${acq}_sm-${sm}_denoising-${denoise}
 	else
 		TYPE=ppi
-		OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-1_type-${TYPE}_seed-${ppi}_acq-${acq}_sm-${sm}
+		OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-1_type-${TYPE}_seed-${ppi}_acq-${acq}_sm-${sm}_denoising-${denoise}
 	fi
 
 	# check for output and skip existing

@@ -33,6 +33,6 @@ participant --participant_label $sub \
 --stop-on-first-crash \
 --me-output-echos \
 --use-aroma --error-on-aroma-warnings --stop-on-first-crash \
---aroma-melodic-dimensionality 100 \
+--aroma-melodic-dimensionality -100 \
 --fs-no-reconall --fs-license-file /opts/fs_license.txt -w /scratch
 
