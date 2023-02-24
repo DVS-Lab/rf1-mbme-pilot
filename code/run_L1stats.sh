@@ -7,8 +7,8 @@ basedir="$(dirname "$scriptdir")"
 task=sharedreward # edit if necessary
 
 for denoise in "none";do # "tedana"
-	for ppi in 0 "VS_thr5"; do # putting 0 first will indicate "activation"
-		for model in 1 2; do
+	for ppi in 0; do # putting 0 first will indicate "activation" "VS_thr5"
+		for model in 2 3; do
 		
 			for sub in `cat ${scriptdir}/newsubs.txt`; do # `ls -d ${basedir}/derivatives/fmriprep/sub-*/`
 
@@ -24,8 +24,8 @@ for denoise in "none";do # "tedana"
 			  	while [ $(ps -ef | grep -v grep | grep $SCRIPTNAME | wc -l) -ge $NCORES ]; do
 			    		sleep 5s
 			  	done
-			  	bash $SCRIPTNAME $sub $mb $me $ppi $denoise &
-				echo $SCRIPTNAME $sub $mb $me $ppi $denoise &
+			  	bash $SCRIPTNAME $model $sub $mb $me $ppi $denoise &
+				echo $SCRIPTNAME $model $sub $mb $me $ppi $denoise &
 					sleep 1s
 
 			    	done

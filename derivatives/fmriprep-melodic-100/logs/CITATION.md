@@ -46,7 +46,7 @@ Head-motion parameters with respect to the BOLD reference
 parameters) are estimated before any spatiotemporal filtering using
 `mcflirt` [FSL 6.0.5.1:57b01774, @mcflirt].
 BOLD runs were slice-time corrected to 1.65s (0.5 of slice acquisition range
-0s-3.3s) using `3dTshift` from AFNI  [@afni, RRID:SCR_005927].
+0s-3.31s) using `3dTshift` from AFNI  [@afni, RRID:SCR_005927].
 The BOLD time-series (including slice-timing correction when applied)
 were resampled onto their original, native space by applying
 the transforms to correct for head-motion.
@@ -134,7 +134,7 @@ Head-motion parameters with respect to the BOLD reference
 parameters) are estimated before any spatiotemporal filtering using
 `mcflirt` [FSL 6.0.5.1:57b01774, @mcflirt].
 BOLD runs were slice-time corrected to 2.3s (0.5 of slice acquisition range
-0s-4.59s) using `3dTshift` from AFNI  [@afni, RRID:SCR_005927].
+0s-4.6s) using `3dTshift` from AFNI  [@afni, RRID:SCR_005927].
 The BOLD time-series (including slice-timing correction when applied)
 were resampled onto their original, native space by applying
 the transforms to correct for head-motion.

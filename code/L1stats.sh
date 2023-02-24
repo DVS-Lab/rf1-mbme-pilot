@@ -111,7 +111,7 @@ fi
 if [ "$ppi" == "ecn" -o  "$ppi" == "dmn" ]; then
 
 	# check for output and skip existing
-	OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-1_type-nppi-${ppi}_acq-${acq}_sm-${sm}_denoising-${denoise}
+	OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-${model}_type-nppi-${ppi}_acq-${acq}_sm-${sm}_denoising-${denoise}
 	if [ -e ${OUTPUT}.feat/cluster_mask_zstat1.nii.gz ]; then
 		exit
 	else
@@ -120,7 +120,7 @@ if [ "$ppi" == "ecn" -o  "$ppi" == "dmn" ]; then
 	fi
 
 	# network extraction. need to ensure you have run Level 1 activation
-	MASK=${MAINOUTPUT}/L1_task-${TASK}_model-1_type-act_acq-${acq}_sm-${sm}.feat/mask
+	MASK=${MAINOUTPUT}/L1_task-${TASK}_model-${model}_type-act_acq-${acq}_sm-${sm}.feat/mask
 	if [ ! -e ${MASK}.nii.gz ]; then
 		echo "cannot run nPPI because you're missing $MASK"
 		exit
@@ -144,8 +144,8 @@ if [ "$ppi" == "ecn" -o  "$ppi" == "dmn" ]; then
 	fi
 
 	# create template and run analyses
-	ITEMPLATE=${maindir}/templates/L1_task-${TASK}_model-1_type-nppi.fsf
-	OTEMPLATE=${MAINOUTPUT}/L1_task-${TASK}_model-1_seed-${ppi}_acq-${acq}.fsf
+	ITEMPLATE=${maindir}/templates/L1_task-${TASK}_model-${model}_type-nppi.fsf
+	OTEMPLATE=${MAINOUTPUT}/L1_task-${TASK}_model-${model}_seed-${ppi}_acq-${acq}.fsf
 	sed -e 's@OUTPUT@'$OUTPUT'@g' \
 	-e 's@DATA@'$DATA'@g' \
 	-e 's@EVDIR@'$EVDIR'@g' \
@@ -173,10 +173,10 @@ else # otherwise, do activation and seed-based ppi
 	# set output based in whether it is activation or ppi
 	if [ "$ppi" == "0" ]; then
 		TYPE=act
-		OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-1_type-${TYPE}_acq-${acq}_sm-${sm}_denoising-${denoise}
+		OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-${model}_type-${TYPE}_acq-${acq}_sm-${sm}_denoising-${denoise}
 	else
 		TYPE=ppi
-		OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-1_type-${TYPE}_seed-${ppi}_acq-${acq}_sm-${sm}_denoising-${denoise}
+		OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-${model}_type-${TYPE}_seed-${ppi}_acq-${acq}_sm-${sm}_denoising-${denoise}
 	fi
 
 	# check for output and skip existing
@@ -188,8 +188,8 @@ else # otherwise, do activation and seed-based ppi
 	fi
        
 	# create template and run analyses
-	ITEMPLATE=${maindir}/templates/L1_task-${TASK}_model-1_type-${TYPE}.fsf
-	OTEMPLATE=${MAINOUTPUT}/L1_sub-${sub}_task-${TASK}_model-1_seed-${ppi}_acq-${acq}_type-${TYPE}.fsf
+	ITEMPLATE=${maindir}/templates/L1_task-${TASK}_model-${model}_type-${TYPE}.fsf
+	OTEMPLATE=${MAINOUTPUT}/L1_sub-${sub}_task-${TASK}_model-${model}_seed-${ppi}_acq-${acq}_type-${TYPE}.fsf
 	if [ "$ppi" == "0" ]; then
                 echo $OUTPUT
                 sed -e 's@OUTPUT@'$OUTPUT'@g' \
@@ -198,9 +198,9 @@ else # otherwise, do activation and seed-based ppi
 		-e 's@SMOOTH@'$sm'@g' \
 		-e 's@CONFOUNDEVS@'$CONFOUNDEVS'@g' \
 		-e 's@NVOLUMES@'$NVOLUMES'@g' \
-                -e 's@TR_INFO@'"${TR_INFO}"'@g' \
-                -e 's@SHAPE_MISSED_DEC@'$SHAPE_MISSED_DEC'@g' \
-                -e 's@SHAPE_MISSED_OUTCOME@'$SHAPE_MISSED_OUTCOME'@g' \
+      -e 's@TR_INFO@'${TR_INFO}'@g' \
+      -e 's@SHAPE_MISSED_DEC@'$SHAPE_MISSED_DEC'@g' \
+      -e 's@SHAPE_MISSED_OUTCOME@'$SHAPE_MISSED_OUTCOME'@g' \
 		<$ITEMPLATE> $OTEMPLATE
 		
 	else
@@ -210,12 +210,12 @@ else # otherwise, do activation and seed-based ppi
 		sed -e 's@OUTPUT@'$OUTPUT'@g' \
 		-e 's@DATA@'$DATA'@g' \
 		-e 's@EVDIR@'$EVDIR'@g' \
-	        -e 's@SHAPE_MISSED_DEC@'"$SHAPE_MISSED_DEC"'@g' \
-                -e 's@SHAPE_MISSED_OUTCOME@'"$SHAPE_MISSED_OUTCOME"'@g' \
-                -e 's@SHAPE_LB_comp@'"$SHAPE_LB_comp"'@g' \
-                -e 's@SHAPE_RB_comp@'"$SHAPE_RB_comp"'@g' \
-                -e 's@SHAPE_LB_face@'"$SHAPE_LB_face"'@g' \
-                -e 's@SHAPE_RB_face@'"$SHAPE_RB_face"'@g' \
+	   -e 's@SHAPE_MISSED_DEC@'$SHAPE_MISSED_DEC'@g' \
+      -e 's@SHAPE_MISSED_OUTCOME@'"$SHAPE_MISSED_OUTCOME"'@g' \
+      -e 's@SHAPE_LB_comp@'$SHAPE_LB_comp'@g' \
+      -e 's@SHAPE_RB_comp@'$SHAPE_RB_comp'@g' \
+      -e 's@SHAPE_LB_face@'$SHAPE_LB_face'@g' \
+      -e 's@SHAPE_RB_face@'$SHAPE_RB_face'@g' \
 		-e 's@PHYS@'$PHYS'@g' \
 		-e 's@_SMOOTH_@'$sm'@g' \
 		-e 's@CONFOUNDEVS@'$CONFOUNDEVS'@g' \
