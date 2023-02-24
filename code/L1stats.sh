@@ -191,8 +191,8 @@ else # otherwise, do activation and seed-based ppi
 	ITEMPLATE=${maindir}/templates/L1_task-${TASK}_model-${model}_type-${TYPE}.fsf
 	OTEMPLATE=${MAINOUTPUT}/L1_sub-${sub}_task-${TASK}_model-${model}_seed-${ppi}_acq-${acq}_type-${TYPE}.fsf
 	if [ "$ppi" == "0" ]; then
-                echo $OUTPUT
-                sed -e 's@OUTPUT@'$OUTPUT'@g' \
+		echo $OUTPUT
+		sed -e 's@OUTPUT@'$OUTPUT'@g' \
 		-e 's@DATA@'$DATA'@g' \
 		-e 's@EVDIR@'$EVDIR'@g' \
 		-e 's@SMOOTH@'$sm'@g' \
