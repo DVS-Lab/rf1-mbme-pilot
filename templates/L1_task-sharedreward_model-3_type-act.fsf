@@ -710,16 +710,19 @@ set fmri(shape7) SHAPE_MISSED_DEC
 # 5 : Sine basis functions
 # 6 : FIR basis functions
 # 8 : Alternate Double-Gamma
-set fmri(convolve7) 0
+set fmri(convolve7) 3
 
 # Convolve phase (EV 7)
 set fmri(convolve_phase7) 0
 
 # Apply temporal filtering (EV 7)
-set fmri(tempfilt_yn7) 1
+set fmri(tempfilt_yn7) 0
 
 # Add temporal derivative (EV 7)
 set fmri(deriv_yn7) 0
+
+# Custom EV file (EV 7)
+set fmri(custom7) "EVDIR/_miss_outcome.txt"
 
 # Orthogonalise EV 7 wrt EV 0
 set fmri(ortho7.0) 0
@@ -911,16 +914,19 @@ set fmri(shape10) SHAPE_MISSED_OUTCOME
 # 5 : Sine basis functions
 # 6 : FIR basis functions
 # 8 : Alternate Double-Gamma
-set fmri(convolve10) 0
+set fmri(convolve10) 3
 
 # Convolve phase (EV 10)
 set fmri(convolve_phase10) 0
 
 # Apply temporal filtering (EV 10)
-set fmri(tempfilt_yn10) 1
+set fmri(tempfilt_yn10) 0
 
 # Add temporal derivative (EV 10)
 set fmri(deriv_yn10) 0
+
+# Custom EV file (EV 10)
+set fmri(custom10) "EVDIR/_miss_decision.txt"
 
 # Orthogonalise EV 10 wrt EV 0
 set fmri(ortho10.0) 0

@@ -10,7 +10,7 @@ for denoise in "none";do # "tedana"
 	for ppi in 0; do # putting 0 first will indicate "activation" "VS_thr5"
 		for model in 2 3; do
 		
-			for sub in `cat ${scriptdir}/newsubs.txt`; do # `ls -d ${basedir}/derivatives/fmriprep/sub-*/`
+			for sub in 10017; do #`cat ${scriptdir}/newsubs.txt`; do # `ls -d ${basedir}/derivatives/fmriprep/sub-*/`
 
 			  sub=${sub#*sub-}
 			  sub=${sub%/}  

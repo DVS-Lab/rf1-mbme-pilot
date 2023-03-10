@@ -41,7 +41,8 @@ DATA=${istartdatadir}/derivatives/fmriprep/sub-${sub}/func/sub-${sub}_task-${TAS
 #fi
 
 NVOLUMES=`fslnvols $DATA`
-TR_INFO=`fslval $DATA pixdim4` #OUR DATA won't have all the same TR
+#OUR DATA won't have all the same TR
+TR_INFO=`fslval $DATA pixdim4`
 
 if [ ${denoise}=="tedana" ];then
 	CONFOUNDEVS=${istartdatadir}/derivatives/fsl/confounds/sub-${sub}/sub-${sub}_task-${TASK}_acq-${acq}_desc-TedanaPlusConfounds.tsv
@@ -150,7 +151,7 @@ if [ "$ppi" == "ecn" -o  "$ppi" == "dmn" ]; then
 	-e 's@DATA@'$DATA'@g' \
 	-e 's@EVDIR@'$EVDIR'@g' \
 	-e 's@SHAPE_MISSED_DEC@'$SHAPE_MISSED_DEC'@g' \
-        -e 's@SHAPE_MISSED_OUTCOME@'$SHAPE_MISSED_OUTCOME'@g' \
+	-e 's@SHAPE_MISSED_OUTCOME@'$SHAPE_MISSED_OUTCOME'@g' \
 	-e 's@CONFOUNDEVS@'$CONFOUNDEVS'@g' \
 	-e 's@MAINNET@'$MAINNET'@g' \
 	-e 's@OTHERNET@'$OTHERNET'@g' \
@@ -163,7 +164,7 @@ if [ "$ppi" == "ecn" -o  "$ppi" == "dmn" ]; then
 	-e 's@INPUT8@'$INPUT8'@g' \
 	-e 's@INPUT9@'$INPUT9'@g' \
 	-e 's@NVOLUMES@'$NVOLUMES'@g' \
-        -e 's@TR_INFO@'$TR_INFO'@g' \
+	-e 's@TR_INFO@'"$TR_INFO"'@g' \
 	<$ITEMPLATE> $OTEMPLATE
 	feat $OTEMPLATE
 
@@ -198,11 +199,11 @@ else # otherwise, do activation and seed-based ppi
 		-e 's@SMOOTH@'$sm'@g' \
 		-e 's@CONFOUNDEVS@'$CONFOUNDEVS'@g' \
 		-e 's@NVOLUMES@'$NVOLUMES'@g' \
-      -e 's@TR_INFO@'${TR_INFO}'@g' \
-      -e 's@SHAPE_MISSED_DEC@'$SHAPE_MISSED_DEC'@g' \
-      -e 's@SHAPE_MISSED_OUTCOME@'$SHAPE_MISSED_OUTCOME'@g' \
+		-e 's@SHAPE_MISSED_DEC@'$SHAPE_MISSED_DEC'@g' \
+		-e 's@SHAPE_MISSED_OUTCOME@'$SHAPE_MISSED_OUTCOME'@g' \
+		-e 's@TR_INFO@'"$TR_INFO"'@g' \
 		<$ITEMPLATE> $OTEMPLATE
-		
+
 	else
 		PHYS=${MAINOUTPUT}/ts_task-${TASK}_mask-${ppi}_acq-${acq}.txt
 		MASK=${maindir}/masks/seed-${ppi}.nii.gz
@@ -210,17 +211,17 @@ else # otherwise, do activation and seed-based ppi
 		sed -e 's@OUTPUT@'$OUTPUT'@g' \
 		-e 's@DATA@'$DATA'@g' \
 		-e 's@EVDIR@'$EVDIR'@g' \
-	   -e 's@SHAPE_MISSED_DEC@'$SHAPE_MISSED_DEC'@g' \
-      -e 's@SHAPE_MISSED_OUTCOME@'"$SHAPE_MISSED_OUTCOME"'@g' \
-      -e 's@SHAPE_LB_comp@'$SHAPE_LB_comp'@g' \
-      -e 's@SHAPE_RB_comp@'$SHAPE_RB_comp'@g' \
-      -e 's@SHAPE_LB_face@'$SHAPE_LB_face'@g' \
-      -e 's@SHAPE_RB_face@'$SHAPE_RB_face'@g' \
+		-e 's@SHAPE_MISSED_DEC@'$SHAPE_MISSED_DEC'@g' \
+		-e 's@SHAPE_MISSED_OUTCOME@'"$SHAPE_MISSED_OUTCOME"'@g' \
+		-e 's@SHAPE_LB_comp@'$SHAPE_LB_comp'@g' \
+		-e 's@SHAPE_RB_comp@'$SHAPE_RB_comp'@g' \
+		-e 's@SHAPE_LB_face@'$SHAPE_LB_face'@g' \
+		-e 's@SHAPE_RB_face@'$SHAPE_RB_face'@g' \
 		-e 's@PHYS@'$PHYS'@g' \
 		-e 's@_SMOOTH_@'$sm'@g' \
 		-e 's@CONFOUNDEVS@'$CONFOUNDEVS'@g' \
 		-e 's@NVOLUMES@'$NVOLUMES'@g' \
-        	-e 's@TR_INFO@'"${TR_INFO}"'@g' \
+		-e 's@TR_INFO@'"$TR_INFO"'@g' \
 		<$ITEMPLATE> $OTEMPLATE
 	fi
 	feat $OTEMPLATE
