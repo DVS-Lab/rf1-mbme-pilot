@@ -18,10 +18,17 @@ NCOPES=16
 
 # ppi has more contrasts than act (phys), so need a different L2 template
 if [ "${type}" == "act" ]; then
-	ITEMPLATE=${maindir}/templates/L2_task-${task}_model-${model}_type-act.fsf
+	if [ ${sub} -eq 10303 ]; then
+		ITEMPLATE=${maindir}/templates/L2_task-${task}_type-act_10303.fsf
+	elif [ ${sub} -eq 10185 ]; then
+		ITEMPLATE=${maindir}/templates/L2_task-${task}_type-act_10185.fsf
+	elif [ ${sub} -eq 10198 ]; then
+		ITEMPLATE=${maindir}/templates/L2_task-${task}_type-act_10198.fsf
+	else
+		ITEMPLATE=${maindir}/templates/L2_task-${task}_type-act.fsf
 	NCOPES=${NCOPES}
 else
-	ITEMPLATE=${maindir}/templates/L2_task-${task}_model-${model}_type-ppi.fsf
+	ITEMPLATE=${maindir}/templates/L2_task-${task}_type-ppi.fsf
 	let NCOPES=${NCOPES}+1 # add 1 since we tend to only have one extra contrast for PPI
 fi
 INPUT1=${MAINOUTPUT}/L1_task-${task}_model-${model}_type-${type}_acq-mb1me1_sm-${sm}_denoising-none.feat
@@ -42,18 +49,53 @@ else
 	echo "re-doing: ${OUTPUT}" >> re-runL2.log
 	rm -rf ${OUTPUT}.gfeat
 
-	# set output template and run template-specific analyses
-	OTEMPLATE=${MAINOUTPUT}/L2_task-${task}_model-${model}_type-${type}.fsf
-	sed -e 's@OUTPUT@'$OUTPUT'@g' \
-	-e 's@INPUT1@'$INPUT1'@g' \
-	-e 's@INPUT2@'$INPUT2'@g' \
-	-e 's@INPUT3@'$INPUT3'@g' \
-	-e 's@INPUT4@'$INPUT4'@g' \
-	-e 's@INPUT5@'$INPUT5'@g' \
-	-e 's@INPUT6@'$INPUT6'@g' \
-	<$ITEMPLATE> $OTEMPLATE
-	feat $OTEMPLATE
 
+	# set output template and run template-specific analyses
+	#for sub-10303, run mb3me4 not collected
+	if [ ${sub} -eq 10303 ]; then
+		OTEMPLATE=${MAINOUTPUT}/L2_task-${task}_model-${model}_type-${type}.fsf
+		sed -e 's@OUTPUT@'$OUTPUT'@g' \
+		-e 's@INPUT1@'$INPUT1'@g' \
+		-e 's@INPUT2@'$INPUT2'@g' \
+		-e 's@INPUT3@'$INPUT3'@g' \
+		-e 's@INPUT5@'$INPUT5'@g' \
+		-e 's@INPUT6@'$INPUT6'@g' \
+		<$ITEMPLATE> $OTEMPLATE
+		feat $OTEMPLATE
+	#for sub-10185, run mb6me4 had no left button responses
+	elif [ ${sub} -eq 10185 ]; then
+		OTEMPLATE=${MAINOUTPUT}/L2_task-${task}_model-${model}_type-${type}.fsf
+		sed -e 's@OUTPUT@'$OUTPUT'@g' \
+		-e 's@INPUT1@'$INPUT1'@g' \
+		-e 's@INPUT2@'$INPUT2'@g' \
+		-e 's@INPUT3@'$INPUT3'@g' \
+		-e 's@INPUT4@'$INPUT4'@g' \
+		-e 's@INPUT5@'$INPUT5'@g' \
+		<$ITEMPLATE> $OTEMPLATE
+		feat $OTEMPLATE
+	#for sub-10198, run mb1me1 not collected
+	elif [ ${sub} -eq 10198 ]; then
+		OTEMPLATE=${MAINOUTPUT}/L2_task-${task}_model-${model}_type-${type}.fsf
+		sed -e 's@OUTPUT@'$OUTPUT'@g' \
+		-e 's@INPUT2@'$INPUT2'@g' \
+		-e 's@INPUT3@'$INPUT3'@g' \
+		-e 's@INPUT4@'$INPUT4'@g' \
+		-e 's@INPUT5@'$INPUT5'@g' \
+		-e 's@INPUT6@'$INPUT6'@g' \
+		<$ITEMPLATE> $OTEMPLATE
+		feat $OTEMPLATE
+	else
+		OTEMPLATE=${MAINOUTPUT}/L2_task-${task}_model-${model}_type-${type}.fsf
+		sed -e 's@OUTPUT@'$OUTPUT'@g' \
+		-e 's@INPUT1@'$INPUT1'@g' \
+		-e 's@INPUT2@'$INPUT2'@g' \
+		-e 's@INPUT3@'$INPUT3'@g' \
+		-e 's@INPUT4@'$INPUT4'@g' \
+		-e 's@INPUT5@'$INPUT5'@g' \
+		-e 's@INPUT6@'$INPUT6'@g' \
+		<$ITEMPLATE> $OTEMPLATE
+		feat $OTEMPLATE
+	fi
 	# delete unused files
 	for cope in `seq ${NCOPES}`; do
 		rm -rf ${OUTPUT}.gfeat/cope${cope}.feat/stats/res4d.nii.gz
