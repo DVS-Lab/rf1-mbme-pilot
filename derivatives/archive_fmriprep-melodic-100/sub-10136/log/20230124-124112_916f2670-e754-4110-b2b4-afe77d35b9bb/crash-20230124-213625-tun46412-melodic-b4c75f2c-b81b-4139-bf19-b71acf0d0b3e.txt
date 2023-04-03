@@ -1,0 +1,77 @@
+Node: fmriprep_22_0_wf.single_subject_10136_wf.func_preproc_task_sharedreward_acq_mb1me4_echo_1_wf.ica_aroma_wf.melodic
+Working directory: /scratch/fmriprep_22_0_wf/single_subject_10136_wf/func_preproc_task_sharedreward_acq_mb1me4_echo_1_wf/ica_aroma_wf/melodic
+
+Node inputs:
+
+ICs = <undefined>
+approach = <undefined>
+args = <undefined>
+bg_image = <undefined>
+bg_threshold = <undefined>
+cov_weight = <undefined>
+dim = 100
+dim_est = <undefined>
+environ = {'FSLOUTPUTTYPE': 'NIFTI_GZ'}
+epsilon = <undefined>
+epsilonS = <undefined>
+in_files = <undefined>
+log_power = <undefined>
+mask = <undefined>
+max_restart = <undefined>
+maxit = <undefined>
+migp = <undefined>
+migpN = <undefined>
+migp_factor = <undefined>
+migp_shuffle = <undefined>
+mix = <undefined>
+mm_thresh = 0.5
+no_bet = True
+no_mask = <undefined>
+no_mm = <undefined>
+non_linearity = <undefined>
+num_ICs = <undefined>
+out_all = <undefined>
+out_dir = <undefined>
+out_mean = <undefined>
+out_orig = <undefined>
+out_pca = <undefined>
+out_stats = True
+out_unmix = <undefined>
+out_white = <undefined>
+output_type = NIFTI_GZ
+pbsc = <undefined>
+rem_cmp = <undefined>
+remove_deriv = <undefined>
+report = <undefined>
+report_maps = <undefined>
+s_con = <undefined>
+s_des = <undefined>
+sep_vn = <undefined>
+sep_whiten = <undefined>
+smode = <undefined>
+t_con = <undefined>
+t_des = <undefined>
+tr_sec = 4.71
+update_mask = <undefined>
+var_norm = <undefined>
+
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.9/site-packages/nipype/pipeline/plugins/multiproc.py", line 67, in run_node
+    result["result"] = node.run(updatehash=updatehash)
+  File "/opt/conda/lib/python3.9/site-packages/nipype/pipeline/engine/nodes.py", line 527, in run
+    result = self._run_interface(execute=True)
+  File "/opt/conda/lib/python3.9/site-packages/nipype/pipeline/engine/nodes.py", line 645, in _run_interface
+    return self._run_command(execute)
+  File "/opt/conda/lib/python3.9/site-packages/nipype/pipeline/engine/nodes.py", line 771, in _run_command
+    raise NodeExecutionError(msg)
+nipype.pipeline.engine.nodes.NodeExecutionError: Exception raised while executing Node melodic.
+
+Cmdline:
+	melodic -i /scratch/fmriprep_22_0_wf/single_subject_10136_wf/func_preproc_task_sharedreward_acq_mb1me4_echo_1_wf/ica_aroma_wf/smooth/vol0000_xform-00000_clipped_merged_cut_smooth.nii.gz -d 100 -m /scratch/fmriprep_22_0_wf/single_subject_10136_wf/func_preproc_task_sharedreward_acq_mb1me4_echo_1_wf/bold_std_trans_wf/_std_target_MNI152NLin6Asym.res2/mask_std_tfm/vol0000_xform-00000_clipped_merged_average_corrected_brain_mask_maths_trans.nii.gz --mmthresh=0.500000 --nobet -o /scratch/fmriprep_22_0_wf/single_subject_10136_wf/func_preproc_task_sharedreward_acq_mb1me4_echo_1_wf/ica_aroma_wf/melodic --Ostats --tr=4.710000
+Stdout:
+
+Stderr:
+	ERROR:: too many components selected 
+
+Traceback:
+	RuntimeError: subprocess exited with code 2.

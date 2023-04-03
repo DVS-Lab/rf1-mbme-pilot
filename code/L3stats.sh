@@ -19,13 +19,13 @@ maindir="$(dirname "$scriptdir")"
 
 # study-specific inputs and general output folder
 task=sharedreward
-N=32
-model="model-2"
+N=31 #model-1 requires 32 #model-2 requires 29 #model-3 requires 31
+MODEL="model-3"
 copenum=$1
 copenum_thresh_randomise=7 # actual contrasts start here. no need to do randomise main effects (e.g., reward > nothing/fixation/baseline)
 copename=$2
 REPLACEME=$3 # this defines the parts of the path that differ across analyses
-MAINOUTPUT=${maindir}/derivatives/fsl/L3_${model}_task-${task}_n${N}_mixedeffects-flame1+2
+MAINOUTPUT=${maindir}/derivatives/fsl/L3_${MODEL}_task-${task}_n${N}_mixedeffects-flame1+2_voxel-based
 mkdir -p $MAINOUTPUT
 
 
@@ -126,6 +126,7 @@ else # try to run feat and clean up previous effort with partial output
 	OTEMPLATE=${MAINOUTPUT}/L3_task-${task}_${REPLACEME}_copenum-${copenum}.fsf
 	sed -e 's@OUTPUT@'$OUTPUT'@g' \
 	-e 's@COPENUM@'$copenum'@g' \
+	-e 's@MODEL@'$MODEL'@g' \
 	-e 's@REPLACEME@'$REPLACEME'@g' \
 	-e 's@BASEDIR@'$maindir'@g' \
 	<$ITEMPLATE> $OTEMPLATE

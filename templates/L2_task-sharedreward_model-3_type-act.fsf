@@ -278,7 +278,7 @@ set fmri(copeinput.2) 1
 set fmri(copeinput.3) 1
 
 # 4D AVW data or FEAT directory (1)
-set feat_files(1) "INPUT 1"
+set feat_files(1) "INPUT1"
 
 # 4D AVW data or FEAT directory (2)
 set feat_files(2) "INPUT2"
