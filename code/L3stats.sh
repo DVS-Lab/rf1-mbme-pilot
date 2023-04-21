@@ -25,7 +25,7 @@ copenum=$1
 copenum_thresh_randomise=7 # actual contrasts start here. no need to do randomise main effects (e.g., reward > nothing/fixation/baseline)
 copename=$2
 REPLACEME=$3 # this defines the parts of the path that differ across analyses
-MAINOUTPUT=${maindir}/derivatives/fsl/L3_${MODEL}_task-${task}_n${N}_mixedeffects-flame1+2_voxel-based
+MAINOUTPUT=${maindir}/derivatives/fsl/L3_${MODEL}_task-${task}_n${N}_mixedeffects-flame1+2_voxel-based_melodic-100
 mkdir -p $MAINOUTPUT
 
 
@@ -107,7 +107,7 @@ mkdir -p $MAINOUTPUT
 ### --- One group ------------------------------
 # set outputs and check for existing
 cnum_pad=`zeropad ${copenum} 2`
-OUTPUT=${MAINOUTPUT}/L3_task-${task}_${REPLACEME}_cnum-${cnum_pad}_cname-${copename}_onegroup
+OUTPUT=${MAINOUTPUT}/L3_task-${task}_${REPLACEME}_cnum-${cnum_pad}_cname-${copename}_onegroup_melodic-100
 if [ -e ${OUTPUT}.gfeat/cope1.feat/cluster_mask_zstat1.nii.gz ]; then
 
 	# run randomise if output doesn't exist and the contrasts (copes) are valid
@@ -123,7 +123,7 @@ else # try to run feat and clean up previous effort with partial output
 
 	# create template and run FEAT analyses
 	ITEMPLATE=${maindir}/templates/L3_template_n${N}.fsf
-	OTEMPLATE=${MAINOUTPUT}/L3_task-${task}_${REPLACEME}_copenum-${copenum}.fsf
+	OTEMPLATE=${MAINOUTPUT}/L3_task-${task}_${REPLACEME}_copenum-${copenum}_melodic-100.fsf
 	sed -e 's@OUTPUT@'$OUTPUT'@g' \
 	-e 's@COPENUM@'$copenum'@g' \
 	-e 's@MODEL@'$MODEL'@g' \
