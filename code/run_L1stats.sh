@@ -19,7 +19,7 @@ for denoise in "none";do # "tedana"
 				for me in 1 4; do
 
 			  	# Manages the number of jobs and cores
-			  	SCRIPTNAME=${basedir}/code/L1stats.sh
+			  	SCRIPTNAME=${basedir}/code/L1stats_melodic.sh
 			  	NCORES=8
 			  	while [ $(ps -ef | grep -v grep | grep $SCRIPTNAME | wc -l) -ge $NCORES ]; do
 			    		sleep 5s
