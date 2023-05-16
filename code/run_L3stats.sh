@@ -15,11 +15,11 @@ for analysis in act; do # act ppi_seed-VS_thr5 nppi-dmn nppi-ecn ppi_seed %  ppi
 
 	# these define the cope number (copenum) and cope name (copename)
 #model-1	
-	#for copeinfo in "1 C_left" "2 C_right" "3 S_left" "4 S_right" "5 C_P" "6 C_N" "7 C_Rew" "8 S_P" "9 S_N" "10 S_Rew" "11 StrVsComp" "12 LeftVsRight" "13 RewVsPun" "14 RandPvsN" "15 RewVsNeu" "16 NeuVsPun"; do
+	for copeinfo in "1 C_left" "2 C_right" "3 S_left" "4 S_right" "5 C_P" "6 C_N" "7 C_Rew" "8 S_P" "9 S_N" "10 S_Rew" "11 StrVsComp" "12 LeftVsRight" "13 RewVsPun" "14 RandPvsN" "15 RewVsNeu" "16 NeuVsPun"; do
 #model-2
 	#for copeinfo in "1 Left" "2 Right" "3 Left-Right"; do
 #model-3
-	for copeinfo in "1 Str" "2 Comp" "3 Str-Comp"; do
+	#for copeinfo in "1 Str" "2 Comp" "3 Str-Comp"; do
 		# split copeinfo variable
 		set -- $copeinfo
 		copenum=$1
