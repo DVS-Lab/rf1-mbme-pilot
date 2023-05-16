@@ -19,13 +19,13 @@ maindir="$(dirname "$scriptdir")"
 
 # study-specific inputs and general output folder
 task=sharedreward
-N=31 #model-1 requires 32 #model-2 requires 29 #model-3 requires 31
+N=32 #model-1 requires 32 #model-2 requires 29 #model-3 requires 31
 MODEL="model-1"
 copenum=$1
 copenum_thresh_randomise=7 # actual contrasts start here. no need to do randomise main effects (e.g., reward > nothing/fixation/baseline)
 copename=$2
 REPLACEME=$3 # this defines the parts of the path that differ across analyses
-MAINOUTPUT=${maindir}/derivatives/fsl/L3_${MODEL}_task-${task}_n${N}_mixedeffects-flame1+2_voxel-based-x_aroma
+MAINOUTPUT=${maindir}/derivatives/fsl/L3_${MODEL}_task-${task}_n${N}_mixedeffects-flame1+2_aroma
 mkdir -p $MAINOUTPUT
 
 
@@ -113,7 +113,7 @@ if [ -e ${OUTPUT}.gfeat/cope1.feat/cluster_mask_zstat1.nii.gz ]; then
 	# run randomise if output doesn't exist and the contrasts (copes) are valid
 	cd ${OUTPUT}.gfeat/cope1.feat
 	if [ ! -e randomise_tfce_corrp_tstat2.nii.gz ] && [ $copenum -ge $copenum_thresh_randomise ]; then
-		randomise -i filtered_func_data.nii.gz -o randomise -d design.mat -t design.con -m mask.nii.gz -T -x -c 2.6 -n 10000
+		randomise -i filtered_func_data.nii.gz -o randomise -d design.mat -t design.con -m mask.nii.gz -T -c 2.6 -n 10000
 	fi
 
 else # try to run feat and clean up previous effort with partial output
