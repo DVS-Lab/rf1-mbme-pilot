@@ -7,8 +7,8 @@ def create_key(template, outtype=('nii.gz',), annotation_classes=None):
 
 def infotodict(seqinfo):
     t1w = create_key('sub-{subject}/anat/sub-{subject}_T1w')
-    mag = create_key('sub-{subject}/fmap/sub-{subject}_run-{item:01d}_magnitude')
-    phase = create_key('sub-{subject}/fmap/sub-{subject}_run-{item:01d}_phasediff')
+    mag = create_key('sub-{subject}/fmap/sub-{subject}_acq-bold_run-{item:01d}_magnitude')
+    phase = create_key('sub-{subject}/fmap/sub-{subject}_acq-bold_run-{item:01d}_phasediff')
 
 
     #me1
@@ -83,3 +83,9 @@ def infotodict(seqinfo):
 
 
     return info
+
+# this should match bold with fmap. we do not need to list the sbref images (per NeuroStars post that I can't paste in here)
+POPULATE_INTENDED_FOR_OPTS = {
+        'matching_parameters': ['ModalityAcquisitionLabel'],
+        'criterion': 'Closest'
+}
