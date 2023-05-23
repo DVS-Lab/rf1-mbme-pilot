@@ -28,7 +28,7 @@ done
 
 # ensure paths are correct irrespective from where user runs the script
 codedir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-dsroot="$(dirname "$scriptdir")"
+dsroot="$(dirname "$codedir")"
 
 # make bids folder if it doesn't exist
 if [ ! -d $dsroot/bids ]; then
@@ -62,7 +62,6 @@ python $codedir/shiftdates.py $dsroot/bids/sub-${sub}/sub-${sub}_scans.tsv
 ## PART 3: Run MRIQC on subject
 # make derivatives folder if it doesn't exist.
 # let's keep this out of bids for now
-echo "running MRIQC for subject $sub remember to clear your scratch"
 if [ ! -d $dsroot/derivatives/mriqc ]; then
 	mkdir -p $dsroot/derivatives/mriqc
 fi
