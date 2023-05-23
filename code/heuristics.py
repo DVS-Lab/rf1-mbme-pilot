@@ -87,5 +87,5 @@ def infotodict(seqinfo):
 # this should match bold with fmap. we do not need to list the sbref images (per NeuroStars post that I can't paste in here)
 POPULATE_INTENDED_FOR_OPTS = {
         'matching_parameters': ['ModalityAcquisitionLabel'],
-        'criterion': 'Closest'
+        'criterion': 'First'
 }
