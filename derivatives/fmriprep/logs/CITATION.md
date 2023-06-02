@@ -45,13 +45,11 @@ Head-motion parameters with respect to the BOLD reference
 (transformation matrices, and six corresponding rotation and translation
 parameters) are estimated before any spatiotemporal filtering using
 `mcflirt` [FSL 6.0.5.1:57b01774, @mcflirt].
+The estimated *fieldmap* was then aligned with rigid-registration to the target
+EPI (echo-planar imaging) reference run.
+The field coefficients were mapped on to the reference EPI using the transform.
 BOLD runs were slice-time corrected to 1.65s (0.5 of slice acquisition range
-0s-3.31s) using `3dTshift` from AFNI  [@afni, RRID:SCR_005927].
-The BOLD time-series (including slice-timing correction when applied)
-were resampled onto their original, native space by applying
-the transforms to correct for head-motion.
-These resampled BOLD time-series will be referred to as *preprocessed
-BOLD in original space*, or just *preprocessed BOLD*.
+0s-3.3s) using `3dTshift` from AFNI  [@afni, RRID:SCR_005927].
 The BOLD reference was then co-registered to the T1w reference using
 `mri_coreg` (FreeSurfer) followed by `flirt` [FSL 6.0.5.1:57b01774, @flirt]
 with the boundary-based registration [@bbr] cost-function.
@@ -125,13 +123,11 @@ Head-motion parameters with respect to the BOLD reference
 (transformation matrices, and six corresponding rotation and translation
 parameters) are estimated before any spatiotemporal filtering using
 `mcflirt` [FSL 6.0.5.1:57b01774, @mcflirt].
+The estimated *fieldmap* was then aligned with rigid-registration to the target
+EPI (echo-planar imaging) reference run.
+The field coefficients were mapped on to the reference EPI using the transform.
 BOLD runs were slice-time corrected to 2.3s (0.5 of slice acquisition range
-0s-4.6s) using `3dTshift` from AFNI  [@afni, RRID:SCR_005927].
-The BOLD time-series (including slice-timing correction when applied)
-were resampled onto their original, native space by applying
-the transforms to correct for head-motion.
-These resampled BOLD time-series will be referred to as *preprocessed
-BOLD in original space*, or just *preprocessed BOLD*.
+0s-4.59s) using `3dTshift` from AFNI  [@afni, RRID:SCR_005927].
 A T2<sup>★</sup> map was estimated from the preprocessed EPI echoes, by voxel-wise fitting
 the maximal number of echoes with reliable signal in that voxel to a monoexponential signal
 decay model with nonlinear regression.
@@ -215,13 +211,11 @@ Head-motion parameters with respect to the BOLD reference
 (transformation matrices, and six corresponding rotation and translation
 parameters) are estimated before any spatiotemporal filtering using
 `mcflirt` [FSL 6.0.5.1:57b01774, @mcflirt].
+The estimated *fieldmap* was then aligned with rigid-registration to the target
+EPI (echo-planar imaging) reference run.
+The field coefficients were mapped on to the reference EPI using the transform.
 BOLD runs were slice-time corrected to 0.532s (0.5 of slice acquisition range
 0s-1.06s) using `3dTshift` from AFNI  [@afni, RRID:SCR_005927].
-The BOLD time-series (including slice-timing correction when applied)
-were resampled onto their original, native space by applying
-the transforms to correct for head-motion.
-These resampled BOLD time-series will be referred to as *preprocessed
-BOLD in original space*, or just *preprocessed BOLD*.
 The BOLD reference was then co-registered to the T1w reference using
 `mri_coreg` (FreeSurfer) followed by `flirt` [FSL 6.0.5.1:57b01774, @flirt]
 with the boundary-based registration [@bbr] cost-function.
@@ -292,18 +286,16 @@ Functional data preprocessing
 : For each of the 6 BOLD runs found per subject (across all
 tasks and sessions), the following preprocessing was performed.
 First, a reference volume and its skull-stripped version were generated
-by aligning and averaging 8 single-band references (SBRefs).
+by aligning and averaging 4 single-band references (SBRefs).
 Head-motion parameters with respect to the BOLD reference
 (transformation matrices, and six corresponding rotation and translation
 parameters) are estimated before any spatiotemporal filtering using
 `mcflirt` [FSL 6.0.5.1:57b01774, @mcflirt].
+The estimated *fieldmap* was then aligned with rigid-registration to the target
+EPI (echo-planar imaging) reference run.
+The field coefficients were mapped on to the reference EPI using the transform.
 BOLD runs were slice-time corrected to 0.75s (0.5 of slice acquisition range
 0s-1.5s) using `3dTshift` from AFNI  [@afni, RRID:SCR_005927].
-The BOLD time-series (including slice-timing correction when applied)
-were resampled onto their original, native space by applying
-the transforms to correct for head-motion.
-These resampled BOLD time-series will be referred to as *preprocessed
-BOLD in original space*, or just *preprocessed BOLD*.
 A T2<sup>★</sup> map was estimated from the preprocessed EPI echoes, by voxel-wise fitting
 the maximal number of echoes with reliable signal in that voxel to a monoexponential signal
 decay model with nonlinear regression.
@@ -387,13 +379,11 @@ Head-motion parameters with respect to the BOLD reference
 (transformation matrices, and six corresponding rotation and translation
 parameters) are estimated before any spatiotemporal filtering using
 `mcflirt` [FSL 6.0.5.1:57b01774, @mcflirt].
-BOLD runs were slice-time corrected to 0.27s (0.5 of slice acquisition range
-0s-0.54s) using `3dTshift` from AFNI  [@afni, RRID:SCR_005927].
-The BOLD time-series (including slice-timing correction when applied)
-were resampled onto their original, native space by applying
-the transforms to correct for head-motion.
-These resampled BOLD time-series will be referred to as *preprocessed
-BOLD in original space*, or just *preprocessed BOLD*.
+The estimated *fieldmap* was then aligned with rigid-registration to the target
+EPI (echo-planar imaging) reference run.
+The field coefficients were mapped on to the reference EPI using the transform.
+BOLD runs were slice-time corrected to 0.269s (0.5 of slice acquisition range
+0s-0.537s) using `3dTshift` from AFNI  [@afni, RRID:SCR_005927].
 The BOLD reference was then co-registered to the T1w reference using
 `mri_coreg` (FreeSurfer) followed by `flirt` [FSL 6.0.5.1:57b01774, @flirt]
 with the boundary-based registration [@bbr] cost-function.
@@ -464,18 +454,16 @@ Functional data preprocessing
 : For each of the 6 BOLD runs found per subject (across all
 tasks and sessions), the following preprocessing was performed.
 First, a reference volume and its skull-stripped version were generated
-by aligning and averaging 8 single-band references (SBRefs).
+by aligning and averaging 4 single-band references (SBRefs).
 Head-motion parameters with respect to the BOLD reference
 (transformation matrices, and six corresponding rotation and translation
 parameters) are estimated before any spatiotemporal filtering using
 `mcflirt` [FSL 6.0.5.1:57b01774, @mcflirt].
+The estimated *fieldmap* was then aligned with rigid-registration to the target
+EPI (echo-planar imaging) reference run.
+The field coefficients were mapped on to the reference EPI using the transform.
 BOLD runs were slice-time corrected to 0.381s (0.5 of slice acquisition range
 0s-0.762s) using `3dTshift` from AFNI  [@afni, RRID:SCR_005927].
-The BOLD time-series (including slice-timing correction when applied)
-were resampled onto their original, native space by applying
-the transforms to correct for head-motion.
-These resampled BOLD time-series will be referred to as *preprocessed
-BOLD in original space*, or just *preprocessed BOLD*.
 A T2<sup>★</sup> map was estimated from the preprocessed EPI echoes, by voxel-wise fitting
 the maximal number of echoes with reliable signal in that voxel to a monoexponential signal
 decay model with nonlinear regression.
