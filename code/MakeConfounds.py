@@ -33,7 +33,7 @@ for f in cons:
     sub=re.search('/func/(.*)_task', f).group(1)
     acq=re.search('_acq-(.*)_', f).group(1)
     task=re.search('_task-(.*)_acq',f).group(1)
-    derivatives_path=re.search('(.*)fmriprep-melodic-100/sub',f).group(1)
+    derivatives_path=re.search('(.*)fmriprep/sub',f).group(1)
 
     #read in confound file and build matrix
     con_regs=pd.read_csv(f,sep='\t')

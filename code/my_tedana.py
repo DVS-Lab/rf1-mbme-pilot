@@ -92,7 +92,7 @@ def RUN_Tedana(sub,prefix,EchoFiles,EchoTimes,OutDir):
     #print(sub,acq+'\n')
     
     if os.path.exists("%s/%s_desc-optcomDenoised_bold.nii.gz "%(OutDir,acq)):
-        print('Tedana was previously run for Sub %s remove directory if they need to be reanalyzed'%(sub))
+        print('Tedana was previously run for Sub %s acq- %s remove directory if they need to be reanalyzed'%(sub,acq))
     else:
   
         os.makedirs(OutDir,exist_ok=True)

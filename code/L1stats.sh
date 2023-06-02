@@ -45,11 +45,11 @@ NVOLUMES=`fslnvols $DATA`
 TR_INFO=`fslval $DATA pixdim4`
 
 if [ ${denoise}=="tedana" ];then
-	CONFOUNDEVS=${istartdatadir}/derivatives/fsl/confounds/sub-${sub}/sub-${sub}_task-${TASK}_acq-${acq}_desc-TedanaPlusConfounds.tsv
+	CONFOUNDEVS=${istartdatadir}/derivatives/fsl/confounds_aroma/sub-${sub}/sub-${sub}_task-${TASK}_acq-${acq}_desc-TedanaPlusConfounds.tsv
 	echo ${denoise}
 fi
 if [ ${denoise}=="none" ];then
-	CONFOUNDEVS=${istartdatadir}/derivatives/fsl/confounds/sub-${sub}/sub-${sub}_task-${TASK}_acq-${acq}_desc-confounds_desc-fslConfounds.tsv
+	CONFOUNDEVS=${istartdatadir}/derivatives/fsl/confounds_aroma/sub-${sub}/sub-${sub}_task-${TASK}_acq-${acq}_desc-confounds_desc-fslConfounds.tsv
 	echo ${denoise}
 fi
 
@@ -174,10 +174,10 @@ else # otherwise, do activation and seed-based ppi
 	# set output based in whether it is activation or ppi
 	if [ "$ppi" == "0" ]; then
 		TYPE=act
-		OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-${model}_type-${TYPE}_acq-${acq}_sm-${sm}_denoising-${denoise}
+		OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-${model}_type-${TYPE}_acq-${acq}_sm-${sm}_denoising-${denoise}_aroma
 	else
 		TYPE=ppi
-		OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-${model}_type-${TYPE}_seed-${ppi}_acq-${acq}_sm-${sm}_denoising-${denoise}
+		OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-${model}_type-${TYPE}_seed-${ppi}_acq-${acq}_sm-${sm}_denoising-${denoise}_aroma
 	fi
 
 	# check for output and skip existing

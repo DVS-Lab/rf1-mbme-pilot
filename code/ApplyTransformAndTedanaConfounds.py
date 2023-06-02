@@ -42,9 +42,9 @@ def auto_antstransform(img):
         reg_t1w2MNI='%s/%s/anat/%s_from-T1w_to-MNI152NLin2009cAsym_mode-image_xfm.h5'%(
             fmriprep_dir,sub,sub)
 
-        mywarpedimage = ants.apply_transforms( fixed=fixed, moving=moving,imagetype=3,
-                                                   transformlist=[reg_bold2T1w,reg_t1w2MNI] )
-        mywarpedimage.to_filename(output)
+        #mywarpedimage = ants.apply_transforms( fixed=fixed, moving=moving,imagetype=3,
+                                                   #transformlist=[reg_bold2T1w,reg_t1w2MNI] )
+        #mywarpedimage.to_filename(output)
     else:
         print(output+' already exists please remove if this nees to be re-run')
 
@@ -54,8 +54,8 @@ def auto_antstransform(img):
 
 from multiprocessing import Pool
 
-pool = Pool(cores)
-results = pool.map(auto_antstransform, bold_imgs)
+#pool = Pool(cores)
+#results = pool.map(auto_antstransform, bold_imgs)
 
 
 # In[ ]:
@@ -96,18 +96,20 @@ for file in metric_files:
         ICA_mixing=ICA_mixing[ICA_metrics[ICA_metrics['classification']=='rejected']['Component']]
         PCA_mixing=PCA_mixing[PCA_metrics[PCA_metrics['classification']=='rejected']['Component']]
 
+        aCompCor =['a_comp_cor_00','a_comp_cor_01','a_comp_cor_02','a_comp_cor_03','a_comp_cor_04','a_comp_cor_05']
         cosine = [col for col in fmriprep_confounds if col.startswith('cosine')]
         NSS = [col for col in fmriprep_confounds if col.startswith('non_steady_state')]
         motion = ['trans_x','trans_y','trans_z','rot_x','rot_y','rot_z']
         fd = ['framewise_displacement']
-        filter_col=np.concatenate([cosine,NSS,motion,fd])
+        filter_col=np.concatenate([aCompCor,cosine,NSS,motion,fd])
         fmriprep_confounds=fmriprep_confounds[filter_col]
 
         #Combine horizontally
         Comp_confounds=pd.concat([ICA_mixing, PCA_mixing], axis=1)
         confounds_df=pd.concat([fmriprep_confounds, Comp_confounds], axis=1)
         #Output in fsl-friendly format
-        outfname='../derivatives/fsl/confounds/%s/%s_task-sharedreward_acq-%s_desc-TedanaPlusConfounds.tsv'%(sub,sub,acq)
+        outfname='../derivatives/fsl/confounds_tedana/%s/%s_task-sharedreward_acq-%s_desc-TedanaPlusConfounds.tsv'%(sub,sub,acq)
+        os.makedirs('../derivatives/fsl/confounds_tedana/%s'%(sub),exist_ok=True)
         confounds_df.to_csv(outfname,index=False,header=False,sep='\t')
     else:
         print("fmriprep failed for %s %s"%(sub,acq))
