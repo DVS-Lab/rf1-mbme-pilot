@@ -38,13 +38,13 @@ for f in cons:
     #read in confound file and build matrix
     con_regs=pd.read_csv(f,sep='\t')
     # other=['csf','white_matter'] # use aCompCor instead
-   # aCompCor =['a_comp_cor_00','a_comp_cor_01','a_comp_cor_02','a_comp_cor_03','a_comp_cor_04','a_comp_cor_05'] # use aCompCor instead
+    aCompCor =['a_comp_cor_00','a_comp_cor_01','a_comp_cor_02','a_comp_cor_03','a_comp_cor_04','a_comp_cor_05'] # use aCompCor instead
     cosine = [col for col in con_regs if col.startswith('cosine')]
     NSS = [col for col in con_regs if col.startswith('non_steady_state')]
-    aroma_motion=[col for col in con_regs if col.startswith('aroma_motion_')] # skipping aroma due to reproducibility issues
+    #aroma_motion=[col for col in con_regs if col.startswith('aroma_motion_')] # skipping aroma due to reproducibility issues
     motion = ['trans_x','trans_y','trans_z','rot_x','rot_y','rot_z']
     fd = ['framewise_displacement']
-    filter_col=np.concatenate([cosine,NSS,motion,aroma_motion,fd])
+    filter_col=np.concatenate([cosine,NSS,motion,aCompCor,fd])
     df_all=con_regs[filter_col]
 
     # replace n/a values with 0 so that FSL doesn't ignore the whole column
@@ -53,7 +53,7 @@ for f in cons:
 
     # generate output files
     outfile="%s_task-%s_acq-%s_desc-fslConfounds.tsv"%(sub,task,acq)
-    outdir=derivatives_path+"fsl/confounds_aroma/%s/" %(sub)
+    outdir=derivatives_path+"fsl/confounds_base/%s/" %(sub)
     if not os.path.exists(outdir):
     	os.makedirs(outdir)
     output=outdir+outfile
