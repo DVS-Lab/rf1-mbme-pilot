@@ -6,7 +6,7 @@ basedir="$(dirname "$scriptdir")"
 
 task=sharedreward # edit if necessary
 
-for denoise in "none";do # "tedana"
+for denoise in "tedana";do # "base" = aCompCor confounds; "tedana" = aCompCor + tedana
 	for ppi in 0 "VS_thr5"; do # putting 0 first will indicate "activation" "VS_thr5"
 		for model in 1; do
 		
@@ -20,7 +20,7 @@ for denoise in "none";do # "tedana"
 
 			  	# Manages the number of jobs and cores
 			  	SCRIPTNAME=${basedir}/code/L1stats.sh
-			  	NCORES=8
+			  	NCORES=15
 			  	while [ $(ps -ef | grep -v grep | grep $SCRIPTNAME | wc -l) -ge $NCORES ]; do
 			    		sleep 5s
 			  	done
