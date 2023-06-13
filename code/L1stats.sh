@@ -44,13 +44,16 @@ NVOLUMES=`fslnvols $DATA`
 #OUR DATA won't have all the same TR
 TR_INFO=`fslval $DATA pixdim4`
 
-if [ ${denoise}=="tedana" ];then
+if [ ${denoise} == "tedana" ]; then
 	CONFOUNDEVS=${istartdatadir}/derivatives/fsl/confounds_tedana/sub-${sub}/sub-${sub}_task-${TASK}_acq-${acq}_desc-TedanaPlusConfounds.tsv
 	echo ${denoise}
+	echo ${CONFOUNDEVS}
 fi
-if [ ${denoise}=="base" ];then
+
+if [ ${denoise} == "base" ]; then
 	CONFOUNDEVS=${istartdatadir}/derivatives/fsl/confounds_base/sub-${sub}/sub-${sub}_task-${TASK}_acq-${acq}_desc-confounds_desc-fslConfounds.tsv
 	echo ${denoise}
+	echo ${CONFOUNDEVS}
 fi
 
 if [ ! -e $CONFOUNDEVS ]; then
@@ -58,7 +61,8 @@ if [ ! -e $CONFOUNDEVS ]; then
 	echo "missing confounds: $CONFOUNDEVS " >> ${maindir}/re-runL1.log
 	exit # exiting to ensure nothing gets run without confounds
 fi
-echo ${TR_INFO}
+
+#echo ${TR_INFO}
 
 EVDIR=${maindir}/derivatives/fsl/EVFiles/sub-${sub}/${TASK}/acq-${acq} #
 if [ ! -e $EVDIR ]; then
@@ -179,14 +183,14 @@ else # otherwise, do activation and seed-based ppi
 		TYPE=ppi
 		OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-${model}_type-${TYPE}_seed-${ppi}_acq-${acq}_sm-${sm}_denoising-${denoise}
 	fi
-
+	
 	# check for output and skip existing
-	if [ -e ${OUTPUT}.feat/cluster_mask_zstat1.nii.gz ]; then
-		exit
-	else
-		echo "missing feat output: $OUTPUT " >> ${maindir}/re-runL1.log
-		rm -rf ${OUTPUT}.feat
-	fi
+	#if [ -e ${OUTPUT}.feat/cluster_mask_zstat1.nii.gz ]; then
+	#	exit
+	#else
+	#	echo "missing feat output: $OUTPUT " >> ${maindir}/re-runL1.log
+	#	rm -rf ${OUTPUT}.feat
+	#fi
        
 	# create template and run analyses
 	ITEMPLATE=${maindir}/templates/L1_task-${TASK}_model-${model}_type-${TYPE}.fsf
@@ -224,7 +228,7 @@ else # otherwise, do activation and seed-based ppi
 		-e 's@TR_INFO@'"$TR_INFO"'@g' \
 		<$ITEMPLATE> $OTEMPLATE
 	fi
-	feat $OTEMPLATE
+	#feat $OTEMPLATE
         #cat $OTEMPLATE
 fi
 
