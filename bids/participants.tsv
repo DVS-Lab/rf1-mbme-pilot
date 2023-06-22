@@ -1,44 +1,44 @@
-participant_id	age	sex	group
-sub-10017	19	F	control
-sub-10024	19	F	control
-sub-10041	22	F	control
-sub-10035	21	F	control
-sub-10043	21	F	control
-sub-10054	18	F	control
-sub-10059	23	F	control
-sub-10069	26	M	control
-sub-10074	36	M	control
-sub-10078	43	M	control
-sub-10080	45	M	control
-sub-10085	52	M	control
-sub-10094	53	M	control
-sub-10108	27	F	control
-sub-10125	26	M	control
-sub-10130	20	M	control
-sub-10137	21	M	control
-sub-10136	21	F	control
-sub-10142	25	F	control
-sub-10150	25	M	control
-sub-10154	21	M	control
-sub-10186	28	M	control
-sub-10188	22	M	control
-sub-10221	19	F	control
-sub-10166	24	F	control
-sub-10185	18	M	control
-sub-10198	19	F	control
-sub-10203	21	M	control
-sub-10223	1D	F	control
-sub-10234	19	M	control
-sub-10296	22	F	control
-sub-10303	20	M	control
-sub-10318	22	M	control
-sub-10319	21	F	control
-sub-10320	21	F	control
-sub-10321	18	M	control
-sub-10363	30	F	control
-sub-10382	32	F	control
-sub-10416	46	M	control
-sub-10422	26	M	control
-sub-10438	53	M	control
-sub-12042	20	F	control
-sub-10391	48	F	control
+participant_id	age	sex	Demographic	Ethnicity	HeadCoil	group
+sub-10017	19	F	White	Not Hispanic or Latino	64	control
+sub-10024	19	F	Asian 	Not Hispanic or Latino	64	control
+sub-10041	21	F	Asian 	Not Hispanic or Latino	64	control
+sub-10035	22	F	Asian 	Not Hispanic or Latino	64	control
+sub-10043	21	F	White	Hispanic or Latino	64	control
+sub-10054	23	F	Asian 	Hispanic or Latino	64	control
+sub-10059	18	F	Black or African American	Hispanic or Latino	64	control
+sub-10069	26	M	White	Not Hispanic or Latino	64	control
+sub-10074	36	M	White	Not Hispanic or Latino	64	control
+sub-10078	43	M	White	Not Hispanic or Latino	64	control
+sub-10080	45	M	White	Not Hispanic or Latino	64	control
+sub-10085	52	M	Black or African American	Not Hispanic or Latino	64	control
+sub-10094	53	M	White	Not Hispanic or Latino	64	control
+sub-10108	27	F	White	Not Hispanic or Latino	64	control
+sub-10125	26	M	White	Not Hispanic or Latino	64	control
+sub-10130	20	M	Asian 	Not Hispanic or Latino	64	control
+sub-10137	21	F	White	Not Hispanic or Latino	64	control
+sub-10136	21	M	White	Not Hispanic or Latino	64	control
+sub-10142	25	F	White	Not Hispanic or Latino	64	control
+sub-10150	25	M	White	Not Hispanic or Latino	64	control
+sub-10154	21	M	White	Not Hispanic or Latino	64	control
+sub-10186	28	M	White	Not Hispanic or Latino	64	control
+sub-10188	22	M	White	Not Hispanic or Latino	64	control
+sub-10221	19	F	White	Not Hispanic or Latino	64	control
+sub-10166	24	F	White	Not Hispanic or Latino	20	control
+sub-10185	18	M	White	Not Hispanic or Latino	20	control
+sub-10198	19	F	Asian 	Not Hispanic or Latino	20	control
+sub-10203	21	M	Two or more races, or race not described (other)	Not Hispanic or Latino	20	control
+sub-10223	19	F	Two or more races, or race not described (other)	Hispanic or Latino	20	control
+sub-10234	19	M	White	Not Hispanic or Latino	20	control
+sub-10296	22	F	Black or African American	Not Hispanic or Latino	20	control
+sub-10303	20	M	White	Not Hispanic or Latino	20	control
+sub-10318	22	M	White	Not Hispanic or Latino	20	control
+sub-10319	21	F	Two or more races, or race not described (other)	Not Hispanic or Latino	20	control
+sub-10320	21	F	White	Not Hispanic or Latino	20	control
+sub-10321	18	M	White	Not Hispanic or Latino	20	control
+sub-10363	30	F	White	Not Hispanic or Latino	20	control
+sub-10382	32	F	White	Not Hispanic or Latino	20	control
+sub-10416	46	M	Black or African American	Not Hispanic or Latino	20	control
+sub-10422	26	M	Asian 	Ethnicity not described (other)	20	control
+sub-10438	53	M	Black or African American	Not Hispanic or Latino	20	control
+sub-12042	20	F	Asian 	Not Hispanic or Latino	20	control
+sub-10391	48	F	White	Not Hispanic or Latino	20	control

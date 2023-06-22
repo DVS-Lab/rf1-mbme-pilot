@@ -228,7 +228,7 @@ else # otherwise, do activation and seed-based ppi
 		-e 's@TR_INFO@'"$TR_INFO"'@g' \
 		<$ITEMPLATE> $OTEMPLATE
 	fi
-	#feat $OTEMPLATE
+	feat $OTEMPLATE
         #cat $OTEMPLATE
 fi
 
