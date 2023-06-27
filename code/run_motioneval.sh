@@ -21,7 +21,9 @@ for sub in `ls -d ${basedir}/bids/sub-*/`; do
 	    else
 		BIDSDATA=${basedir}/bids/sub-${sub}/func/sub-${sub}_task-${task}_acq-mb${mb}me1_bold.nii.gz
 	    fi
-
+	
+	#	
+	#reffile=sub-${basedir)/bids/sub-${sub}/func/${sub}_task-sharedreward_acq-mb${mb}me4_echo-1_part-mag_sbref.nii.gz
 
   	# Manages the number of jobs and cores
 	OUT=${basedir}/derivatives/fsl/mcflirt/sub-${sub}/mb${mb}me${me}/
@@ -37,7 +39,7 @@ for sub in `ls -d ${basedir}/bids/sub-*/`; do
   	    while [ $(ps -ef | grep -v grep | grep 'mcflirt' | wc -l) -ge $NCORES ]; do
     		sleep 5s
   	    done
-  	    /usr/share/fsl/6.0.4/bin/mcflirt -in $BIDSDATA -out $OUT -mats -plots -refvol 0 -rmsrel -rmsabs -spline_final &
+  	    /usr/share/fsl/6.0.4/bin/mcflirt -in $BIDSDATA -out $OUT -mats -plots -reffile ${reffile} -rmsrel -rmsabs -spline_final &
             echo $BIDSDATA $OUT &
 		    sleep 1s
         fi
