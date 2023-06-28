@@ -18,7 +18,7 @@ MAINOUTPUT=${maindir}/derivatives/fsl/sub-${sub}
 NCOPES=16
 
 # ppi has more contrasts than act (phys), so need a different L2 template
-if [ "${type}" == "act" ]; then
+if [ "${type}" == "act" ] &&  ([ "${model}" == "2" ] || [ "${model}" == "3" ]); then
 	if [ ${sub} -eq 10303 ]; then
 		ITEMPLATE=${maindir}/templates/L2_task-${task}_model-${model}_type-act_10303.fsf
 	elif [ ${sub} -eq 10185 ]; then
@@ -29,6 +29,11 @@ if [ "${type}" == "act" ]; then
 		ITEMPLATE=${maindir}/templates/L2_task-${task}_model-${model}_type-act.fsf
 	fi	
 	NCOPES=${NCOPES}
+elif [ "${type}" == "act" ] && [ "${model}" == "1" ]; then
+	ITEMPLATE=${maindir}/templates/L2_task-${task}_model-${model}_type-act.fsf
+	NCOPES=${NCOPES}
+	#10303 missing Input 4, 10185 missing Input 6, 10198 missing Input 1
+	#need to make L2 templates for them, or remove them from design.fsf file for L2_model-1 and run again by hand
 else
 	ITEMPLATE=${maindir}/templates/L2_task-${task}_type-ppi.fsf
 	let NCOPES=${NCOPES}+1 # add 1 since we tend to only have one extra contrast for PPI
