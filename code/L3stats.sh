@@ -130,6 +130,7 @@ else # try to run feat and clean up previous effort with partial output
 	-e 's@MODEL@'$MODEL'@g' \
 	-e 's@REPLACEME@'$REPLACEME'@g' \
 	-e 's@BASEDIR@'$maindir'@g' \
+	-e 's@DENOISING@'$denoising'@g' \
 	<$ITEMPLATE> $OTEMPLATE
 	feat $OTEMPLATE
 
