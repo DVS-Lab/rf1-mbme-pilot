@@ -35,7 +35,7 @@ elif [ "${type}" == "act" ] && [ "${model}" == "1" ]; then
 	#10303 missing Input 4, 10185 missing Input 6, 10198 missing Input 1
 	#need to make L2 templates for them, or remove them from design.fsf file for L2_model-1 and run again by hand
 else
-	ITEMPLATE=${maindir}/templates/L2_task-${task}_type-ppi.fsf
+	ITEMPLATE=${maindir}/templates/L2_task-${task}_model-${model}_type-ppi.fsf
 	let NCOPES=${NCOPES}+1 # add 1 since we tend to only have one extra contrast for PPI
 fi
 INPUT1=${MAINOUTPUT}/L1_task-${task}_model-${model}_type-${type}_acq-mb1me1_sm-${sm}_denoising-${denoising}.feat

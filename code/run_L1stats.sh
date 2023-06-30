@@ -6,10 +6,11 @@ basedir="$(dirname "$scriptdir")"
 
 task=sharedreward # edit if necessary
 
-for denoise in "base";do # "base" = aCompCor confounds; "tedana" = aCompCor + tedana
+for denoise in "base" "tedana";do # "base" = aCompCor confounds; "tedana" = aCompCor + tedana
 	for ppi in 0 "VS_thr5"; do # putting 0 first will indicate "activation" "VS_thr5"
-		for model in 2 3; do
+		for model in 1; do
 		
+			#for sub in 10150; do
 			for sub in `cat ${scriptdir}/newsubs.txt`; do # `ls -d ${basedir}/derivatives/fmriprep/sub-*/`
 
 			  sub=${sub#*sub-}
