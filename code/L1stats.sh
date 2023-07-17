@@ -12,7 +12,7 @@
 # ensure paths are correct irrespective from where user runs the script
 scriptdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 maindir="$(dirname "$scriptdir")"
-istartdatadir=/data/projects/rf1-mbme-pilot #need to fix this upon release (no hard coding paths)
+istartdatadir=/ZPOOL/data/projects/rf1-mbme-pilot #need to fix this upon release (no hard coding paths)
 
 # study-specific inputs
 TASK=sharedreward
