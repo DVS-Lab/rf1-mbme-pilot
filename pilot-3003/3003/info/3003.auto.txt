@@ -1,0 +1,13 @@
+{('sub-{subject}/anat/sub-{subject}_T1w', ('nii.gz',), None): ['3-T1w-anat_mpg_07sag_iso'],
+ ('sub-{subject}/fmap/sub-{subject}_acq-bold_run-{item:01d}_magnitude', ('nii.gz',), None): ['5-fmap_gre_field_mapping_2p8iso'],
+ ('sub-{subject}/fmap/sub-{subject}_acq-bold_run-{item:01d}_phasediff', ('nii.gz',), None): ['6-fmap_gre_field_mapping_2p8iso'],
+ ('sub-{subject}/func/sub-{subject}_task-sharedreward_acq-mb1me1_bold', ('nii.gz',), None): [],
+ ('sub-{subject}/func/sub-{subject}_task-sharedreward_acq-mb1me4_bold', ('nii.gz',), None): [],
+ ('sub-{subject}/func/sub-{subject}_task-sharedreward_acq-mb3me1_bold', ('nii.gz',), None): [],
+ ('sub-{subject}/func/sub-{subject}_task-sharedreward_acq-mb3me1_sbref', ('nii.gz',), None): [],
+ ('sub-{subject}/func/sub-{subject}_task-sharedreward_acq-mb3me4_bold', ('nii.gz',), None): [],
+ ('sub-{subject}/func/sub-{subject}_task-sharedreward_acq-mb3me4_sbref', ('nii.gz',), None): [],
+ ('sub-{subject}/func/sub-{subject}_task-sharedreward_acq-mb6me1_bold', ('nii.gz',), None): [],
+ ('sub-{subject}/func/sub-{subject}_task-sharedreward_acq-mb6me1_sbref', ('nii.gz',), None): [],
+ ('sub-{subject}/func/sub-{subject}_task-sharedreward_acq-mb6me4_bold', ('nii.gz',), None): [],
+ ('sub-{subject}/func/sub-{subject}_task-sharedreward_acq-mb6me4_sbref', ('nii.gz',), None): []}
