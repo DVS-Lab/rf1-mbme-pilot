@@ -39,14 +39,18 @@ fi
 rm -rf $dsroot/bids/sub-${sub}
 
 
-## PART 1: running heudiconv and fixing fieldmaps
-#heudiconv -d ${sourcedata}/Smith-SRA-${sub}/*/scans/*/*/DICOM/files/*.dcm \
-heudiconv -d ${sourcedata}/Smith-RF1pilot-${sub}/*/scans/*/*/DICOM/files/*.dcm \
--o ${dsroot}/bids/ \
--f ${dsroot}/code/heuristics.py \
+# PART 1: running heudiconv and fixing fieldmaps
+singularity run --cleanenv \
+-B $dsroot:/out \
+-B $sourcedata:/sourcedata \
+/ZPOOL/data/tools/heudiconv-0.13.1.sif \
+-d /sourcedata/Smith-RF1pilot-{subject}/*/scans/*/*/DICOM/files/*.dcm \
+-o /out/bids/ \
+-f /out/code/heuristics.py \
 -s $sub \
 -c dcm2niix \
 -b --minmeta --overwrite
+
 
 
 ## PART 2: Defacing anatomicals and date shifting to ensure compatibility with data sharing.
