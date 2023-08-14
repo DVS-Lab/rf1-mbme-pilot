@@ -26,7 +26,7 @@ os.umask(0)
 
 url = "https://xnat.cla.temple.edu"
 session = "Smith-RF1pilot"
-outputDir = "/data/sourcedata/rf1-sequence-pilot"
+outputDir = "/ZPOOL/data/sourcedata/sourcedata/rf1-sequence-pilot"
 
 subs=os.listdir(outputDir)
 
