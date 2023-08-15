@@ -15,7 +15,7 @@ if [ ! -d $maindir/derivatives ]; then
 	mkdir -p $maindir/derivatives
 fi
 
-scratchdir=/data/scratch/`whoami`
+scratchdir=/ZPOOL/data/scratch/`whoami`
 if [ ! -d $scratchdir ]; then
 	mkdir -p $scratchdir
 fi
