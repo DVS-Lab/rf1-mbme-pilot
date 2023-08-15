@@ -34,4 +34,4 @@ participant --participant_label $sub \
 --me-output-echos \
 --cifti-output 91k \
 --output-spaces fsLR fsaverage MNI152NLin6Asym \
---fs-no-reconall --fs-license-file /opts/fs_license.txt -w /scratch
+--fs-license-file /opts/fs_license.txt -w /scratch
