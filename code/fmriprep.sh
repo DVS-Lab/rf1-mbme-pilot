@@ -20,14 +20,14 @@ if [ ! -d $scratchdir ]; then
 	mkdir -p $scratchdir
 fi
 
-TEMPLATEFLOW_DIR=/data/tools/templateflow
+TEMPLATEFLOW_DIR=/ZPOOL/data/tools/templateflow
 export SINGULARITYENV_TEMPLATEFLOW_HOME=/opt/templateflow
 singularity run --cleanenv \
 -B ${TEMPLATEFLOW_DIR}:/opt/templateflow \
 -B $maindir:/base \
--B /data/tools/licenses:/opts \
+-B /ZPOOL/data/tools/licenses:/opts \
 -B $scratchdir:/scratch \
-/data/tools/fmriprep-23.1.3.simg \
+/ZPOOL/data/tools/fmriprep-23.1.3.simg \
 /base/bids /base/derivatives \
 participant --participant_label $sub \
 --stop-on-first-crash \
