@@ -13,15 +13,14 @@
 sourcedata=/ZPOOL/data/sourcedata/sourcedata/rf1-sequence-pilot
 
 sub=$1
-cb=$2 # user must provide the intended counterbalance order
 
+# to-do: why do we skip these?
 except_subs=(20022 10007 10003 10006 10008 10010 10014 10015 10026 10028 10030 10046)
 
-for i in "${except_subs[@]}"
-do
+for i in "${except_subs[@]}"; do
     if [ "$i" -eq "$sub" ] ; then
         echo "Exception ${sub}"
-	exit 1
+	      exit 1
     fi
 done
 
@@ -40,6 +39,7 @@ rm -rf $dsroot/bids/sub-${sub}
 
 
 # PART 1: running heudiconv and fixing fieldmaps
+# to-do: need if statement for new subjects? i don't think so, but need to check and test heuristic and output
 singularity run --cleanenv \
 -B $dsroot:/out \
 -B $sourcedata:/sourcedata \
@@ -67,6 +67,7 @@ python $codedir/shiftdates.py $dsroot/bids/sub-${sub}/sub-${sub}_scans.tsv
 ## PART 3: Run MRIQC on subject
 # make derivatives folder if it doesn't exist.
 # let's keep this out of bids for now
+# TO-DO: this should be its own script
 if [ ! -d $dsroot/derivatives/mriqc ]; then
 	mkdir -p $dsroot/derivatives/mriqc
 fi

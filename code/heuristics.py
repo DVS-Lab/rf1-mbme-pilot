@@ -26,11 +26,20 @@ def infotodict(seqinfo):
     mb6me4_sbref =      create_key('sub-{subject}/func/sub-{subject}_task-sharedreward_acq-mb6me4_sbref')
 
 
+    # sequence pilot 2.0 (all should be fa50, but only using that to differentiate from previous)
+    mb3me3 =            create_key('sub-{subject}/func/sub-{subject}_task-sharedreward_acq-mb3me3_bold')
+    mb3me3_sbref =      create_key('sub-{subject}/func/sub-{subject}_task-sharedreward_acq-mb3me3_sbref')
+    mb3me3_ip0 =        create_key('sub-{subject}/func/sub-{subject}_task-sharedreward_acq-mb3me3ip0_bold')
+    mb3me3_ip0_sbref =  create_key('sub-{subject}/func/sub-{subject}_task-sharedreward_acq-mb3me3ip0_sbref')
+    mb3me4_fa50 =       create_key('sub-{subject}/func/sub-{subject}_task-sharedreward_acq-mb3me4fa50_bold')
+    mb3me4_fa50_sbref = create_key('sub-{subject}/func/sub-{subject}_task-sharedreward_acq-mb3me4fa50_sbref')
+    mb2me4 =            create_key('sub-{subject}/func/sub-{subject}_task-sharedreward_acq-mb2me4_bold')
+    mb2me4_sbref =      create_key('sub-{subject}/func/sub-{subject}_task-sharedreward_acq-mb2me4_sbref')
+    mb3me1_fa50 =       create_key('sub-{subject}/func/sub-{subject}_task-sharedreward_acq-mb3me1fa50_bold')
+    mb3me1_fa50_sbref = create_key('sub-{subject}/func/sub-{subject}_task-sharedreward_acq-mb3me1fa50_sbref')
 
-        # mag: [],
-        # phase: [],
 
-    info = {t1w: [],mag: [], phase: [],
+    info = {t1w: [], mag: [], phase: [],
 
             mb1me1: [],
             mb3me1: [],
@@ -44,7 +53,15 @@ def infotodict(seqinfo):
             mb6me4: [],
             mb6me4_sbref: [],
 
+            # sequence pilot 2.0
+            mb3me3: [], mb3me3_sbref: [],
+            mb3me3_ip0: [], mb3me3_ip0_sbref: [],
+            mb3me4_fa50: [], mb3me4_fa50_sbref: [],
+            mb2me4: [], mb2me4_sbref: [],
+            mb3me1_fa50: [], mb3me1_fa50_sbref: [],
+
             }
+
 
     list_of_ids = [s.series_id for s in seqinfo]
     for s in seqinfo:
@@ -80,6 +97,33 @@ def infotodict(seqinfo):
             info[mb6me4].append(s.series_id)
             idx = list_of_ids.index(s.series_id)
             info[mb6me4_sbref].append(list_of_ids[idx -1])
+
+        # sequence pilot 2.0
+        if (s.dim4 >= 100) and ('MB3ME3_IP2_FA50' in s.protocol_name) and ('M' in s.image_type):
+            info[mb3me3].append(s.series_id)
+            idx = list_of_ids.index(s.series_id)
+            info[mb3me3_sbref].append(list_of_ids[idx -1])
+        if (s.dim4 >= 100) and ('MB3ME3_IP0_FA50' in s.protocol_name) and ('M' in s.image_type):
+            info[mb3me3_ip0].append(s.series_id)
+            idx = list_of_ids.index(s.series_id)
+            info[mb3me3_ip0_sbref].append(list_of_ids[idx -1])
+        if (s.dim4 >= 100) and ('MB3ME4_IP2_FA50' in s.protocol_name) and ('M' in s.image_type):
+            info[mb3me4_fa50].append(s.series_id)
+            idx = list_of_ids.index(s.series_id)
+            info[mb3me4_fa50_sbref].append(list_of_ids[idx -1])
+        if (s.dim4 >= 100) and ('MB3ME4_IP2_FA20' in s.protocol_name) and ('M' in s.image_type):
+            info[mb3me4].append(s.series_id)
+            idx = list_of_ids.index(s.series_id)
+            info[mb3me4_sbref].append(list_of_ids[idx -1])
+        if (s.dim4 >= 100) and ('MB3ME1_IP0_FA50' in s.protocol_name) and ('M' in s.image_type):
+            info[mb3me1_fa50].append(s.series_id)
+            idx = list_of_ids.index(s.series_id)
+            info[mb3me1_fa50_sbref].append(list_of_ids[idx -1])
+        if (s.dim4 >= 100) and ('MB2ME4_IP2_FA50' in s.protocol_name) and ('M' in s.image_type):
+            info[mb2me4].append(s.series_id)
+            idx = list_of_ids.index(s.series_id)
+            info[mb2me4_sbref].append(list_of_ids[idx -1])
+
 
 
     return info
