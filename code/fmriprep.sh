@@ -28,7 +28,7 @@ singularity run --cleanenv \
 -B /ZPOOL/data/tools/licenses:/opts \
 -B $scratchdir:/scratch \
 /ZPOOL/data/tools/fmriprep-23.1.3.simg \
-/base/bids /base/derivatives \
+/base/bids /base/derivatives/fmriprep \
 participant --participant_label $sub \
 --stop-on-first-crash \
 --me-output-echos \
