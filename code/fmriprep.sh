@@ -11,8 +11,8 @@ maindir="$(dirname "$scriptdir")"
 
 # make derivatives folder if it doesn't exist.
 # let's keep this out of bids for now
-if [ ! -d $maindir/derivatives ]; then
-	mkdir -p $maindir/derivatives
+if [ ! -d $maindir/derivatives/fmriprep-test ]; then
+	mkdir -p $maindir/derivatives/fmriprep-test
 fi
 
 scratchdir=/ZPOOL/data/scratch/`whoami`
@@ -27,8 +27,8 @@ singularity run --cleanenv \
 -B $maindir:/base \
 -B /ZPOOL/data/tools/licenses:/opts \
 -B $scratchdir:/scratch \
-/ZPOOL/data/tools/fmriprep-23.1.3.simg \
-/base/bids /base/derivatives/fmriprep \
+/ZPOOL/data/tools/fmriprep-23.1.4.simg \
+/base/bids /base/derivatives/fmriprep-test \
 participant --participant_label $sub \
 --stop-on-first-crash \
 --me-output-echos \
