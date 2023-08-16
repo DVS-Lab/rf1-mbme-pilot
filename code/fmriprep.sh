@@ -30,7 +30,6 @@ singularity run --cleanenv \
 /ZPOOL/data/tools/fmriprep-23.1.4.simg \
 /base/bids /base/derivatives/fmriprep-test \
 participant --participant_label $sub \
---stop-on-first-crash \
 --me-output-echos \
 --cifti-output 91k \
 --output-spaces fsLR fsaverage MNI152NLin6Asym \
