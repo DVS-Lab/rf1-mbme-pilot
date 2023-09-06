@@ -43,13 +43,12 @@ singularity run --cleanenv \
 -B $dsroot:/out \
 -B $sourcedata:/sourcedata \
 /ZPOOL/data/tools/heudiconv-0.13.1.sif \
--d /sourcedata/Smith-RF1pilot-{subject}/*/scans/*/*/DICOM/files/*.dcm \
+-d /sourcedata/Smith-SRA-{subject}/*/scans/*/*/DICOM/files/*.dcm \
 -o /out/bids/ \
 -f /out/code/heuristics.py \
 -s $sub \
 -c dcm2niix \
 -b --minmeta --overwrite
-
 
 
 ## PART 2: Defacing anatomicals and date shifting to ensure compatibility with data sharing.
