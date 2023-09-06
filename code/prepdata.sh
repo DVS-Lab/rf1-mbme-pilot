@@ -15,14 +15,13 @@ sourcedata=/ZPOOL/data/sourcedata/sourcedata/rf1-sequence-pilot
 sub=$1
 
 # to-do: why do we skip these?
-except_subs=(20022 10007 10003 10006 10008 10010 10014 10015 10026 10028 10030 10046)
-
-for i in "${except_subs[@]}"; do
-    if [ "$i" -eq "$sub" ] ; then
-        echo "Exception ${sub}"
-	      exit 1
-    fi
-done
+#except_subs=(20022 10007 10003 10006 10008 10010 10014 10015 10026 10028 10030 10046)
+#for i in "${except_subs[@]}"; do
+#    if [ "$i" -eq "$sub" ] ; then
+#        echo "Exception ${sub}"
+#	      exit 1
+#    fi
+#done
 
 
 # ensure paths are correct irrespective from where user runs the script
@@ -63,37 +62,3 @@ mv -f ${bidsroot}/sub-${sub}/anat/sub-${sub}_T1w_defaced.nii.gz ${bidsroot}/sub-
 # shift dates on scans to reduce likelihood of re-identification
 python $codedir/shiftdates.py $dsroot/bids/sub-${sub}/sub-${sub}_scans.tsv
 
-
-## PART 3: Run MRIQC on subject
-# make derivatives folder if it doesn't exist.
-# let's keep this out of bids for now
-# TO-DO: this should be its own script
-if [ ! -d $dsroot/derivatives/mriqc ]; then
-	mkdir -p $dsroot/derivatives/mriqc
-fi
-
-
-# make scratch
-scratch=/ZPOOL/data/scratch/`whoami`
-if [ ! -d $scratch ]; then
-	mkdir -p $scratch
-fi
-
-# no space left on device error for v0.15.2 and higher
-# https://neurostars.org/t/mriqc-no-space-left-on-device-error/16187/1
-# https://github.com/poldracklab/mriqc/issues/850
-TEMPLATEFLOW_DIR=/ZPOOL/data/tools/templateflow
-export SINGULARITYENV_TEMPLATEFLOW_HOME=/opt/templateflow
-if [ ! -d $dsroot/derivatives/mriqc/sub-${sub} ]; then
- echo "running mriqc for sub-${sub}"
-
-	singularity run --cleanenv \
-	-B ${TEMPLATEFLOW_DIR}:/opt/templateflow \
-	-B $dsroot/bids:/data \
-	-B $dsroot/derivatives/mriqc:/out \
-	-B $scratch:/scratch \
-	/ZPOOL/data/tools/mriqc-23.1.0.simg \
-	/data /out \
-   participant --participant_label $sub -w /scratch
-
-fi
