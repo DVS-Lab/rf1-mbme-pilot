@@ -21,12 +21,12 @@ if [ ! -d $scratchdir ]; then
 	mkdir -p $scratchdir
 fi
 
-# prevent fmriprep from average phase and mag parts of the sbref images
-rm -rf ${bidsdir}/sub-*/func/sub-*_part-phase_sbref.*
-for file in `ls -1 ${bidsdir}/sub-*/func/sub-*_part-mag_sbref.*`; do
-	mv "${file}" "${file/_part-mag/}"
-done
-rm -rf ${bidsdir}/sub-*/sub-*_scans.tsv
+# # prevent fmriprep from average phase and mag parts of the sbref images
+# rm -rf ${bidsdir}/sub-*/func/sub-*_part-phase_sbref.*
+# for file in `ls -1 ${bidsdir}/sub-*/func/sub-*_part-mag_sbref.*`; do
+# 	mv "${file}" "${file/_part-mag/}"
+# done
+# rm -rf ${bidsdir}/sub-*/sub-*_scans.tsv
 
 
 TEMPLATEFLOW_DIR=/ZPOOL/data/tools/templateflow
@@ -36,10 +36,11 @@ singularity run --cleanenv \
 -B $maindir:/base \
 -B /ZPOOL/data/tools/licenses:/opts \
 -B $scratchdir:/scratch \
-/ZPOOL/data/tools/fmriprep-23.1.4.simg \
-/base/bids /base/derivatives/fmriprep-test2 \
+/ZPOOL/data/tools/fmriprep-23.1.3.simg \
+/base/bids /base/derivatives/fmriprep \
 participant --participant_label $sub \
 --me-output-echos \
 --cifti-output 91k \
 --output-spaces fsLR fsaverage MNI152NLin6Asym \
+--bids-filter-file /base/code/fmriprep_config.json \
 --fs-license-file /opts/fs_license.txt -w /scratch
