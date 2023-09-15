@@ -38,6 +38,7 @@ MPLCONFIGDIR_DIR=~/work/mplconfigdir
 export SINGULARITYENV_TEMPLATEFLOW_HOME=/opt/templateflow
 export SINGULARITYENV_MPLCONFIGDIR=/opt/mplconfigdir
 
+# check this list and update intendedfor to make fmpas match
 if [ $sub -eq 10317 ] || [ $sub -eq 10369 ] || [ $sub -eq 10402 ] || [ $sub -eq 10486 ] || [ $sub -eq 10541 ] || [ $sub -eq 10572 ] || [ $sub -eq 10584 ] || [ $sub -eq 10589 ] || [ $sub -eq 10691 ] || [ $sub -eq 10701 ]; then
 	echo singularity run --cleanenv \
 	-B ${TEMPLATEFLOW_DIR}:/opt/templateflow \
