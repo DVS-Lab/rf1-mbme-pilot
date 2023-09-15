@@ -1,10 +1,8 @@
 #!/bin/bash
 #PBS -l walltime=24:00:00
-#PBS -N fmriprep-all
+#PBS -N fmriprep
 #PBS -q normal
-#PBS -m ae
-#PBS -M david.v.smith@temple.edu
-#PBS -l nodes=12:ppn=4
+#PBS -l nodes=1:ppn=28
 
 # load modules and go to workdir
 module load fsl/6.0.2
@@ -19,6 +17,7 @@ bidsdir=$maindir/bids
 logdir=$maindir/logs
 mkdir -p $logdir
 
+sub=$1
 
 rm -f $logdir/cmd_fmriprep_${PBS_JOBID}.txt
 touch $logdir/cmd_fmriprep_${PBS_JOBID}.txt
@@ -39,44 +38,41 @@ MPLCONFIGDIR_DIR=~/work/mplconfigdir
 export SINGULARITYENV_TEMPLATEFLOW_HOME=/opt/templateflow
 export SINGULARITYENV_MPLCONFIGDIR=/opt/mplconfigdir
 
-for sub in `cat ${scriptdir}/newsubs_rf1-mbme-pilot.txt` ; do
-	# did any participants get out of the scanner during the sequence pilot? the subs below are for th emain study
-	if [ $sub -eq 10317 ] || [ $sub -eq 10369 ] || [ $sub -eq 10402 ] || [ $sub -eq 10486 ] || [ $sub -eq 10541 ] || [ $sub -eq 10572 ] || [ $sub -eq 10584 ] || [ $sub -eq 10589 ] || [ $sub -eq 10691 ] || [ $sub -eq 10701 ]; then
-		echo singularity run --cleanenv \
-		-B ${TEMPLATEFLOW_DIR}:/opt/templateflow \
-		-B ${MPLCONFIGDIR_DIR}:/opt/mplconfigdir \
-		-B $maindir:/base \
-		-B ~/work/tools/licenses:/opts \
-		-B $scratchdir:/scratch \
-		~/work/tools/fmriprep-23.1.3.simg \
-		/base/bids /base/derivatives/fmriprep \
-		participant --participant_label $sub \
-		--stop-on-first-crash \
-		--nthreads 12 \
-		--me-output-echos \
-		--use-syn-sdc \
-		--cifti-output 91k \
-		--output-spaces fsLR fsaverage MNI152NLin6Asym \
-		--bids-filter-file /base/code/fmriprep_config.json \
-		--fs-license-file /opts/fs_license.txt -w /scratch >> $logdir/cmd_fmriprep_${PBS_JOBID}.txt
-	else
-		echo singularity run --cleanenv \
-		-B ${TEMPLATEFLOW_DIR}:/opt/templateflow \
-		-B ${MPLCONFIGDIR_DIR}:/opt/mplconfigdir \
-		-B $maindir:/base \
-		-B ~/work/tools/licenses:/opts \
-		-B $scratchdir:/scratch \
-		~/work/tools/fmriprep-23.1.3.simg \
-		/base/bids /base/derivatives/fmriprep \
-		participant --participant_label $sub \
-		--stop-on-first-crash \
-		--nthreads 12 \
-		--me-output-echos \
-		--cifti-output 91k \
-		--output-spaces fsLR fsaverage MNI152NLin6Asym \
-		--bids-filter-file /base/code/fmriprep_config.json \
-		--fs-license-file /opts/fs_license.txt -w /scratch >> $logdir/cmd_fmriprep_${PBS_JOBID}.txt
-	fi
-done
+if [ $sub -eq 10317 ] || [ $sub -eq 10369 ] || [ $sub -eq 10402 ] || [ $sub -eq 10486 ] || [ $sub -eq 10541 ] || [ $sub -eq 10572 ] || [ $sub -eq 10584 ] || [ $sub -eq 10589 ] || [ $sub -eq 10691 ] || [ $sub -eq 10701 ]; then
+	echo singularity run --cleanenv \
+	-B ${TEMPLATEFLOW_DIR}:/opt/templateflow \
+	-B ${MPLCONFIGDIR_DIR}:/opt/mplconfigdir \
+	-B $maindir:/base \
+	-B ~/work/tools/licenses:/opts \
+	-B $scratchdir:/scratch \
+	~/work/tools/fmriprep-23.1.3.simg \
+	/base/bids /base/derivatives/fmriprep \
+	participant --participant_label $sub \
+	--stop-on-first-crash \
+	--nthreads 12 \
+	--me-output-echos \
+	--use-syn-sdc \
+	--cifti-output 91k \
+	--output-spaces fsLR fsaverage MNI152NLin6Asym \
+	--bids-filter-file /base/code/fmriprep_config.json \
+	--fs-license-file /opts/fs_license.txt -w /scratch >> $logdir/cmd_fmriprep_${PBS_JOBID}.txt
+else
+	echo singularity run --cleanenv \
+	-B ${TEMPLATEFLOW_DIR}:/opt/templateflow \
+	-B ${MPLCONFIGDIR_DIR}:/opt/mplconfigdir \
+	-B $maindir:/base \
+	-B ~/work/tools/licenses:/opts \
+	-B $scratchdir:/scratch \
+	~/work/tools/fmriprep-23.1.3.simg \
+	/base/bids /base/derivatives/fmriprep \
+	participant --participant_label $sub \
+	--stop-on-first-crash \
+	--nthreads 12 \
+	--me-output-echos \
+	--cifti-output 91k \
+	--output-spaces fsLR fsaverage MNI152NLin6Asym \
+	--bids-filter-file /base/code/fmriprep_config.json \
+	--fs-license-file /opts/fs_license.txt -w /scratch >> $logdir/cmd_fmriprep_${PBS_JOBID}.txt
+fi
 
 torque-launch -p $logdir/chk_fmriprep_${PBS_JOBID}.txt $logdir/cmd_fmriprep_${PBS_JOBID}.txt
