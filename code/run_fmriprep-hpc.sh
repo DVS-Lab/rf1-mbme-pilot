@@ -6,5 +6,5 @@ maindir=~/work/rf1-mbme-pilot #this should be the only line that has to change i
 scriptdir=$maindir/code
 
 for sub in `cat ${scriptdir}/newsubs_rf1-mbme-pilot.txt` ; do
-	qsub fmriprep-hpc.sh $sub
+	qsub -F $sub fmriprep-hpc.sh
 done
