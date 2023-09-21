@@ -39,6 +39,8 @@ singularity run --cleanenv \
 /ZPOOL/data/tools/fmriprep-23.1.3.simg \
 /base/bids /base/derivatives/fmriprep \
 participant --participant_label $sub \
+--ignore fieldmaps \
+--use-syn-sdc \
 --me-output-echos \
 --cifti-output 91k \
 --output-spaces fsLR fsaverage MNI152NLin6Asym \
