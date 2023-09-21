@@ -1,9 +1,7 @@
 #!/bin/bash
 #PBS -l walltime=24:00:00
-#PBS -N fmriprep-all
+#PBS -N fmriprep
 #PBS -q normal
-#PBS -m ae
-#PBS -M david.v.smith@temple.edu
 #PBS -l nodes=12:ppn=4
 
 # load modules and go to workdir
@@ -13,7 +11,8 @@ module load singularity/3.8.5
 cd $PBS_O_WORKDIR
 
 # ensure paths are correct
-maindir=~/work/rf1-mbme-pilot #this should be the only line that has to change if the rest of the script is set up correctly
+projectname=rf1-mbme-pilot #this should be the only line that has to change if the rest of the script is set up correctly
+maindir=~/work/$projectname
 scriptdir=$maindir/code
 bidsdir=$maindir/bids
 logdir=$maindir/logs
@@ -29,7 +28,7 @@ if [ ! -d $maindir/derivatives ]; then
 	mkdir -p $maindir/derivatives
 fi
 
-scratchdir=~/scratch/fmriprep
+scratchdir=~/scratch/$projectname/fmriprep
 if [ ! -d $scratchdir ]; then
 	mkdir -p $scratchdir
 fi
@@ -39,8 +38,8 @@ MPLCONFIGDIR_DIR=~/work/mplconfigdir
 export SINGULARITYENV_TEMPLATEFLOW_HOME=/opt/templateflow
 export SINGULARITYENV_MPLCONFIGDIR=/opt/mplconfigdir
 
-for sub in `cat ${scriptdir}/newsubs_rf1-mbme-pilot.txt` ; do
-	# did any participants get out of the scanner during the sequence pilot? the subs below are for th emain study
+for sub in ${subjects[@]}; do
+	# check this list and update intendedfor to make fmpas match
 	if [ $sub -eq 10317 ] || [ $sub -eq 10369 ] || [ $sub -eq 10402 ] || [ $sub -eq 10486 ] || [ $sub -eq 10541 ] || [ $sub -eq 10572 ] || [ $sub -eq 10584 ] || [ $sub -eq 10589 ] || [ $sub -eq 10691 ] || [ $sub -eq 10701 ]; then
 		echo singularity run --cleanenv \
 		-B ${TEMPLATEFLOW_DIR}:/opt/templateflow \
@@ -54,6 +53,7 @@ for sub in `cat ${scriptdir}/newsubs_rf1-mbme-pilot.txt` ; do
 		--stop-on-first-crash \
 		--nthreads 12 \
 		--me-output-echos \
+		--ignore fieldmaps \
 		--use-syn-sdc \
 		--cifti-output 91k \
 		--output-spaces fsLR fsaverage MNI152NLin6Asym \

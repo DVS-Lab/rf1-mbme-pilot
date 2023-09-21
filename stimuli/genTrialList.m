@@ -27,11 +27,11 @@ evt6	stranger_win        11
 maindir = pwd;
 outfiles = fullfile(maindir,'event-related','params');
 mkdir(outfiles);
-subs = 10401:10500;
+subs = 10691
 
 for s = subs
 
-    subout = fullfile(outfiles,sprintf('sub-%04d',s));
+    subout = fullfile(outfiles,sprintf('sub-%04dsp',s));
     mkdir(subout);
 
     runs = 6;
@@ -46,7 +46,7 @@ for s = subs
     for r = 1:runs
     
         rand_trials = randperm(ntrials);
-        fname = fullfile(subout,sprintf('sub-%04d_run-%d_design.csv',s,r));
+        fname = fullfile(subout,sprintf('sub-%04dsp_run-%d_design.csv',s,r));
         fid = fopen(fname,'w');
         fprintf(fid,'Trialn,TrialType,Partner,Feedback,ITI,ISI\n');
         for t = 1:ntrials
