@@ -28,7 +28,7 @@ if [ ! -d $maindir/derivatives ]; then
 	mkdir -p $maindir/derivatives
 fi
 
-scratchdir=~/scratch/$projectname/fmriprep
+scratchdir=~/scratch/$projectname/fmriprep-syn
 if [ ! -d $scratchdir ]; then
 	mkdir -p $scratchdir
 fi
@@ -39,44 +39,24 @@ export SINGULARITYENV_TEMPLATEFLOW_HOME=/opt/templateflow
 export SINGULARITYENV_MPLCONFIGDIR=/opt/mplconfigdir
 
 for sub in ${subjects[@]}; do
-	# check this list and update intendedfor to make fmpas match
-	if [ $sub -eq 10317 ] || [ $sub -eq 10369 ] || [ $sub -eq 10402 ] || [ $sub -eq 10486 ] || [ $sub -eq 10541 ] || [ $sub -eq 10572 ] || [ $sub -eq 10584 ] || [ $sub -eq 10589 ] || [ $sub -eq 10691 ] || [ $sub -eq 10701 ]; then
-		echo singularity run --cleanenv \
-		-B ${TEMPLATEFLOW_DIR}:/opt/templateflow \
-		-B ${MPLCONFIGDIR_DIR}:/opt/mplconfigdir \
-		-B $maindir:/base \
-		-B ~/work/tools/licenses:/opts \
-		-B $scratchdir:/scratch \
-		~/work/tools/fmriprep-23.1.3.simg \
-		/base/bids /base/derivatives/fmriprep \
-		participant --participant_label $sub \
-		--stop-on-first-crash \
-		--nthreads 12 \
-		--me-output-echos \
-		--ignore fieldmaps \
-		--use-syn-sdc \
-		--cifti-output 91k \
-		--output-spaces fsLR fsaverage MNI152NLin6Asym \
-		--bids-filter-file /base/code/fmriprep_config.json \
-		--fs-license-file /opts/fs_license.txt -w /scratch >> $logdir/cmd_fmriprep_${PBS_JOBID}.txt
-	else
-		echo singularity run --cleanenv \
-		-B ${TEMPLATEFLOW_DIR}:/opt/templateflow \
-		-B ${MPLCONFIGDIR_DIR}:/opt/mplconfigdir \
-		-B $maindir:/base \
-		-B ~/work/tools/licenses:/opts \
-		-B $scratchdir:/scratch \
-		~/work/tools/fmriprep-23.1.3.simg \
-		/base/bids /base/derivatives/fmriprep \
-		participant --participant_label $sub \
-		--stop-on-first-crash \
-		--nthreads 12 \
-		--me-output-echos \
-		--cifti-output 91k \
-		--output-spaces fsLR fsaverage MNI152NLin6Asym \
-		--bids-filter-file /base/code/fmriprep_config.json \
-		--fs-license-file /opts/fs_license.txt -w /scratch >> $logdir/cmd_fmriprep_${PBS_JOBID}.txt
-	fi
+	echo singularity run --cleanenv \
+	-B ${TEMPLATEFLOW_DIR}:/opt/templateflow \
+	-B ${MPLCONFIGDIR_DIR}:/opt/mplconfigdir \
+	-B $maindir:/base \
+	-B ~/work/tools/licenses:/opts \
+	-B $scratchdir:/scratch \
+	~/work/tools/fmriprep-23.1.4.simg \
+	/base/bids /base/derivatives/fmriprep-syn \
+	participant --participant_label $sub \
+	--stop-on-first-crash \
+	--nthreads 12 \
+	--me-output-echos \
+	--ignore fieldmaps \
+	--use-syn-sdc \
+	--cifti-output 91k \
+	--output-spaces fsLR fsaverage MNI152NLin6Asym \
+	--bids-filter-file /base/code/fmriprep_config.json \
+	--fs-license-file /opts/fs_license.txt -w /scratch >> $logdir/cmd_fmriprep_${PBS_JOBID}.txt
 done
 
 torque-launch -p $logdir/chk_fmriprep_${PBS_JOBID}.txt $logdir/cmd_fmriprep_${PBS_JOBID}.txt

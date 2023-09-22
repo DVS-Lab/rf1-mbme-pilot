@@ -5,7 +5,7 @@ maindir=~/work/rf1-mbme-pilot #this should be the only line that has to change i
 scriptdir=$maindir/code
 
 
-mapfile -t myArray < ${scriptdir}/newsubs_rf1-mbme-pilot.txt
+mapfile -t myArray < ${scriptdir}/sublist-all.txt
 
 
 # grab the first 10 elements
