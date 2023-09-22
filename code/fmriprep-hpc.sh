@@ -2,7 +2,7 @@
 #PBS -l walltime=24:00:00
 #PBS -N fmriprep
 #PBS -q normal
-#PBS -l nodes=12:ppn=4
+#PBS -l nodes=6:ppn=28
 
 # load modules and go to workdir
 module load fsl/6.0.2
@@ -49,7 +49,6 @@ for sub in ${subjects[@]}; do
 	/base/bids /base/derivatives/fmriprep-syn \
 	participant --participant_label $sub \
 	--stop-on-first-crash \
-	--nthreads 12 \
 	--me-output-echos \
 	--ignore fieldmaps \
 	--use-syn-sdc \
