@@ -67,13 +67,6 @@ for acq in image_prefix_list:
     data.append([sub,acq,acq_image_files,echo_times,out_dir])
 
 
-InData_df=pd.DataFrame(data=data,columns=['sub','acq','EchoFiles','EchoTimes','OutDir'])
-args=zip(InData_df['sub'].tolist(),
-         InData_df['acq'].tolist(),
-         InData_df['EchoFiles'].tolist(),
-         InData_df['EchoTimes'].tolist(),
-         InData_df['OutDir'].tolist())
-
 #Changes can be reasonably made to
 #fittype: 'loglin' is faster but maybe less accurate than 'curvefit'
 #tedpca:'mdl'Minimum Description Length returns the least number of components (default) and recommeded
@@ -85,10 +78,6 @@ args=zip(InData_df['sub'].tolist(),
 
 
 def RUN_Tedana(sub,prefix,EchoFiles,EchoTimes,OutDir):
-
-
-    time.sleep(2)
-    #print(sub,acq+'\n')
 
     if os.path.exists("%s/%s_desc-optcomDenoised_bold.nii.gz "%(OutDir,acq)):
         print('Tedana was previously run for Sub %s remove directory if they need to be reanalyzed'%(sub))
@@ -108,4 +97,4 @@ def RUN_Tedana(sub,prefix,EchoFiles,EchoTimes,OutDir):
 	    gscontrol=None)
 
 
-RUN_Tedana(args)
+RUN_Tedana(sub,acq,acq_image_files,echo_times,out_dir)
