@@ -110,7 +110,7 @@ acq_image_files.sort()
 
 print(acq_image_files)
 
-out_dir = os.path.join(os.path.abspath(os.path.dirname( prep_data )), "tedana/%s/%s"%(sub,acq))
+out_dir = os.path.join(os.path.abspath(os.path.dirname( prep_data )), "tedana/sub-%s"%(sub))
 
 
 
