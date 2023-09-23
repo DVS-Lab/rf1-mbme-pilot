@@ -47,6 +47,7 @@ for sub in ${subjects[@]}; do
 	~/work/tools/mriqc-23.1.0.simg \
 	/base/bids /base/derivatives/mriqc \
 	participant --participant_label $sub \
+	--no-sub --notrack \
 	-w /scratch >> $logdir/cmd_mriqc_${PBS_JOBID}.txt
 done
 
