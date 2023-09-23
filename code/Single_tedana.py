@@ -32,17 +32,17 @@ acq=args.acq
 #
 def RUN_Tedana(sub,prefix,EchoFiles,EchoTimes,OutDir):
 
-    
+
     #time.sleep(2)
     #print(sub,acq+'\n')
-    
+
     if os.path.exists("%s/%s_desc-optcomDenoised_bold.nii.gz "%(OutDir,acq)):
         print('Tedana was previously run for Sub %s acq- %s remove directory if they need to be reanalyzed'%(sub,acq))
     else:
-  
+
         os.makedirs(OutDir,exist_ok=True)
         print("Running TEDANA for %s %s"%(sub, acq)+'\n')
-        
+
         workflows.tedana_workflow(
 	    EchoFiles,
 	    EchoTimes,
@@ -58,19 +58,13 @@ ME_headerinfo=[os.path.join(root, f) for root, dirs, files in os.walk(bids_dir) 
                if (acq in f)& (f.endswith('_bold.json'))]
 echo_times=[json.load(open(f))['EchoTime'] for f in ME_headerinfo]
 echo_times.sort()
-         
+
 acq_image_files=[os.path.join(root, f) for root, dirs, files in os.walk(prep_data) for f in files
               if (acq in f) & ('echo' in f) & (f.endswith('_desc-preproc_bold.nii.gz'))]
 acq_image_files.sort()
-# # Obtain Echo files
 
+print(acq_image_files)
 
-out_dir= os.path.join(os.path.abspath(os.path.dirname( prep_data )), "tedana/%s/%s"%(sub,acq))
-            
-RUN_Tedana(sub,acq,acq_image_files,echo_times,out_dir):
+out_dir = os.path.join(os.path.abspath(os.path.dirname( prep_data )), "tedana/%s/%s"%(sub,acq))
 
-    
-
-
-
-
+RUN_Tedana(sub,acq,acq_image_files,echo_times,out_dir)

@@ -18,53 +18,54 @@ parser = argparse.ArgumentParser(
     description='Give me a path to your fmriprep output and number of cores to run')
 parser.add_argument('--fmriprepDir',default=None, type=str,help="This is the full path to your fmriprep dir")
 parser.add_argument('--bidsDir',default=None, type=str,help="This is the full path to your BIDS directory")
+parser.add_argument('--sub',default=None, type=int, help="This is the subject number.")
 
 args = parser.parse_args()
 #inputs
 
 prep_data = args.fmriprepDir
-bids_dir=args.bidsDir
+bids_dir = args.bidsDir
+sub = args.sub
 
-# # Obtain Echo files
-
-#find the prefix and suffix to that echo #
-echo_images=[f for root, dirs, files in os.walk(prep_data)
-             for f in files if ('_echo-' in f)& (f.endswith('_bold.nii.gz'))]
-
-#Make a list of filenames that match the prefix
-image_prefix_list=[re.search('(.*)_echo-',f).group(1) for f in echo_images]
-image_prefix_list=set(image_prefix_list)
-
-#Make a dataframe where C1 is Sub C2 is inputFiles and C3 is Echotimes
-data=[]
-for acq in image_prefix_list:
-    print(acq)
-    #Use RegEx to find Sub
-    sub="sub-"+re.search('sub-(.*)_task',acq).group(1)
-
-    #Make a list of the json's w/ appropriate header info from BIDS
-    ME_headerinfo=[os.path.join(root, f) for root, dirs, files in os.walk(bids_dir) for f in files
-               if (acq in f)& (f.endswith('_bold.json'))]
-
-    #Read Echo times out of header info and sort
-    echo_times=[json.load(open(f))['EchoTime'] for f in ME_headerinfo]
-    echo_times.sort()
-
-    #Find images matching the appropriate acq prefix
-    acq_image_files=[os.path.join(root, f) for root, dirs, files in os.walk(prep_data) for f in files
-              if (acq in f) & ('echo' in f) & (f.endswith('_desc-preproc_bold.nii.gz'))]
-    acq_image_files.sort()
-
-    confounds_file=[os.path.join(root, f) for root, dirs, files in os.walk(prep_data) for f in files
-              if (acq in f) & (f.endswith('_desc-confounds_timeseries.tsv'))]
-
-    out_dir= os.path.join(
-        os.path.abspath(
-            os.path.dirname( prep_data )), "tedana/%s"%(sub))
-
-    #print(prep_data,out_dir)
-
-    data.append([sub,acq,acq_image_files,echo_times,out_dir])
+# #find the prefix and suffix to that echo #
+# echo_images=[f for root, dirs, files in os.walk(prep_data)
+#              for f in files if ('_echo-' in f)& (f.endswith('_bold.nii.gz'))]
+#
+# #Make a list of filenames that match the prefix
+# image_prefix_list=[re.search('(.*)_echo-',f).group(1) for f in echo_images]
+# image_prefix_list=set(image_prefix_list)
+#
+# #Make a dataframe where C1 is Sub C2 is inputFiles and C3 is Echotimes
+# data=[]
+# for acq in image_prefix_list:
+#     print(acq)
+#     #Use RegEx to find Sub
+#     sub="sub-"+re.search('sub-(.*)_task',acq).group(1)
+#
+#     #Make a list of the json's w/ appropriate header info from BIDS
+#     ME_headerinfo=[os.path.join(root, f) for root, dirs, files in os.walk(bids_dir) for f in files
+#                if (acq in f)& (f.endswith('_bold.json'))]
+#
+#     #Read Echo times out of header info and sort
+#     echo_times=[json.load(open(f))['EchoTime'] for f in ME_headerinfo]
+#     echo_times.sort()
+#
+#     #Find images matching the appropriate acq prefix
+#     acq_image_files=[os.path.join(root, f) for root, dirs, files in os.walk(prep_data) for f in files
+#               if (acq in f) & ('echo' in f) & (f.endswith('_desc-preproc_bold.nii.gz'))]
+#     acq_image_files.sort()
+#
+#     confounds_file=[os.path.join(root, f) for root, dirs, files in os.walk(prep_data) for f in files
+#               if (acq in f) & (f.endswith('_desc-confounds_timeseries.tsv'))]
+#
+#     out_dir= os.path.join(
+#         os.path.abspath(
+#             os.path.dirname( prep_data )), "tedana/%s"%(sub))
+#
+#     #print(prep_data,out_dir)
+#
+#     data.append([sub,acq,acq_image_files,echo_times,out_dir])
+#
 
 
 #Changes can be reasonably made to
@@ -95,6 +96,23 @@ def RUN_Tedana(sub,prefix,EchoFiles,EchoTimes,OutDir):
 	    tedpca="kic",
 	    verbose=True,
 	    gscontrol=None)
+
+
+ME_headerinfo=[os.path.join(root, f) for root, dirs, files in os.walk(bids_dir) for f in files
+               if (acq in f)& (f.endswith('_bold.json'))]
+echo_times=[json.load(open(f))['EchoTime'] for f in ME_headerinfo]
+echo_times.sort()
+
+acq_image_files=[os.path.join(root, f) for root, dirs, files in os.walk(prep_data) for f in files
+              if (acq in f) & ('echo' in f) & (f.endswith('_desc-preproc_bold.nii.gz'))]
+acq_image_files.sort()
+# # Obtain Echo files
+
+print(acq_image_files)
+
+out_dir = os.path.join(os.path.abspath(os.path.dirname( prep_data )), "tedana/%s/%s"%(sub,acq))
+
+
 
 
 RUN_Tedana(sub,acq,acq_image_files,echo_times,out_dir)
