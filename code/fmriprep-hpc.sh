@@ -1,8 +1,8 @@
 #!/bin/bash
-#PBS -l walltime=4:00:00
+#PBS -l walltime=6:00:00
 #PBS -N fmriprep-test
 #PBS -q normal
-#PBS -l nodes=6:ppn=28
+#PBS -l nodes=1:ppn=28
 
 # load modules and go to workdir
 module load fsl/6.0.2

@@ -2,7 +2,7 @@
 #PBS -l walltime=6:00:00
 #PBS -N mriqc-test
 #PBS -q normal
-#PBS -l nodes=2:ppn=28
+#PBS -l nodes=1:ppn=28
 
 # load modules and go to workdir
 module load fsl/6.0.2
