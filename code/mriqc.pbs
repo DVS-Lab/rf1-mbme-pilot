@@ -1,0 +1,54 @@
+#!/bin/bash
+#PBS -l walltime=6:00:00
+#PBS -N mriqc-test
+#PBS -q normal
+#PBS -l nodes=6:ppn=28
+
+# load modules and go to workdir
+module load fsl/6.0.2
+source $FSLDIR/etc/fslconf/fsl.sh
+module load singularity/3.8.5
+cd $PBS_O_WORKDIR
+
+# ensure paths are correct
+projectname=rf1-mbme-pilot #this should be the only line that has to change if the rest of the script is set up correctly
+maindir=~/work/$projectname
+scriptdir=$maindir/code
+bidsdir=$maindir/bids
+logdir=$maindir/logs
+mkdir -p $logdir
+
+
+rm -f $logdir/cmd_mriqc_${PBS_JOBID}.txt
+touch $logdir/cmd_mriqc_${PBS_JOBID}.txt
+
+# make derivatives folder if it doesn't exist.
+# let's keep this out of bids for now
+if [ ! -d $maindir/derivatives/mriqc ]; then
+	mkdir -p $maindir/derivatives/mriqc
+fi
+
+scratchdir=~/scratch/$projectname/mriqc
+if [ ! -d $scratchdir ]; then
+	mkdir -p $scratchdir
+fi
+
+TEMPLATEFLOW_DIR=~/work/tools/templateflow
+MPLCONFIGDIR_DIR=~/work/mplconfigdir
+export SINGULARITYENV_TEMPLATEFLOW_HOME=/opt/templateflow
+export SINGULARITYENV_MPLCONFIGDIR=/opt/mplconfigdir
+
+for sub in ${subjects[@]}; do
+	echo singularity run --cleanenv \
+	-B ${TEMPLATEFLOW_DIR}:/opt/templateflow \
+	-B ${MPLCONFIGDIR_DIR}:/opt/mplconfigdir \
+	-B $maindir:/base \
+	-B $scratchdir:/scratch \
+	~/work/tools/mriqc-23.1.0.simg \
+	/base/bids /base/derivatives/mriqc \
+	participant --participant_label $sub \
+	-w /scratch >> $logdir/cmd_mriqc_${PBS_JOBID}.txt
+done
+
+
+torque-launch -p $logdir/chk_mriqc_${PBS_JOBID}.txt $logdir/cmd_mriqc_${PBS_JOBID}.txt
