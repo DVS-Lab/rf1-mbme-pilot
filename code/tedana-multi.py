@@ -35,6 +35,8 @@ echo_images=[f for root, dirs, files in os.walk(prep_data)
 image_prefix_list=[re.search('(.*)_echo-',f).group(1) for f in echo_images]
 image_prefix_list=set(image_prefix_list)
 
+print(image_prefix_list)
+
 #Make a dataframe where C1 is Sub C2 is inputFiles and C3 is Echotimes
 data=[]
 for acq in image_prefix_list:
@@ -99,9 +101,9 @@ def RUN_Tedana(sub,prefix,EchoFiles,EchoTimes,OutDir):
 
 
 
-print(acq_image_files)
+#print(acq_image_files)
 
 out_dir = os.path.join(os.path.abspath(os.path.dirname( prep_data )), "tedana/sub-%s"%(sub))
 
 
-RUN_Tedana(sub,acq,acq_image_files,echo_times,out_dir)
+#RUN_Tedana(sub,acq,acq_image_files,echo_times,out_dir)
