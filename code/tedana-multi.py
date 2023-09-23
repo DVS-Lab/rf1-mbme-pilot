@@ -98,15 +98,6 @@ def RUN_Tedana(sub,prefix,EchoFiles,EchoTimes,OutDir):
 	    gscontrol=None)
 
 
-ME_headerinfo=[os.path.join(root, f) for root, dirs, files in os.walk(bids_dir) for f in files
-               if (acq in f)& (f.endswith('_bold.json'))]
-echo_times=[json.load(open(f))['EchoTime'] for f in ME_headerinfo]
-echo_times.sort()
-
-acq_image_files=[os.path.join(root, f) for root, dirs, files in os.walk(prep_data) for f in files
-              if (acq in f) & ('echo' in f) & (f.endswith('_desc-preproc_bold.nii.gz'))]
-acq_image_files.sort()
-# # Obtain Echo files
 
 print(acq_image_files)
 
