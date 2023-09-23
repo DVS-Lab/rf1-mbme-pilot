@@ -1,5 +1,5 @@
 #!/bin/bash
-#PBS -l walltime=1:00:00
+#PBS -l walltime=4:00:00
 #PBS -N fmriprep-test
 #PBS -q normal
 #PBS -l nodes=6:ppn=28
