@@ -11,12 +11,12 @@ import argparse
 
 # define function
 def RUN_Tedana(sub,prefix,EchoFiles,EchoTimes,OutDir):
-	if os.path.exists("%s/%s_desc-optcomDenoised_bold.nii.gz "%(OutDir,acq)):
-		print('Tedana was previously run for Sub %s remove directory if they need to be reanalyzed'%(sub))
+	previousFile = os.path.join(OutDir, "%s_desc-optcomDenoised_bold.nii.gz" % (acq))
+	#print(previousFile)
+	if os.path.exists(previousFile):
+		print('WARNING: skipping since TEDANA output exists for %s ' % (acq))
 	else: 	
 		os.makedirs(OutDir,exist_ok=True)
-		print(OutDir)
-		print(acq)
 		print("Running TEDANA for %s"%(acq)+'\n')
 		
 		workflows.tedana_workflow(
@@ -51,7 +51,7 @@ image_prefix_list=set(image_prefix_list)
 
 # run tedana on each set of multi-echo images
 for acq in image_prefix_list:
-    print(acq)
+    #print(acq)
     #Use RegEx to find Sub
     sub="sub-"+re.search('sub-(.*)_task',acq).group(1)
 
