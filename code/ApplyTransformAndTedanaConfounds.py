@@ -18,8 +18,10 @@ bold_imgs=[os.path.join(root,f) for root,dirs,files in os.walk(tedana_dir) for f
 metric_files = natsorted([os.path.join(root,f) for root,dirs,files in os.walk(
     '../derivatives/tedana/') for f in files if f.endswith("PCA_metrics.tsv")])
 subs=set([re.search("tedana/(.*)/sub-",file).group(1) for file in metric_files])
-for sub in subs:
-    print(sub,"has %s acqs of denoised tedana"%(sum(sub in s for s in metric_files)))
+
+#for sub in subs:
+#    print(sub,"has %s acqs of denoised tedana"%(sum(sub in s for s in metric_files)))
+
 for file in metric_files:
 	
     #Read in the directory, sub-number, and acquisition
@@ -31,18 +33,12 @@ for file in metric_files:
     acq=re.search("acq-(.*)/sub-",file).group(1)
     sub=re.search("acq-" + acq + "/(.*)_task-",file).group(1)
     
-    
-    
-    print(base)
-    print(sub)
-    print(acq)
-    
     #import the data as dataframes
     fmriprep_fname="../derivatives/fmriprep-syn/%s/func/%s_task-sharedreward_acq-%s_desc-confounds_timeseries.tsv"%(sub,sub,acq)
     #print(fmriprep_fname)
     
     if os.path.exists(fmriprep_fname):
-        print("Making Counfounds: %s %s"%(sub,acq))
+        print("Making Confounds: %s %s"%(sub,acq))
         fmriprep_confounds=pd.read_csv(fmriprep_fname,sep='\t')
         PCA_mixing=pd.read_csv('%sPCA_mixing.tsv'%(base),sep='\t')
         PCA_metrics=pd.read_csv('%sPCA_metrics.tsv'%(base),sep='\t')
