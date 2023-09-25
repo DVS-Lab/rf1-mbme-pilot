@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 
-import ants
 import matplotlib.pyplot as plt
 import os
 import pandas as pd
@@ -22,14 +21,26 @@ subs=set([re.search("tedana/(.*)/sub-",file).group(1) for file in metric_files])
 for sub in subs:
     print(sub,"has %s acqs of denoised tedana"%(sum(sub in s for s in metric_files)))
 for file in metric_files:
+	
     #Read in the directory, sub-number, and acquisition
     base=re.search("(.*)PCA_metrics",file).group(1)
-    sub=re.search("tedana/(.*)/sub-",file).group(1)
-    acq=re.search("acq-(.*)_desc",file).group(1)
-    #print(sub,acq)
+    #sub=re.search("tedana/(.*)/sub-",file).group(1)
+    #acq=re.search("acq-(.*)_desc",file).group(1)
 
+
+    acq=re.search("acq-(.*)/sub-",file).group(1)
+    sub=re.search("acq-" + acq + "/(.*)_task-",file).group(1)
+    
+    
+    
+    print(base)
+    print(sub)
+    print(acq)
+    
     #import the data as dataframes
     fmriprep_fname="../derivatives/fmriprep-syn/%s/func/%s_task-sharedreward_acq-%s_desc-confounds_timeseries.tsv"%(sub,sub,acq)
+    #print(fmriprep_fname)
+    
     if os.path.exists(fmriprep_fname):
         print("Making Counfounds: %s %s"%(sub,acq))
         fmriprep_confounds=pd.read_csv(fmriprep_fname,sep='\t')
