@@ -13,33 +13,31 @@ import json
 
 # In[2]:
 cwd = dir_path = os.path.dirname(os.path.realpath(__file__)) 
-bidsdir = os.path.join('%s/../bids'%(cwd))
+# bidsdir = os.path.join('%s/../bids'%(cwd))
+bidsdir='/ZPOOL/data/projects/rf1-mbme-pilot/bids/'
 
 print(bidsdir)
 
-
 event_files=[os.path.join(root,f) for root,dirs,files in os.walk(bidsdir) for f in files if f.endswith('events.tsv')]
+#print(event_files)
 data=[]
 for file in event_files:
-    sub='sub-'+re.search('func/sub-(.*)_task',file).group(1)
-    acq=re.search('_acq-(.*)_events',file).group(1)
-    tmp_df=pd.read_csv(file,sep='\t')
-    if tmp_df.shape[0]>0:
-        print(sub,acq)
-        tmp_df['sub']=sub
-        tmp_df['acq']=acq
-        data.append(tmp_df)
+	sub='sub-'+re.search('func/sub-(.*)_task',file).group(1)
+	acq=re.search('_acq-(.*)_events',file).group(1)
+	tmp_df=pd.read_csv(file,sep='\t')
+	print(tmp_df)
+	if tmp_df.shape[0]>0:
+		print(sub,acq)
+		tmp_df['sub']=sub
+		tmp_df['acq']=acq
+		data.append(tmp_df)
 events_df=pd.concat(data)
 
-
 # In[ ]:
-
 
 print(events_df['sub'].unique())
 
-
 # In[ ]:
-
 
 data=[]
 for sub in events_df['sub'].unique():
