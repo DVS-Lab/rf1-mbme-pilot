@@ -137,7 +137,8 @@ dmypy.json
 
 # imaging output
 *.nii.gz
-bids
+*.json
+#bids
 derivatives
 sub-*.html
 *.asv
