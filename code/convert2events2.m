@@ -1,4 +1,5 @@
-function out = convertSharedReward2BIDSevents(subj,counterbalance)
+% function out = convertSharedReward2BIDSevents(subj,counterbalance)
+function out = convert2events2(subj,counterbalance)
 % This function converts the raw behavioral output from psychopy into
 % the BIDS *_events.tsv file format. It also collects summary information
 % about the subject's data in the "out" variable.
