@@ -53,7 +53,7 @@ for sub in ${subjects[@]}; do
 	--ignore fieldmaps \
 	--use-syn-sdc \
 	--fs-no-reconall \
-	--no-track \
+	--notrack \
 	--bids-filter-file /base/code/fmriprep_config.json \
 	--fs-license-file /opts/fs_license.txt -w /scratch >> $logdir/cmd_fmriprep_${PBS_JOBID}.txt
 done
