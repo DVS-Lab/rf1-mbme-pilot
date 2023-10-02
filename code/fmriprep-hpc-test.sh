@@ -52,10 +52,12 @@ for sub in ${subjects[@]}; do
 	--me-output-echos \
 	--ignore fieldmaps \
 	--use-syn-sdc \
-	--cifti-output 91k \
-	--output-spaces fsLR fsaverage MNI152NLin6Asym \
 	--bids-filter-file /base/code/fmriprep_config.json \
 	--fs-license-file /opts/fs_license.txt -w /scratch >> $logdir/cmd_fmriprep_${PBS_JOBID}.txt
 done
+
+## debugging later and not necessary for Axel's tests
+# --cifti-output 91k \
+# --output-spaces fsLR fsaverage MNI152NLin6Asym \
 
 torque-launch -p $logdir/chk_fmriprep_${PBS_JOBID}.txt $logdir/cmd_fmriprep_${PBS_JOBID}.txt
