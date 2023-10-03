@@ -52,7 +52,8 @@ try
     
     for r = 1:6
         % sub-10008_task-sharedreward_run-1_mb-1_me-1_raw.csv --> sub-10008_task-sharedreward_run-1_acq-mb1me1_raw.csv
-        fname = fullfile(logdir,num2str(subj),sprintf('sub-%04d_task-sharedreward_run-%d_acq-%s_raw.csv',subj,r,acqs{r}));
+        %fname = fullfile(logdir,num2str(subj),sprintf('sub-%04d_task-sharedreward_run-%d_acq-%s_raw.csv',subj,r,acqs{r}));
+        fname = fullfile(logdir,subj,sprintf('sub-%04d_task-sharedreward_run-%d_acq-%s_raw.csv',subj,r,acqs{r}));
         
         if r == 1 % only needed for first pass through
             [sublogdir,~,~] = fileparts(fname);
