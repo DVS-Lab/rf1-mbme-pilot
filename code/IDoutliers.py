@@ -49,8 +49,10 @@ for sub in events_df['sub'].unique():
 
             if acq in ['mb1me4','mb3me4','mb6me4']:
                 f = open("%s/../derivatives/mriqc/%s/func/%s_task-sharedreward_acq-%s_echo-2_bold.json"%(cwd,sub,sub,acq))
+                print("Don't forget to update this if statement for seq pilot 2.0")
             else:
                 f = open("%s/../derivatives/mriqc/%s/func/%s_task-sharedreward_acq-%s_bold.json"%(cwd,sub,sub,acq))
+                print("Don't forget to update this if statement for seq pilot 2.0")
 
             # returns JSON object as 
             # a dictionary
