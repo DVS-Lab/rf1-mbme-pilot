@@ -29,6 +29,13 @@ try
         case 2, acqs = {'mb1me4',	'mb3me4',	'mb6me4',	'mb1me1',	'mb3me1',	'mb6me1'};
         case 4, acqs = {'mb3me4',	'mb6me4',	'mb1me1',	'mb3me1',	'mb6me1',	'mb1me4'};
         case 6, acqs = {'mb6me4',	'mb1me1',	'mb3me1',	'mb6me1',	'mb1me4',	'mb3me4'};
+        % Seq Pilot 2.0
+        case 21, acqs = {'mb3me3ip0',	'mb3me4',	'mb3me4fa50',	'mb2me4',	'mb3me1fa50',	'mb3me3'};
+        case 22, acqs = {'mb3me3',	'mb3me3ip0', 'mb3me4',	'mb3me4fa50',	'mb2me4', 'mb3me1fa50'};
+        case 23, acqs = {'mb3me1fa50',	'mb3me3',	'mb3me3ip0', 'mb3me4',	'mb3me4fa50',	'mb2me4'};
+        case 24, acqs = {'mb2me4',	'mb3me1fa50',	'mb3me3',	'mb3me3ip0', 'mb3me4',	'mb3me4fa50'};
+        case 25, acqs = {'mb3me4fa50',	'mb2me4',	'mb3me1fa50',	'mb3me3',	'mb3me3ip0', 'mb3me4'};
+        case 26, acqs = {'mb3me4',	'mb3me4fa50',	'mb2me4',	'mb3me1fa50',	'mb3me3',	'mb3me3ip0'};
     end
     
     % set up paths
@@ -53,7 +60,7 @@ try
     for r = 1:6
         % sub-10008_task-sharedreward_run-1_mb-1_me-1_raw.csv --> sub-10008_task-sharedreward_run-1_acq-mb1me1_raw.csv
         %fname = fullfile(logdir,num2str(subj),sprintf('sub-%04d_task-sharedreward_run-%d_acq-%s_raw.csv',subj,r,acqs{r}));
-        fname = fullfile(logdir,subj,sprintf('sub-%04d_task-sharedreward_run-%d_acq-%s_raw.csv',subj,r,acqs{r}));
+        fname = fullfile(logdir,num2str(subj),sprintf('sub-%04d_task-sharedreward_run-%d_acq-%s_raw.csv',subj,r,acqs{r}));
         
         if r == 1 % only needed for first pass through
             [sublogdir,~,~] = fileparts(fname);
@@ -64,6 +71,11 @@ try
         if exist(fname,'file')
             T = readtable(fname,'TreatAsEmpty','--');
         else
+            fprintf(' ')
+            fprintf(subj)
+            fprintf(' ')
+            fprintf(fname)
+            fprintf(' ')
             fprintf('sub-%d_task-sharedreward_run-%d: No data found. Exiting...\n', subj, r)
             %exit
         end
