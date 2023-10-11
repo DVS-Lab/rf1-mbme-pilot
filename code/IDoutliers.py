@@ -35,7 +35,7 @@ events_df=pd.concat(data)
 
 # In[ ]:
 
-print(events_df['sub'].unique())
+#print(events_df['sub'].unique())
 
 # In[ ]:
 
