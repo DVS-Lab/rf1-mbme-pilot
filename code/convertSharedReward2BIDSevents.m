@@ -29,11 +29,24 @@ try
         case 2, acqs = {'mb1me4',	'mb3me4',	'mb6me4',	'mb1me1',	'mb3me1',	'mb6me1'};
         case 4, acqs = {'mb3me4',	'mb6me4',	'mb1me1',	'mb3me1',	'mb6me1',	'mb1me4'};
         case 6, acqs = {'mb6me4',	'mb1me1',	'mb3me1',	'mb6me1',	'mb1me4',	'mb3me4'};
-    end
+        % Seq Pilot 2.0 %%%JBW: Need to make these cases match the acqs in
+        % logs; move the full titles to the output section
+        case 21, acqs = {'mb3me4',	'mb3me4fa50',	'mb2me4',	'mb3me1fa50',	'mb3me3', 'mb3me3ip0'}, acqsFull = {'mb3me4', 'mb3me4', 'mb2me4', 'mb3me1', 'mb3me3', 'mb3me3'};
+        %case 22, acqs = {'mb3me4fa50',	'mb2me4',	'mb3me1fa50',	'mb3me3', 'mb3me3ip0', 'mb3me4'};
+        case 22, acqs = {'mb3me4', 'mb2me4', 'mb3me1', 'mb3me3', 'mb3me3', 'mb3me4'};
+	%case 23, acqs = {'mb2me4',	'mb3me1fa50',	'mb3me3', 'mb3me3ip0', 'mb3me4', 'mb3me4fa50'};
+        case 23, acqs = {'mb2me4', 'mb3me1', 'mb3me3', 'mb3me3', 'mb3me4', 'mb3me4'};
+	%case 24, acqs = {'mb3me1fa50',	'mb3me3', 'mb3me3ip0', 'mb3me4', 'mb3me4fa50', 'mb2me4'};
+        case 24, acqs = {'mb3me1', 'mb3me3', 'mb3me3', 'mb3me4', 'mb3me4', 'mb2me4'};
+	%case 25, acqs = {'mb3me3', 'mb3me3ip0', 'mb3me4', 'mb3me4fa50', 'mb2me4', 'mb3me1fa50'};
+        case 25, acqs = {'mb3me3', 'mb3me3', 'mb3me4', 'mb3me4', 'mb2me4', 'mb3me1'};
+	%case 26, acqs = {'mb3me3ip0', 'mb3me4', 'mb3me4fa50', 'mb2me4', 'mb3me1fa50', 'mb3me3'};
+    	case 26, acqs = {'mb3me3', 'mb3me4', 'mb3me4', 'mb2me4', 'mb3me1', 'mb3me3'};
+	end
     
     % set up paths
     scriptname = matlab.desktop.editor.getActiveFilename;
-    fprintf("running subject: %d counterbalance: %d", subj, counterbalance)
+    fprintf("running subject: %dsp counterbalance: %d ", subj, counterbalance)
     [codedir,~,~] = fileparts(scriptname);
     cd(codedir);
     addpath(codedir);
@@ -53,7 +66,7 @@ try
     for r = 1:6
         % sub-10008_task-sharedreward_run-1_mb-1_me-1_raw.csv --> sub-10008_task-sharedreward_run-1_acq-mb1me1_raw.csv
         %fname = fullfile(logdir,num2str(subj),sprintf('sub-%04d_task-sharedreward_run-%d_acq-%s_raw.csv',subj,r,acqs{r}));
-        fname = fullfile(logdir,subj,sprintf('sub-%04d_task-sharedreward_run-%d_acq-%s_raw.csv',subj,r,acqs{r}));
+        fname = fullfile(logdir,num2str(subj),sprintf('sub-%04dsp_task-sharedreward_run-%d_acq-%s_raw.csv',subj,r,acqs{r}));
         
         if r == 1 % only needed for first pass through
             [sublogdir,~,~] = fileparts(fname);
@@ -64,7 +77,12 @@ try
         if exist(fname,'file')
             T = readtable(fname,'TreatAsEmpty','--');
         else
-            fprintf('sub-%d_task-sharedreward_run-%d: No data found. Exiting...\n', subj, r)
+            fprintf(' ')
+            fprintf(subj)
+            fprintf(' ')
+            fprintf(fname)
+            fprintf(' ')
+            fprintf('sub-%dsp_task-sharedreward_run-%d: No data found. Exiting...\n', subj, r)
             %exit
         end
         
@@ -86,15 +104,16 @@ try
         feedback = T.Feedback;
         response = T.resp; % Ori: Right index is 2, left index is 7
         
-        
-        
         out.ntrials(r) = height(T);
         out.nmisses(r) = sum(T.resp < 1);
         
-        
+        %%%JBW: Make sure this is the full output name
+	%if (case == 21) && (r=1)
+	%	fname = sprintf(sub
         % output file
-        fname = sprintf('sub-%04d_task-sharedreward_acq-%s_events.tsv',subj,acqs{r}); % need to make fMRI run number consistent with this?
+        fname = sprintf('sub-%04d_task-sharedreward_acq-%s_events.tsv',subj,acqsFull{r}); % need to make fMRI run number consistent with this?
         output = fullfile(dsdir,'bids',['sub-' num2str(subj)],'func');
+        
         if ~exist(output,'dir')
             mkdir(output)
         end
