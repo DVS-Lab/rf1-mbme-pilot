@@ -13,7 +13,7 @@ for sub in `ls -d ${basedir}/bids/sub-*/`; do
   sub=${sub%/}
   echo ${sub}
 
-  if [ "${sub}" == "10589sp" ] || [ "${sub}" == "10590sp" ] || [ "${sub}" == "10603sp" ] || [ "${sub}" == "10606sp" ] || [ "${sub}" == "10608sp" ] || [ "${sub}" == "10644sp" ] || [ "${sub}" == "10690sp" ] || [ "${sub}" == "10691sp" ] || [ "${sub}" == "10723sp" ] || [ "${sub}" == "10741sp" ] || [ "${sub}" == "10777sp" ] || [ "${sub}" == "10803sp" ]; then
+  if [ "${sub}" == "10589sp" ] || [ "${sub}" == "10590sp" ] || [ "${sub}" == "10603sp" ] || [ "${sub}" == "10606sp" ] || [ "${sub}" == "10608sp" ] || [ "${sub}" == "10644sp" ] || [ "${sub}" == "10690sp" ] || [ "${sub}" == "10640sp" ] || [ "${sub}" == "10691sp" ] || [ "${sub}" == "10723sp" ] || [ "${sub}" == "10741sp" ] || [ "${sub}" == "10777sp" ] || [ "${sub}" == "10803sp" ]; then
     for mbme in mb2me4 mb3me1fa50 mb3me3 mb3me3ip0 mb3me4 mb3me4fa50; do
 	    if [[ "$mbme" == "mb3me1fa50" ]]
 	    then
