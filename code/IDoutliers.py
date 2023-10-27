@@ -27,12 +27,12 @@ for file in event_files:
 	tmp_df=pd.read_csv(file,sep='\t')
 	print(tmp_df)
 	if tmp_df.shape[0]>0:
-		print(sub,acq)
+		#print(sub,acq)
 		tmp_df['sub']=sub
 		tmp_df['acq']=acq
 		data.append(tmp_df)
 events_df=pd.concat(data)
-
+#print(events_df)
 # In[ ]:
 
 #print(events_df['sub'].unique())
@@ -47,12 +47,10 @@ for sub in events_df['sub'].unique():
         if os.path.exists(fname):
             absolute=np.loadtxt(fname)
 
-            if acq in ['mb1me4','mb3me4','mb6me4']:
+            if acq in ['mb1me4','mb3me4','mb6me4', 'mb3mb4fa50','mb3me3ip0','mb2me4','mb3me3']:
                 f = open("%s/../derivatives/mriqc/%s/func/%s_task-sharedreward_acq-%s_echo-2_bold.json"%(cwd,sub,sub,acq))
-                print("Don't forget to update this if statement for seq pilot 2.0")
             else:
                 f = open("%s/../derivatives/mriqc/%s/func/%s_task-sharedreward_acq-%s_bold.json"%(cwd,sub,sub,acq))
-                print("Don't forget to update this if statement for seq pilot 2.0")
 
             # returns JSON object as 
             # a dictionary
