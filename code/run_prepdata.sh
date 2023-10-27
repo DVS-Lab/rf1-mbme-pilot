@@ -5,7 +5,7 @@ scriptdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 maindir="$(dirname "$scriptdir")"
 
 #for sub in `cat ${scriptdir}/recentsubs_rf1-mbme-pilot.txt` ; do
-for sub in 10606sp 10608sp 10704sp; do
+for sub in 10723sp 10741sp 10738; do
 
 	script=${scriptdir}/prepdata.sh
 	NCORES=10
