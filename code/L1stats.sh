@@ -19,11 +19,10 @@ TASK=sharedreward
 sm=4
 model=$1
 sub=$2
-mb=$3
-me=$4
-ppi=$5 # 0 for activation, otherwise seed region or network
-acq=mb${mb}me${me}
-denoise=$6
+mbme=$3
+ppi=$4 # 0 for activation, otherwise seed region or network
+acq=mb${mbme}
+denoise=$5
 
 # set inputs and general outputs (should not need to chage across studies in Smith Lab)
 MAINOUTPUT=${maindir}/derivatives/fsl/sub-${sub}
