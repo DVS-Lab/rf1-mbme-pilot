@@ -21,14 +21,14 @@ model=$1
 sub=$2
 mbme=$3
 ppi=$4 # 0 for activation, otherwise seed region or network
-acq=mb${mbme}
+acq=${mbme}
 denoise=$5
 
 # set inputs and general outputs (should not need to chage across studies in Smith Lab)
 MAINOUTPUT=${maindir}/derivatives/fsl/sub-${sub}
 mkdir -p $MAINOUTPUT
 
-DATA=${istartdatadir}/derivatives/fmriprep/sub-${sub}/func/sub-${sub}_task-${TASK}_acq-${acq}_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz
+DATA=${istartdatadir}/derivatives/fmriprep-syn/sub-${sub}/func/sub-${sub}_task-${TASK}_acq-${acq}_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz
 
 #Handling different inputs for multi vs single echos
 #if [ $me -gt 1 ];then
