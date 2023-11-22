@@ -45,7 +45,7 @@ for sub in ${subjects[@]}; do
 	-B $maindir:/base \
 	-B ~/work/tools/licenses:/opts \
 	-B $scratchdir:/scratch \
-	~/work/tools/fmriprep-23.2.0a1.simg \
+	~/work/tools/fmriprep-23.2.0a2.simg \
 	/base/bids /base/derivatives/fmriprep-syn-new \
 	participant --participant_label $sub \
 	--stop-on-first-crash \
