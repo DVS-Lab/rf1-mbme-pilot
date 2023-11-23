@@ -28,7 +28,7 @@ if [ ! -d $maindir/derivatives ]; then
 	mkdir -p $maindir/derivatives
 fi
 
-scratchdir=~/scratch/$projectname/fmriprep-syn-new
+scratchdir=~/scratch/$projectname/fmriprep-new
 if [ ! -d $scratchdir ]; then
 	mkdir -p $scratchdir
 fi
@@ -46,16 +46,18 @@ for sub in ${subjects[@]}; do
 	-B ~/work/tools/licenses:/opts \
 	-B $scratchdir:/scratch \
 	~/work/tools/fmriprep-23.2.0a2.simg \
-	/base/bids /base/derivatives/fmriprep-syn-new \
+	/base/bids /base/derivatives/fmriprep-new \
 	participant --participant_label $sub \
 	--stop-on-first-crash \
 	--me-output-echos \
-	--ignore fieldmaps \
-	--use-syn-sdc \
 	--cifti-output 91k \
 	--output-spaces fsLR fsaverage MNI152NLin6Asym \
 	--bids-filter-file /base/code/fmriprep_config.json \
 	--fs-license-file /opts/fs_license.txt -w /scratch >> $logdir/cmd_fmriprep_${PBS_JOBID}.txt
 done
+
+# --ignore fieldmaps \
+#	--use-syn-sdc \
+
 
 torque-launch -p $logdir/chk_fmriprep_${PBS_JOBID}.txt $logdir/cmd_fmriprep_${PBS_JOBID}.txt
