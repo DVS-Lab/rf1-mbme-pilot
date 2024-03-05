@@ -33,7 +33,7 @@ parser = argparse.ArgumentParser(
     description='Give me a path to your fmriprep output and number of cores to run')
 parser.add_argument('--fmriprepDir',default=None, type=str,help="This is the full path to your fmriprep dir")
 parser.add_argument('--bidsDir',default=None, type=str,help="This is the full path to your BIDS directory")
-parser.add_argument('--sub',default=None, type=int, help="This is the subject number.")
+parser.add_argument('--sub',default=None, type=str, help="This is the subject number.")
 args = parser.parse_args()
 prep_data = args.fmriprepDir
 bids_dir = args.bidsDir

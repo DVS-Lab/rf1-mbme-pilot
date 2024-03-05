@@ -28,7 +28,7 @@ denoise=$5
 MAINOUTPUT=${maindir}/derivatives/fsl/sub-${sub}
 mkdir -p $MAINOUTPUT
 
-DATA=${istartdatadir}/derivatives/fmriprep-syn/sub-${sub}/func/sub-${sub}_task-${TASK}_acq-${acq}_space-MNI152NLin2009cAsym_desc-preproc_bold.nii.gz
+DATA=${istartdatadir}/derivatives/fmriprep-syn/sub-${sub}/func/sub-${sub}_task-${TASK}_acq-${acq}_space-MNI152NLin6Asym_desc-preproc_bold.nii.gz
 
 #Handling different inputs for multi vs single echos
 #if [ $me -gt 1 ];then
@@ -178,9 +178,11 @@ else # otherwise, do activation and seed-based ppi
 	if [ "$ppi" == "0" ]; then
 		TYPE=act
 		OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-${model}_type-${TYPE}_acq-${acq}_sm-${sm}_denoising-${denoise}
+		OTEMPLATE=${MAINOUTPUT}/L1_task-${TASK}_model-${model}_type-${TYPE}_acq-${acq}_sm-${sm}_denoising-${denoise}.fsf
 	else
 		TYPE=ppi
 		OUTPUT=${MAINOUTPUT}/L1_task-${TASK}_model-${model}_type-${TYPE}_seed-${ppi}_acq-${acq}_sm-${sm}_denoising-${denoise}
+		OTEMPLATE=${MAINOUTPUT}/L1_task-${TASK}_model-${model}_type-${TYPE}_seed-${ppi}_acq-${acq}_sm-${sm}_denoising-${denoise}.fsf
 	fi
 	
 	# check for output and skip existing
@@ -193,7 +195,7 @@ else # otherwise, do activation and seed-based ppi
        
 	# create template and run analyses
 	ITEMPLATE=${maindir}/templates/L1_task-${TASK}_model-${model}_type-${TYPE}.fsf
-	OTEMPLATE=${MAINOUTPUT}/L1_sub-${sub}_task-${TASK}_model-${model}_seed-${ppi}_acq-${acq}_type-${TYPE}.fsf
+	#OTEMPLATE=${MAINOUTPUT}/L1_task-${TASK}_model-${model}_type-${TYPE}_acq-${acq}_sm-${sm}_denoising-${denoise}.fsf
 	if [ "$ppi" == "0" ]; then
 		echo $OUTPUT
 		sed -e 's@OUTPUT@'$OUTPUT'@g' \
