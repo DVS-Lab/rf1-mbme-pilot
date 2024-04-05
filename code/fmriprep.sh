@@ -13,7 +13,7 @@ bidsdir=$maindir/bids
 # make derivatives folder if it doesn't exist.
 # let's keep this out of bids for now
 if [ ! -d $maindir/derivatives/fmriprep-test2 ]; then
-	mkdir -p $maindir/derivatives/fmriprep-test2
+	mkdir -p $maindir/derivatives/fmriprep-test3
 fi
 
 scratchdir=/ZPOOL/data/scratch/`whoami`
@@ -29,20 +29,23 @@ fi
 # rm -rf ${bidsdir}/sub-*/sub-*_scans.tsv
 
 
+
 TEMPLATEFLOW_DIR=/ZPOOL/data/tools/templateflow
 export SINGULARITYENV_TEMPLATEFLOW_HOME=/opt/templateflow
-singularity run --cleanenv \
+/ZPOOL/data/tools/apptainer/bin/singularity run --cleanenv \
 -B ${TEMPLATEFLOW_DIR}:/opt/templateflow \
 -B $maindir:/base \
 -B /ZPOOL/data/tools/licenses:/opts \
 -B $scratchdir:/scratch \
-/ZPOOL/data/tools/fmriprep-23.1.3.simg \
-/base/bids /base/derivatives/fmriprep \
+/ZPOOL/data/tools/fmriprep-23.2.1.simg \
+/base/bids /base/derivatives/fmriprep-test3 \
 participant --participant_label $sub \
---ignore fieldmaps \
 --use-syn-sdc \
 --me-output-echos \
---cifti-output 91k \
---output-spaces fsLR fsaverage MNI152NLin6Asym \
+--output-spaces MNI152NLin6Asym \
 --bids-filter-file /base/code/fmriprep_config.json \
 --fs-license-file /opts/fs_license.txt -w /scratch
+
+# NOTE: the --use-syn-sdc option will only be applied in cases where there is not a valid fmap.
+# https://neurostars.org/t/using-use-syn-sdc-with-fieldmap-data/2592/2
+
