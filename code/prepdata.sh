@@ -37,12 +37,11 @@ fi
 rm -rf $dsroot/bids/sub-${sub}
 
 
-# PART 1: running heudiconv and fixing fieldmaps
-# to-do: need if statement for new subjects? i don't think so, but need to check and test heuristic and output
-singularity run --cleanenv \
+# PART 1: running heudiconv
+/ZPOOL/data/tools/apptainer/bin/singularity run --cleanenv \
 -B $dsroot:/out \
 -B $sourcedata:/sourcedata \
-/ZPOOL/data/tools/heudiconv-0.13.1.sif \
+/ZPOOL/data/tools/heudiconv_1.1.0.sif \
 -d /sourcedata/Smith-SRA-{subject}/*/scans/*/*/DICOM/files/*.dcm \
 -o /out/bids/ \
 -f /out/code/heuristics.py \
