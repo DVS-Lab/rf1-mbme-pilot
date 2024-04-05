@@ -131,11 +131,9 @@ def infotodict(seqinfo):
         if (s.dim4 >= 100) and ('MB3ME4_IP2_FA20' in s.protocol_name) and ('M' not in s.image_type):
             info[mb3me4_phase].append(s.series_id)
         if (s.dim4 >= 100) and ('MB3ME1_IP0_FA50' in s.protocol_name) and ('M' in s.image_type):
-            info[mb3me1_fa50_mag].append(s.series_id)
+            info[mb3me1_fa50].append(s.series_id)
             idx = list_of_ids.index(s.series_id)
             info[mb3me1_fa50_sbref].append(list_of_ids[idx -1])
-        if (s.dim4 >= 100) and ('MB3ME1_IP0_FA50' in s.protocol_name) and ('M' not in s.image_type):
-            info[mb3me1_fa50_phase].append(s.series_id)
         if (s.dim4 >= 100) and ('MB2ME4_IP2_FA50' in s.protocol_name) and ('M' in s.image_type):
             info[mb2me4_mag].append(s.series_id)
             idx = list_of_ids.index(s.series_id)
