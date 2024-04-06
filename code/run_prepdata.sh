@@ -8,7 +8,7 @@ for sub in `cat ${scriptdir}/sublist_all.txt` ; do
 #for sub in 10723sp 10741sp 10738; do
 
 	script=${scriptdir}/prepdata.sh
-	NCORES=10
+	NCORES=40
 	while [ $(ps -ef | grep -v grep | grep $script | wc -l) -ge $NCORES ]; do
 		sleep 5s
 	done
