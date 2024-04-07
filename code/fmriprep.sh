@@ -24,7 +24,7 @@ fi
 
 
 TEMPLATEFLOW_DIR=/ZPOOL/data/tools/templateflow
-export SINGULARITYENV_TEMPLATEFLOW_HOME=/opt/templateflow
+export APPTAINERENV_TEMPLATEFLOW_HOME=/opt/templateflow
 /ZPOOL/data/tools/apptainer/bin/singularity run --cleanenv \
 -B ${TEMPLATEFLOW_DIR}:/opt/templateflow \
 -B $maindir:/base \
