@@ -5,6 +5,11 @@ import os
 bidsdir = "/ZPOOL/data/projects/rf1-mbme-pilot/bids"
 func_dir = "func"  # Directory containing the functional images
 
+# TO DO
+# 1) restrict to only multi-echo acquisitions 
+# 2) fix _scans.tsv files so that they list additional fmaps
+# 3) don't write out IntendedFor for non-existent echoes
+
 # Find all subject directories in the BIDS directory. should restrict to only me acqs
 subs = [d for d in os.listdir(bidsdir) if os.path.isdir(os.path.join(bidsdir, d)) and d.startswith('sub-')]
 
