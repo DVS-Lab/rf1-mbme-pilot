@@ -30,23 +30,40 @@ if [ -e $maindir/bids/sub-${sub}/fmap/sub-${sub}_acq-${acq}_fieldmap.json ]; the
 	exit
 fi
 
-/ZPOOL/data/tools/apptainer/bin/singularity run --cleanenv \
--B $indir:/base \
--B $outdir:/out \
-/ZPOOL/data/tools/warpkit.sif \
---magnitude /base/sub-${sub}_task-${task}_acq-${acq}_echo-1_part-mag_bold.nii.gz \
-			/base/sub-${sub}_task-${task}_acq-${acq}_echo-2_part-mag_bold.nii.gz \
-			/base/sub-${sub}_task-${task}_acq-${acq}_echo-3_part-mag_bold.nii.gz \
-			/base/sub-${sub}_task-${task}_acq-${acq}_echo-4_part-mag_bold.nii.gz \
---phase /base/sub-${sub}_task-${task}_acq-${acq}_echo-1_part-phase_bold.nii.gz \
-		/base/sub-${sub}_task-${task}_acq-${acq}_echo-2_part-phase_bold.nii.gz \
-		/base/sub-${sub}_task-${task}_acq-${acq}_echo-3_part-phase_bold.nii.gz \
-		/base/sub-${sub}_task-${task}_acq-${acq}_echo-4_part-phase_bold.nii.gz \
---metadata /base/sub-${sub}_task-${task}_acq-${acq}_echo-1_part-phase_bold.json \
-			/base/sub-${sub}_task-${task}_acq-${acq}_echo-2_part-phase_bold.json \
-			/base/sub-${sub}_task-${task}_acq-${acq}_echo-3_part-phase_bold.json \
-			/base/sub-${sub}_task-${task}_acq-${acq}_echo-4_part-phase_bold.json \
---out_prefix /out/sub-${sub}_task-${task}_acq-${acq}
+if [ "$acq" == "mb3me3" ] || [ "$acq" == "mb3me3ip0" ]; then
+	/ZPOOL/data/tools/apptainer/bin/singularity run --cleanenv \
+	-B $indir:/base \
+	-B $outdir:/out \
+	/ZPOOL/data/tools/warpkit.sif \
+	--magnitude /base/sub-${sub}_task-${task}_acq-${acq}_echo-1_part-mag_bold.nii.gz \
+				/base/sub-${sub}_task-${task}_acq-${acq}_echo-2_part-mag_bold.nii.gz \
+				/base/sub-${sub}_task-${task}_acq-${acq}_echo-3_part-mag_bold.nii.gz \
+	--phase /base/sub-${sub}_task-${task}_acq-${acq}_echo-1_part-phase_bold.nii.gz \
+			/base/sub-${sub}_task-${task}_acq-${acq}_echo-2_part-phase_bold.nii.gz \
+			/base/sub-${sub}_task-${task}_acq-${acq}_echo-3_part-phase_bold.nii.gz \
+	--metadata /base/sub-${sub}_task-${task}_acq-${acq}_echo-1_part-phase_bold.json \
+				/base/sub-${sub}_task-${task}_acq-${acq}_echo-2_part-phase_bold.json \
+				/base/sub-${sub}_task-${task}_acq-${acq}_echo-3_part-phase_bold.json \
+	--out_prefix /out/sub-${sub}_task-${task}_acq-${acq}
+else
+	/ZPOOL/data/tools/apptainer/bin/singularity run --cleanenv \
+	-B $indir:/base \
+	-B $outdir:/out \
+	/ZPOOL/data/tools/warpkit.sif \
+	--magnitude /base/sub-${sub}_task-${task}_acq-${acq}_echo-1_part-mag_bold.nii.gz \
+				/base/sub-${sub}_task-${task}_acq-${acq}_echo-2_part-mag_bold.nii.gz \
+				/base/sub-${sub}_task-${task}_acq-${acq}_echo-3_part-mag_bold.nii.gz \
+				/base/sub-${sub}_task-${task}_acq-${acq}_echo-4_part-mag_bold.nii.gz \
+	--phase /base/sub-${sub}_task-${task}_acq-${acq}_echo-1_part-phase_bold.nii.gz \
+			/base/sub-${sub}_task-${task}_acq-${acq}_echo-2_part-phase_bold.nii.gz \
+			/base/sub-${sub}_task-${task}_acq-${acq}_echo-3_part-phase_bold.nii.gz \
+			/base/sub-${sub}_task-${task}_acq-${acq}_echo-4_part-phase_bold.nii.gz \
+	--metadata /base/sub-${sub}_task-${task}_acq-${acq}_echo-1_part-phase_bold.json \
+				/base/sub-${sub}_task-${task}_acq-${acq}_echo-2_part-phase_bold.json \
+				/base/sub-${sub}_task-${task}_acq-${acq}_echo-3_part-phase_bold.json \
+				/base/sub-${sub}_task-${task}_acq-${acq}_echo-4_part-phase_bold.json \
+	--out_prefix /out/sub-${sub}_task-${task}_acq-${acq}
+fi
 
 # extract first volume as fieldmap and copy to fmap dir. still need json files for these. 
 fslroi $outdir/sub-${sub}_task-${task}_acq-${acq}_fieldmaps.nii $maindir/bids/sub-${sub}/fmap/sub-${sub}_acq-${acq}_fieldmap 0 1
