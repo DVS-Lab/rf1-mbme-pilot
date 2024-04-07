@@ -21,13 +21,6 @@ if [ ! -d $scratchdir ]; then
 	mkdir -p $scratchdir
 fi
 
-# # prevent fmriprep from average phase and mag parts of the sbref images
-# rm -rf ${bidsdir}/sub-*/func/sub-*_part-phase_sbref.*
-# for file in `ls -1 ${bidsdir}/sub-*/func/sub-*_part-mag_sbref.*`; do
-# 	mv "${file}" "${file/_part-mag/}"
-# done
-# rm -rf ${bidsdir}/sub-*/sub-*_scans.tsv
-
 
 
 TEMPLATEFLOW_DIR=/ZPOOL/data/tools/templateflow
